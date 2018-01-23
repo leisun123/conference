@@ -1,0 +1,21 @@
+<h3>Conference Info</h3>
+<div class="col-sm-3">
+
+	<ul class="nav nav-pills brand-pills nav-stacked">
+		<li role="presentation" class="brand-nav active">
+			<a href="{% url "index" %}">Home</a>
+		</li>
+		{% load main_tags %}
+		{% query sidebar_node_list parent_node=None as root_node %}
+		{% for node in root_node %}
+			{% include "main/sidebar_node.html" %}
+		{% endfor %}
+	</ul>
+
+	<div>
+		<h4>赞助单位</h4>
+		<img class="sponsor" src="1.png">
+		<h4>承办学校</h4>
+		<img class="sponsor" src="1.png">
+	</div>
+</div>

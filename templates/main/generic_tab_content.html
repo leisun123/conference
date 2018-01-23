@@ -1,0 +1,30 @@
+{% extends "share_layout/base.html" %}
+
+{% block index %}
+	<div class="container">
+		<div class="row">
+
+			<div role="tabpanel">
+				{% include "main/sidebar.html" %}
+
+				<div class="col-sm-9">
+					<div class="tab-content">
+						<div class="tab-pane active">
+							<!--<p class="small text-muted">Published May 19, 2015 by Mouse0270</p> -->
+							<h3 id="intro" class="title">{{ content.theme }}</h3>ls
+
+							<p>
+								{% autoescape off %}
+									{{ content.body }}
+								{% endautoescape %}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+
+

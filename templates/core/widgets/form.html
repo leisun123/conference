@@ -1,0 +1,61 @@
+{% load activflow_tags %}
+{% csrf_token %}
+{% for field in form %}
+<fieldset class="form-group">
+    {{ field|label_with_class:"col-sm-2 control-label" }}
+    <div class="col-sm-10">
+        {{ field }}
+    </div>
+</fieldset>
+{% endfor %}
+
+{% for formset in formsets %}
+<fieldset class="form-group">
+    <label class="col-sm-2 control-label">{{ formset.form.instance.title }}:</label>
+</fieldset>
+{{ formset.management_form }}
+{% for form in formset %}
+<!--{% if form.instance.pk %}{{ form.DELETE }}{% endif %}-->
+<div class="panel panel-default">
+    <div class="panel-heading">Panel heading without title</div>
+    <div class="panel-body">
+        {% for field in form %}
+        <fieldset class="form-group">
+            {{ field|label_with_class:"col-sm-2 control-label" }}
+            <div class="col-sm-10">
+                {{ field }}
+            </div>
+        </fieldset>
+        {% endfor %}
+    </div>
+</div>
+{% if forloop.last %}
+<input title='Add' type='submit' name='add-{{formset.form.instance.title}}' value='Add' />
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+{% wysiwyg_form_fields as wysuwyg_fields %}
+{% for wysuwyg_field in wysuwyg_fields %}
+    <script type="text/javascript">CKEDITOR.replace('id_{{wysuwyg_field}}')</script>
+{% endfor %}
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <input type="submit" value="Save" name="save" class="btn btn-success" />
+    </div>
+</div>
+{% with is_final_task=object.task.is_final %}
+{% if next or is_final_task %}
+<div class="panel panel-default">
+	<div class="panel-heading">Actions</div>
+	<div class="panel-body">
+        {% for option in next %}
+		  <input type="submit" value={{option}} name="submit" class="btn btn-primary" />
+        {% endfor %}
+        {% if is_final_task %}
+          <input type="submit" value="Finish" name="finish" class="btn btn-primary" />
+        {% endif %}
+	</div>
+</div>
+{% endif %}
+{% endwith %}
