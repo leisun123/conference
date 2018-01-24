@@ -1,11 +1,7 @@
 from django.db import models
-
-# Create your models here.
-
 from DjangoUeditor.models import UEditorField
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
-
 
 class SideBar(models.Model):
     node_name = models.CharField('标题', max_length=200, unique=True)
@@ -33,7 +29,7 @@ class GenericTagContent(models.Model):
         ('d', '草稿'),
         ('p', '发表'),
     )
-    
+   
     theme = models.CharField('标题', max_length=200, unique=True)
     status = models.CharField('文章状态', max_length=1, choices=STATUS_CHOICES, default='p')
     body = UEditorField(verbose_name=u'正文', toolbars='full', width='600', height='300', imagePath='file/',

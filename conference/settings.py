@@ -26,7 +26,7 @@ SECRET_KEY = 'j9gk(17@_&eqf6itrmams-6alizo=e@$pr81wl2e_mckpg)lyh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -118,7 +118,8 @@ AUTH_USER_MODEL = 'accounts.Scholar'
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -128,9 +129,15 @@ STATICFILES_FINDERS = (
 
 )
 
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/login'
-LOGOUT_URL = '/logout'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    '/conference/static/',
+]
+
+
+LOGIN_REDIRECT_URL = '/thesis'
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
 
 
 PAGE_NUM = 4

@@ -6,6 +6,6 @@ def Upload_to_Distribution(self):
     return self.content is not None
 
 def Distribution_to_Review(self):
-    return self.review1 is not None and \
-            self.review2 is not None and \
-              self.review3 is not None
+    return self.reviewer1 is not None and \
+            self.reviewer2 is not None and \
+              self.reviewer3 is not None

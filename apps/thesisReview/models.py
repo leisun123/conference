@@ -27,7 +27,7 @@ class Upload(AbstractInitialActivity):
         """Custom validation logic should go here"""
         pass
 
-class Distribution(AbstractEntity):
+class Distribution(AbstractActivity):
     
     REVIEWER_STATUS = (
         ('Wz', 'Wangzi'),
@@ -67,7 +67,7 @@ class Review(AbstractActivity):
 class ReviewLine(AbstractEntity):
     """Sample representation of Foo Line Item"""
     review = ForeignKey(Review, related_name="lines")
-    result = CharField(verbose_name="论文审核", max_length=30, choices=CONCLUSION_CHOICES)
+    result = CharField(verbose_name="初审", max_length=30, choices=CONCLUSION_CHOICES)
 
     @property
     def title(self):

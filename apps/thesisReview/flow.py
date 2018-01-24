@@ -25,7 +25,7 @@ FLOW = {
     'review_activity': {
         'name': '论文审核',
         'model': Review,
-        'role': 'Review',
+        'role': 'Reviewer',
         'transitions': None
     },
 }
