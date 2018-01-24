@@ -1,0 +1,83 @@
+[2018-01-24 13:18:35 +0000] [2316] [INFO] Starting gunicorn 19.7.1
+[2018-01-24 13:18:35 +0000] [2316] [INFO] Listening at: http://127.0.0.1:8000 (2316)
+[2018-01-24 13:18:35 +0000] [2316] [INFO] Using worker: sync
+[2018-01-24 13:18:35 +0000] [2320] [INFO] Booting worker with pid: 2320
+[2018-01-24 13:18:35 +0000] [2320] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/wyn/conference/conference/wsgi.py", line 12, in <module>
+    from django.core.wsgi import get_wsgi_application
+ImportError: No module named django.core.wsgi
+[2018-01-24 13:18:35 +0000] [2320] [INFO] Worker exiting (pid: 2320)
+[2018-01-24 13:18:35 +0000] [2316] [INFO] Shutting down: Master
+[2018-01-24 13:18:35 +0000] [2316] [INFO] Reason: Worker failed to boot.
+[2018-01-24 13:22:58 +0000] [2326] [INFO] Starting gunicorn 19.7.1
+[2018-01-24 13:22:58 +0000] [2326] [INFO] Listening at: http://127.0.0.1:8000 (2326)
+[2018-01-24 13:22:58 +0000] [2326] [INFO] Using worker: sync
+[2018-01-24 13:22:58 +0000] [2330] [INFO] Booting worker with pid: 2330
+[2018-01-24 13:22:58 +0000] [2330] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/wyn/conference/conference/wsgi.py", line 12, in <module>
+    from django.core.wsgi import get_wsgi_application
+ImportError: No module named django.core.wsgi
+[2018-01-24 13:22:58 +0000] [2330] [INFO] Worker exiting (pid: 2330)
+[2018-01-24 13:22:58 +0000] [2326] [INFO] Shutting down: Master
+[2018-01-24 13:22:58 +0000] [2326] [INFO] Reason: Worker failed to boot.
+[2018-01-24 13:25:30 +0000] [2346] [INFO] Starting gunicorn 19.7.1
+[2018-01-24 13:25:30 +0000] [2346] [INFO] Listening at: http://127.0.0.1:8000 (2346)
+[2018-01-24 13:25:30 +0000] [2346] [INFO] Using worker: sync
+[2018-01-24 13:25:30 +0000] [2350] [INFO] Booting worker with pid: 2350
+[2018-01-24 13:25:30 +0000] [2350] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/wyn/conference/conference/wsgi.py", line 12, in <module>
+    from django.core.wsgi import get_wsgi_application
+ImportError: No module named django.core.wsgi
+[2018-01-24 13:25:30 +0000] [2350] [INFO] Worker exiting (pid: 2350)
+[2018-01-24 13:25:30 +0000] [2346] [INFO] Shutting down: Master
+[2018-01-24 13:25:30 +0000] [2346] [INFO] Reason: Worker failed to boot.
+[2018-01-24 13:57:07 +0800] [3017] [INFO] Starting gunicorn 19.6.0
+[2018-01-24 13:57:07 +0800] [3017] [INFO] Listening at: http://127.0.0.1:8000 (3017)
+[2018-01-24 13:57:07 +0800] [3017] [INFO] Using worker: sync
+[2018-01-24 13:57:07 +0800] [3020] [INFO] Booting worker with pid: 3020
+Not Found: /1.png

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.main',
     'apps.activflow',
     'apps.thesisReview',
+    'gunicorn',
 ]
 
 MIDDLEWARE = [
