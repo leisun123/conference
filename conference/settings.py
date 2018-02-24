@@ -24,9 +24,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'j9gk(17@_&eqf6itrmams-6alizo=e@$pr81wl2e_mckpg)lyh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'apps.activflow',
     'apps.thesisReview',
     'gunicorn',
+    'apps.thesis',
 ]
 
 MIDDLEWARE = [
@@ -123,21 +124,20 @@ STATICFILES = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder"
-
 )
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    '/conference/static/',
-]
 
-
-LOGIN_REDIRECT_URL = '/thesis'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 
 
-PAGE_NUM = 4
+PAGE_NUM = 3

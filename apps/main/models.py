@@ -3,6 +3,7 @@ from DjangoUeditor.models import UEditorField
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 
+
 class SideBar(models.Model):
     node_name = models.CharField('标题', max_length=200, unique=True)
     created_time = models.DateTimeField('创建时间', default=timezone.now)
@@ -44,3 +45,4 @@ class GenericTagContent(models.Model):
         verbose_name = "文章"
         verbose_name_plural = verbose_name
         get_latest_by = 'created_time'
+

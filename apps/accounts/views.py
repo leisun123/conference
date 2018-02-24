@@ -20,16 +20,15 @@ def login(request):
             user = login_form.get_user()
             if user is not None:
                 auth_login(request, user)
-                return HttpResponsePermanentRedirect(request.session['LoginForm'])
+                return HttpResponsePermanentRedirect(request.session['next_url'])
+        
         else:
             auth_logout(request)
             print(login_form.errors)
             return render(request, 'registration/login.html', {'errors': login_form.errors})
 
     else:
-        login_form = LoginForm()
-        user = None
-        request.session['LoginForm'] = request.META.get('HTTP_REFERER', '/')
+        request.session['next_url'] = request.GET.get('next')
     return render(request, 'registration/login.html')
 
 @csrf_protect

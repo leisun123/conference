@@ -31,6 +31,8 @@ def workflows(request):
 
 class WorkflowDetail(LoginRequiredMixin, generic.TemplateView):
     """Generic view to list worflow requests & tasks"""
+    
+    
     template_name = 'core/workflow.html'
 
     def get_context_data(self, **kwargs):
@@ -99,7 +101,7 @@ class CreateActivity(AccessDeniedMixin, generic.View):
         denied = self.check(request, **kwargs)
         return denied if denied else render(
             request, 'core/create.html', context)
-
+ 
     @transaction.atomic
     def post(self, request, **kwargs):
         """POST request handler for Create operation"""

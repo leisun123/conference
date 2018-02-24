@@ -31,5 +31,11 @@ urlpatterns = [
     url(r'', include('activflow.urls')),
     url(r'', include('main.urls')),
     url(r'', include('accounts.urls')),
-   
+    url(r'', include('thesis.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+
+
