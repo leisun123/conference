@@ -31,4 +31,13 @@ def query(qs, count=False, **kwargs):
 def filename(fname):
     return os.path.basename(fname)
     
+@register.inclusion_tag('main/tags/scholar_particular_info.html')
+def load_scholar_info(scholar):
     
+    return {
+        'id': scholar.id,
+        'username': scholar.username,
+        'organization': scholar.organization,
+        'email': scholar.email,
+        'keywords': scholar.keywords.split[','] if isinstance(scholar.keywords, list) else []
+    }

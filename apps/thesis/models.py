@@ -22,25 +22,24 @@ class BaseModel(models.Model):
 
 class Thesis(BaseModel):
     
-    STATUS_CHOICES = {
-        0: u'未分配',
-        1: u'审核中',
-        2: u'通过',
-        3: u'修改',
-        4: u'拒绝',
-    }
+    STATUS_CHOICES = (
+        ('0', '未分配'),
+        ('1', '审核中'),
+        ('2', '通过'),
+        ('3', '修改'),
+        ('4', '拒绝')
+    )
     
     title = models.CharField(max_length=128)
     content = models.FileField(upload_to='thesis/')
     author = models.ForeignKey(Scholar, related_name="thesis_author")
     handle_memebers = models.ManyToManyField(Scholar, through='Review')
-    status = models.CharField(verbose_name="论文状态", max_length=64, choices=STATUS_CHOICES.items(), default=0)
+    status = models.CharField(verbose_name="论文状态", max_length=64, choices=STATUS_CHOICES, default='0')
     keywords = models.CharField(verbose_name="关键词", max_length=64)
     abstract = models.TextField(verbose_name="概述", max_length=256)
     create_time = models.DateField(verbose_name="创建时间",auto_now_add=True)
     publish_time = models.DateField(verbose_name="发布时间", null=True)
  
-
     
 class Review(models.Model):
     

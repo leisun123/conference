@@ -92,11 +92,8 @@ class ThesisReviewForm(forms.ModelForm):
         return review
         
         
-        
-        
-        
-        
-        
+    
+    
         
         
         
