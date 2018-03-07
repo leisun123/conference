@@ -7,7 +7,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<h2>Review Thesis</h2>
+				<h2>Review Manage</h2>
 				<br>
 				<br>
 				<div class="row">
@@ -95,21 +95,44 @@
 						<div class="col-md-3">
 							<p class="lead">Reviewers:</p>
 						</div>
-						<div id="reviewers" class="col-md-5 col-md-offset-2">
 
-									<div class="form-group">
-										<select name="handle_members" class="form-control">
-											{% for i in scholars %}
-												<option value="{{ i.id }}">{{ i }}</option>
-											{% endfor %}
-
-										</select>
+						{% if thesis.status != '1' %}
+							<div id="reviewers" class="col-md-5 col-md-offset-2">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-10">
+											<select name="handle_members" class="form-control">
+												{% for i in scholars %}
+													<option value="{{ i.id }}">{{ i }}</option>
+												{% endfor %}
+											</select>
+										</div>
+										<div class="col-md-offset-2">
 										<span class="input-group-btn"><button type="button"
 																			  class="btn btn-default btn-add">+</button></span>
+										</div>
 									</div>
+								</div>
+							</div>
+						{% else %}
+							<div class="col-md-5 col-md-offset-2">
+								{% for n in thesis.review_set.all %}
+									<div class="row">
+										<a class="col-md-3" style="font-size: 18px" data-toggle="modal"
+										   data-target="#{{ n.reviewer.id }}">{{ n.reviewer.username }}</a>
+										{% load_scholar_info n.reviewer user %}
+										<p class="col-md-offset-2"
+										   style="font-size: 18px">{% if n.conclusion %}({{ n.get_conclusion_display }}){% else %}(审核中){% endif %}</p>
+									</div>
+								{% endfor %}
 
-						</div>
+							</div>
+						{% endif %}
+
 					</div>
+
+					<br>
+
 
 					<div class="form-group">
 						<div class="row">
@@ -117,11 +140,19 @@
 								<p class="lead">Status:</p>
 							</div>
 							<div class="col-md-5 col-md-offset-2">
+
 								<select name="status" id="status" class="form-control">
 									{% for i in status %}
-										<option value="{{ i.0 }}">{{ i.1 }}</option>
+										<option value="{{ i.0 }}"
+												{% if i.0 == thesis.status|slugify %}selected="selected"{% endif %}>{{ i.1 }}</option>
+
 									{% endfor %}
+									<option value=""
+											{% if thesis.status == '0' or thesis.status == '1' %}selected="selected"{% endif %}>
+										-
+									</option>
 								</select>
+
 							</div>
 						</div>
 					</div>
@@ -130,7 +161,7 @@
 					<div class="row">
 						<div class="col-xs-6 col-md-6">
 							<button id="submit" value="{{ thesis_id }}"
-								   class="btn btn-primary btn-block btn-lg">
+									class="btn btn-primary btn-block btn-lg">
 								Submit
 							</button>
 						</div>

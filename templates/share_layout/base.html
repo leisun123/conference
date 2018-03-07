@@ -2,34 +2,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}?{% now "U" %}">
-        <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-            crossorigin="anonymous">
-        <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-            crossorigin="anonymous">
-        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 
-        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		  crossorigin="anonymous">
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		  integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+		  crossorigin="anonymous">
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+			crossorigin="anonymous"></script>
+	<link src="{% static 'css/uni-form.css' %}?{% now "U" %}" rel="stylesheet" type="text/css" media="screen"/>
+	</link>
+	<link src="{% static 'css/style.uni-form.css' %}?{% now "U" %}" rel="stylesheet" type="text/css" media="screen"/>
+	</link>
+	<script type="text/javascript" src="{% static 'js/uni-form.jquery.min.js' %}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+{% block extrahead %}{% endblock %}
 
 </head>
 
-<body>
-	{% include "share_layout/navbar.html" %}
-	{% include "share_layout/carousel.html" %}
 
-	<div id="index">
+
+<body>
+{% include "share_layout/navbar.html" %}
+
+<div id="index">
 	{% block index %}
 	{% endblock %}
-	</div>
+	{% block create %}
+	{% endblock %}
+</div>
 
-	{% include "share_layout/footer.html" %}
+{% include "share_layout/footer.html" %}
 </body>
 
-<script src="{% static "js/script.js" %}"></script>
+
 </html>

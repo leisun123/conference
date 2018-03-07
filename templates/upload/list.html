@@ -1,0 +1,20 @@
+
+
+{% extends 'share_layout/base.html' %}
+
+{% block create %}
+
+
+
+
+	{% for paper in paper_list %}
+		{{ paper.title }}
+	{% endfor %}
+
+
+	{% include 'share_layout/pagination.html' with is_paginated=is_paginated page_obj=page_obj paginator=paginator %}
+
+
+
+
+{% endblock %}

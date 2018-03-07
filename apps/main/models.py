@@ -9,7 +9,7 @@ class SideBar(models.Model):
     created_time = models.DateTimeField('创建时间', default=timezone.now)
     last_mod_time = models.DateTimeField('修改时间', auto_now=True)
     rank = models.IntegerField(default=0, verbose_name=u'排序')
-    parent_node = models.ForeignKey('self', verbose_name="父级分类", blank=True, null=True)
+    parent_node = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name="父级分类", blank=True, null=True)
     
     def __str__(self):
         return self.node_name

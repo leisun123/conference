@@ -3,7 +3,7 @@ from django.shortcuts import render, HttpResponse
 from django.http import HttpResponsePermanentRedirect
 from django.contrib.auth import login as auth_login, logout as auth_logout, authenticate
 from django.http.response import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -20,11 +20,11 @@ def login(request):
             user = login_form.get_user()
             if user is not None:
                 auth_login(request, user)
-                return HttpResponsePermanentRedirect(request.session['next_url'])
+                return HttpResponseRedirect(reverse('index'))
         
         else:
             auth_logout(request)
-            print(login_form.errors)
+            
             return render(request, 'registration/login.html', {'errors': login_form.errors})
 
     else:
@@ -85,9 +85,9 @@ def updateImage(request):
         if form.is_valid():
             image = form.cleaned_data['image']
             user = request.user
-            user.image = image
+            user.avatar = image
             user.save()
-            return HttpResponseRedirect(reverse('index-view'))
+            return HttpResponseRedirect(reverse('index'))
     else:
         form = ChangeUserImageForm()
     return render(request, 'registration/changeuserimage.html',{'form':form})

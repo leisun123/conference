@@ -1,0 +1,22 @@
+{% extends "share_layout/base.html" %}
+
+{% load crispy_forms_tags %}
+
+
+{% block create %}
+	<h2>Upload Paper</h2>
+	<div class="form-container">
+	<form method="post" action="" enctype='multipart/form-data'>
+		{% csrf_token %}
+
+
+		{% crispy paper_form %}
+		{% crispy keywords_formset myinlinehelper  %}
+		{% crispy authors_formset myinlinehelper  %}
+
+		<p>
+			<input type="submit" value="Submit"/>
+		</p>
+	</form>
+	</div>
+{% endblock %}

@@ -31,7 +31,7 @@
 					</div>
 					<div class="col-md-5 col-md-offset-2">
 						<p style="font-size: 18px;"><a data-toggle="modal" data-target="#{{ thesis.author_id }}">{{ thesis.author }}</a></p>
-						{% load_scholar_info thesis.author %}
+						{% load_scholar_info thesis.author user %}
 					</div>
 				</div>
 
@@ -45,10 +45,8 @@
 							{% for n in thesis.review_set.all %}
 								<div class="col-md-2">
 									<a style="font-size: 18px" data-toggle="modal" data-target="#{{ n.reviewer.id }}">{{ n.reviewer.username }}</a>
-									{% load_scholar_info n.reviewer %}
+									{% load_scholar_info n.reviewer user %}
 								</div>
-
-
 							{% endfor %}
 
 							{% else %}

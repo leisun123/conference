@@ -1,0 +1,77 @@
+{% load crispy_forms_tags %}
+{% load crispy_forms_utils %}
+{% load crispy_forms_field %}
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $('table.{{ formset.prefix }}').formset({
+            formCssClass: 'dynamic-event-form',
+            prefix: "{{ formset.prefix }}",
+            added: function (row) {
+                // Find the fields with the calendar widget
+                $(row).find('.vDateField').each(function (i) {
+                    // Remove the cloned spam element: it links to an incorrect calendar
+                    $(this).parent().find('span').remove();
+                    // DateTimeShortcuts is defined in DateTimeShortcuts.js in the Django admin media
+                    DateTimeShortcuts.addCalendar(this);
+                });
+            }
+        });
+    });
+</script>
+<style type="text/css">
+	.add-row {
+		padding-left: 18px;
+		background:({{ MEDIA_URL }} images / add . png) no-repeat left center;
+	}
+
+	.delete-row {
+		float: right;
+		display: block;
+		margin-left: 4px;
+		padding-left: 18px;
+		background:({{ MEDIA_URL }} images / delete . png) no-repeat left center;
+	}
+
+	.dynamic-event-form th {
+		text-align: right;
+		font-weight: bold;
+	}
+
+	.dynamic-event-form td span img {
+		vertical-align: middle;
+		border: 0;
+	}
+</style>
+
+<div>
+	{{ formset.management_form|crispy }}
+</div>
+
+{% for form in formset.forms %}
+	<table id="{{ form.prefix }}-row" class="{{ formset.prefix }}">
+
+		<tbody>
+		<tr class="hidden empty-form">
+			{% for field in formset.empty_form %}
+				{% include 'bootstrap3/field.html' with tag="td" form_show_labels=False %}
+			{% endfor %}
+		</tr>
+
+
+		{% if form_show_errors and not form.is_extra %}
+			{% include "bootstrap3/errors.html" %}
+		{% endif %}
+
+		{% for field in form %}
+			<tr>
+				{% include 'bootstrap3/field.html' with tag="td" form_show_labels=True %}
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endfor %}
+{% include "bootstrap3/inputs.html" %}
+

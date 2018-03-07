@@ -1,7 +1,6 @@
 @import url(//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.4/paper/bootstrap.min.css);
 @import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css);
 
-
 .container {
     margin-top: 20px;
 }
@@ -22,50 +21,50 @@
 
 .carousel-control.left,
 .carousel-control.right {
-	opacity: 1;
-	filter: alpha(opacity=100);
-	background-image: none;
-	background-repeat: no-repeat;
-	text-shadow: none;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    background-image: none;
+    background-repeat: no-repeat;
+    text-shadow: none;
 }
 
 .carousel-control.left span {
-	padding: 15px;
+    padding: 15px;
 }
 
 .carousel-control.right span {
-	padding: 15px;
+    padding: 15px;
 }
 
 .carousel-control .glyphicon-chevron-left,
 .carousel-control .glyphicon-chevron-right,
 .carousel-control .icon-prev,
 .carousel-control .icon-next {
-	position: absolute;
-	top: 45%;
-	z-index: 5;
-	display: inline-block;
+    position: absolute;
+    top: 45%;
+    z-index: 5;
+    display: inline-block;
 }
 
 .carousel-control .glyphicon-chevron-left,
 .carousel-control .icon-prev {
-	left: 0;
+    left: 0;
 }
 
 .carousel-control .glyphicon-chevron-right,
 .carousel-control .icon-next {
-	right: 0;
+    right: 0;
 }
 
 .carousel-control.left span,
 .carousel-control.right span {
-	background-color: #000;
+    background-color: #000;
 }
 
 .carousel-control.left span:hover,
 .carousel-control.right span:hover {
-	opacity: .7;
-	filter: alpha(opacity=70);
+    opacity: .7;
+    filter: alpha(opacity=70);
 }
 
 /* Carousel Header Styles */
@@ -84,12 +83,12 @@
 
 .header-text h2 span {
     background-color: #2980b9;
-	padding: 10px;
+    padding: 10px;
 }
 
 .header-text h3 span {
-	background-color: #000;
-	padding: 15px;
+    background-color: #000;
+    padding: 15px;
 }
 
 .btn-min-block {
@@ -132,27 +131,24 @@ p.small.text-muted {
 
     .brand-pills > li > a {
         border-top-right-radius: 0px;
-    	border-bottom-right-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
 
-    li.brand-nav.active a:after{
-    	content: " ";
-    	display: block;
-    	width: 0;
-    	height: 0;
-    	border-top: 20px solid transparent;
-    	border-bottom: 20px solid transparent;
-    	border-left: 9px solid #428bca;
-    	position: absolute;
-    	top: 50%;
-    	margin-top: -20px;
-    	left: 100%;
-    	z-index: 2;
+    li.brand-nav.active a:after {
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-left: 9px solid #428bca;
+        position: absolute;
+        top: 50%;
+        margin-top: -20px;
+        left: 100%;
+        z-index: 2;
     }
 }
-
-
-
 
 .card {
     padding-top: 20px;
@@ -367,7 +363,7 @@ p.small.text-muted {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    border: 5px solid rgba(255,255,255,0.5);
+    border: 5px solid rgba(255, 255, 255, 0.5);
 }
 
 .card.hovercard .info {
@@ -398,6 +394,7 @@ p.small.text-muted {
 .shadow {
     box-shadow: 0 2px 3px -1px #DCDCDC;
 }
+
 .sidebar-search-text {
     display: block;
     padding: 15px 15px 20px;
@@ -406,26 +403,30 @@ p.small.text-muted {
     color: #000;
     border-bottom: 1px solid #ededed;
 }
+
 .sidebar-search-text input {
     font-size: 16px;
     border: none;
-        border-bottom-width: medium;
-        border-bottom-style: none;
-        border-bottom-color: currentcolor;
+    border-bottom-width: medium;
+    border-bottom-style: none;
+    border-bottom-color: currentcolor;
     border-bottom: 2px dotted #E0E0E0;
     padding-bottom: 9px;
     box-shadow: none;
 }
+
 .sidebar .sidebar-nav {
     margin: 0;
     padding: 0;
     background: #fff;
 }
+
 .sidebar .sidebar-nav li {
     position: relative;
     list-style-type: none;
     border-bottom: 0;
 }
+
 .sidebar .sidebar-nav li a {
     position: relative;
     cursor: pointer;
@@ -447,32 +448,38 @@ p.small.text-muted {
     color: inherit;
     border-bottom: 1px solid #ededed;
 }
+
 .ripple-effect {
     position: relative;
     overflow: hidden;
-    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0, 0, 0);
 }
+
 .sidebar .sidebar-nav li i {
     padding-right: 10px;
     color: #000;
     border-right: 1px solid #ededed;
     margin-right: 20px;
 }
+
 .sidebar-badge {
     position: absolute;
     right: 16px;
     top: 0;
 }
+
 .caret {
     position: absolute;
     right: 37px;
     top: 23px;
 
 }
+
 .strong, b, strong {
     color: #000;
     font-weight: 500;
 }
+
 .sidebar .sidebar-nav li a {
     position: relative;
     cursor: pointer;
@@ -494,6 +501,7 @@ p.small.text-muted {
     color: inherit;
     border-bottom: 1px solid #ededed;
 }
+
 .sidebar .sidebar-nav .dropdown-menu {
     position: relative;
     width: 100%;
@@ -504,24 +512,26 @@ p.small.text-muted {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
 .sidebar .sidebar-nav li {
     position: relative;
     list-style-type: none;
     border-bottom: 0;
 }
+
 .icon {
-    font-size :16px;
+    font-size: 16px;
     padding: 25px 10px 0px 0px;
-    color:grey;
+    color: grey;
 
 }
-
 
 .nav-sidebar {
     width: 100%;
     padding: 30px 0;
     border-right: 1px solid #ddd;
 }
+
 .nav-sidebar a {
     color: #333;
     -webkit-transition: all 0.08s linear;
@@ -529,14 +539,17 @@ p.small.text-muted {
     -o-transition: all 0.08s linear;
     transition: all 0.08s linear;
 }
+
 .nav-sidebar .active a {
     cursor: default;
     background-color: #0b56a8;
     color: #fff;
 }
+
 .nav-sidebar .active a:hover {
     background-color: #E50000;
 }
+
 .nav-sidebar .text-overflow a,
 .nav-sidebar .text-overflow .media-body {
     white-space: nowrap;
@@ -546,6 +559,30 @@ p.small.text-muted {
 }
 
 
+
+/*form*/
+.add-row {
+    padding-left: 18px;
+    background: no-repeat left center;
+}
+
+.delete-row {
+    float: right;
+    display: block;
+    margin-left: 4px;
+    padding-left: 18px;
+    background: no-repeat left center;
+}
+
+.dynamic-event-form th {
+    text-align: right;
+    font-weight: bold;
+}
+
+.dynamic-event-form td span img {
+    vertical-align: middle;
+    border: 0;
+}
 
 
 

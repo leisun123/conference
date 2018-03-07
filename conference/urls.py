@@ -13,9 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+
+from django.urls import include, path
 from django.contrib import admin
-import xadmin
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,13 +25,12 @@ handler404 = 'apps.main.views.handler404'
 handler500 = 'apps.main.views.handler500'
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^xadmin/', xadmin.site.urls),
-    url(r'^auth/', include('django.contrib.auth.urls')),
-    url(r'', include('activflow.urls')),
-    url(r'', include('main.urls')),
-    url(r'', include('accounts.urls')),
-    url(r'', include('thesis.urls')),
+    path('admin/', admin.site.urls),
+    path('auth/', include('django.contrib.auth.urls')),
+    path('', include('main.urls')),
+    path('', include('accounts.urls')),
+    path('', include('PaperReview.urls')),
+    path('chaining/', include('smart_selects.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

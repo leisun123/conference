@@ -57,14 +57,14 @@
 									<td>{{ i.create_time }}</td>
 
 									{% if key != 0 %}
-										<td><p style="font-size: medium" class="lead">{% for n in i.review_set.all %}<a>{{ n.reviewer.username }}</a> &nbsp; {% endfor %}</p></td>
+										<td><p style="font-size: medium" class="lead">{% for n in i.review_set.all %}{{ n.reviewer.username }}&nbsp; &nbsp;{% endfor %}</p></td>
 									{% endif %}
 
 									{% if key == 2 %}
 										<td>{{ i.publish_time }}</td>
 									{% endif %}
 
-									<td><a href="{% url 'thesisReviewById' i.pk %}">VIEW</a></td>
+									<td><a href="{% url 'editorReviewById' i.pk %}">VIEW</a></td>
 								</tr>
 							{% endfor %}
 							</tbody>

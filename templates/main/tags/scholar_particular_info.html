@@ -1,3 +1,5 @@
+{% load static %}
+{% load main_tags %}
 <!-- Modal -->
 <div class="modal fade" id="{{ id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 	 aria-hidden="true">
@@ -10,17 +12,26 @@
 				</button>
 				<h4 class="modal-title" id="myModalLabel">Infomation</h4>
 			</div>
+
 			<div class="modal-body">
 				<center>
-					<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"
+
+				{% if avatar %}
+					<img src="{% get_media_prefix %}{{ avatar }}"
 						 name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+				{% elif username == current_user %}
+					{% include "registration/changeuserimage.html" %}
+				{% else %}
+					<img src="http://bpic.588ku.com/element_pic/01/55/09/6357474dbf2409c.jpg"
+						 name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+				{% endif %}
 					<h3 class="media-heading">{{ username }}
 						<small>{{ organization }}</small>
 					</h3>
 					<p class="lead">{{ email }}</p>
 					<span><strong>Keywords: </strong></span>
 					{% for keyword in keywords %}
-					<span class="label label-info">{{ keyword }}</span>
+						<span class="label label-info">{{ keyword }}</span>
 					{% endfor %}
 
 				</center>
@@ -30,7 +41,29 @@
 						{{ major }}</p>
 					<br>
 				</center>
+				<hr>
+				<table class="table">
+					<thead>
+					<tr>
+						<th scope="col">{{ username }}'s Works</th>
+						<th scope="col">Review Thesis</th>
+					</tr>
+					</thead>
+					<tbody>
+
+					{% for work, review in thesis_set %}
+						<tr>
+							<td><a target="_blank" href="{% get_media_prefix %}{{ work.content.name }}">{{ work.title }}</a></td>
+							<td><a target="_blank" href="{% get_media_prefix %}thesis/{% filename review.thesis.content.name %}">{{ review.thesis.title }}</a></td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
 			</div>
+
+
+			</tr>
+
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" data-dismiss="modal">
 					Close

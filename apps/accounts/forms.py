@@ -14,8 +14,11 @@ import random
 
 from django import forms
 from django.contrib import auth
-from apps.accounts.models import Scholar
 
+from apps import PaperReview
+from apps.PaperReview.models import Paper
+from apps.accounts.models import Scholar
+from guardian.shortcuts import assign_perm
 from django.utils import timezone
 
 error_messages = {
@@ -110,7 +113,6 @@ class RegisterForm(forms.ModelForm):
     def save(self, commit=True):
         user = super(RegisterForm, self).save(commit=False)
         user.set_password(self.cleaned_data['password'])
-
         if commit:
             user.save()
         return user

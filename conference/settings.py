@@ -33,20 +33,19 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'xadmin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
+    'apps.crispy_forms',
     'DjangoUeditor',
     'apps.accounts',
     'apps.main',
-    'apps.activflow',
-    'apps.thesisReview',
     'gunicorn',
-    'apps.thesis',
+    'apps.smart_selects',
+    'apps.PaperReview',
+    'guardian',
 ]
 
 MIDDLEWARE = [
@@ -55,12 +54,15 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'conference.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap3'
+
 
 TEMPLATES = [
     {
@@ -83,7 +85,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'conference.wsgi.application'
 
-
+USE_DJANGO_JQUERY = True
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -94,7 +96,10 @@ DATABASES = {
     }
 }
 
-
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # default
+    'guardian.backends.ObjectPermissionBackend',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -139,5 +144,14 @@ STATICFILES_FINDERS = (
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 
+PAGE_NUM = 6
 
-PAGE_NUM = 3
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST= 'smtp.qq.com'
+EMAIL_PORT= 25
+EMAIL_HOST_USER = '1178180942@qq.com'
+EMAIL_HOST_PASSWORD = 'zaiawbkhnlpujhia'
+EMAIL_SUBJECT_PREFIX = 'website'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = SERVER_EMAIL = EMAIL_HOST_USER

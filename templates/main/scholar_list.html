@@ -1,16 +1,51 @@
 {% extends 'share_layout/base.html' %}
 {% load main_tags %}
-{% block scholar_list %}
-<div class="tab-pane text-style" id="tab10">
-		<header class="archive-header">
-					<h1 class="archive-title">{{ page_type }}, <span>{{ tag_name }}</span></h1>
-		</header>
+{% block index %}
+	<div class="container">
+		<div class="row">
 
-		{% for scholar in scholar_list %}
-			{% load_scholar_info scholar True%}
-		{% endfor %}
-		{% if is_paginated %}
-			{% load_pagination_info page_obj paginator 7 3 as page_list %}
-		{% endif %}
-</div>
+			<div role="tabpanel">
+
+				{% include "main/sidebar.html" %}
+				<div class="col-sm-9" >
+
+						<div class="tab-pane text-style" id="tab10">
+							<header class="archive-header">
+								<h1 class="archive-title">{{ page_type }} <span>{{ tag_name }}</span></h1>
+							</header>
+
+							{% for scholar in scholar_list %}
+								{% load_scholar_list_info scholar %}
+							{% endfor %}
+
+
+							{% if is_paginated %}
+								<ul class="pagination">
+									{% if page_obj.has_previous %}
+										<li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+									{% else %}
+										<li class="disabled"><span>&laquo;</span></li>
+									{% endif %}
+									{% for i in paginator.page_range %}
+										{% if page_obj.number == i %}
+											<li class="active"><span>{{ i }} <span
+													class="sr-only">(current)</span></span></li>
+										{% else %}
+											<li><a href="?page={{ i }}">{{ i }}</a></li>
+										{% endif %}
+									{% endfor %}
+									{% if page_obj.has_next %}
+										<li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+									{% else %}
+										<li class="disabled"><span>&raquo;</span></li>
+									{% endif %}
+								</ul>
+							{% endif %}
+						</div>
+
+					</div>
+
+			</div>
+		</div>
+	</div>
 {% endblock %}

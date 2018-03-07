@@ -9,14 +9,14 @@
 @description:
             --
 """
-from django.conf.urls import url, include
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    url(r'^login/$', views.login, name='login'),
-    url(r'^logout/$', views.logout, name='logout'),
-    url(r'^register/$', views.register, name='register'),
-    url(r'^password/$', views.password, name='password'),
-    url(r'updateimage/$', views.updateImage, name='updateimage'),
+    path(r'login/', views.login, name='login'),
+    path(r'logout/', views.logout, name='logout'),
+    path(r'register/', views.register, name='register'),
+    path(r'password/', views.password, name='password'),
+    path(r'updateimage/', views.updateImage, name='updateimage'),
 ]

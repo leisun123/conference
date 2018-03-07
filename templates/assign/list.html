@@ -1,0 +1,10 @@
+{% extends 'share_layout/base.html' %}
+
+{% block create %}
+	{% for assignment in assignment_list %}
+		{{ assignment }}
+	{% endfor %}
+
+	{% include 'share_layout/pagination.html' with is_paginated=is_paginated page_obj=page_obj paginator=paginator %}
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends "share_layout/base.html" %}
+
+{% load crispy_forms_tags %}
+
+
+{% block create %}
+
+	{% include 'upload/display.html' with object=paper_object %}
+
+	<div class="form-container">
+	<form method="post" action="" enctype='multipart/form-data'>
+		{% csrf_token %}
+		<h2>Contact formset</h2>
+
+		{% crispy assignment_form %}
+		{% crispy inline_review_formset myinlinehelper  %}
+
+		<p>
+			<input type="submit" value="Submit"/>
+		</p>
+	</form>
+	</div>
+{% endblock %}
