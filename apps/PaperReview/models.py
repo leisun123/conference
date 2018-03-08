@@ -85,6 +85,9 @@ class Assignment(models.Model):
             ('view_assignment', 'View Assignment'),
             ('create_assignment', 'Create Assignment')
         )
+        
+    def get_status(self):
+        return self.STATUS_CHOICES.get(self.status)
 
 class Review(models.Model):
     
@@ -93,7 +96,6 @@ class Review(models.Model):
         ('2', 'revision'),
         ('3', 'reject')
     )
-    
     
     recommandation = models.CharField(max_length=16, choices=RECOMMONDATION_CHOICES)
     confidentia_proposal_to_editor = models.TextField(max_length=1024, null=True)

@@ -16,7 +16,7 @@ def sidebar_processor(requests):
     value = {
         'sidebar_node_list': SideBar.objects.all(),
         'generic_tag_content': GenericTagContent.objects.filter(status='p'),
-        'paper_list': Paper.objects.all()
+        
         
     }
     return  value

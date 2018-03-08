@@ -15,8 +15,8 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="">I'm Uploader</a></li>
-			<li><a href="list_assignment">I'm Reviewer</a></li>
+			<li class="active"><a href="{% url 'list_paper' %}">I'm Uploader</a></li>
+			<li><a href="{% url 'list_assignment' %}">I'm Reviewer</a></li>
 			{% for i in request.user.groups.all %}
 				{% if i.name == 'editor' %}
 					<li><a href="">I'm Editor</a></li>

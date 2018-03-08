@@ -10,6 +10,7 @@
             --
 """
 from django.urls import path
+from django.views.generic import TemplateView
 
 from apps.PaperReview import views
 
@@ -25,5 +26,5 @@ urlpatterns = [
     
     path('createreview/<int:pk>', views.ReviewCreateView.as_view(), name='create_review'),
     path('displayreview/<int:pk>', views.ReviewDisplayView.as_view(), name='display_review'),
-    path('status', views.StatusView.as_view(), name='status'),
+    path('status', TemplateView.as_view(template_name='Judgment/status.html'), name='status'),
 ]

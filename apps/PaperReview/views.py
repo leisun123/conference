@@ -1,4 +1,4 @@
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, Permission
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 
@@ -26,7 +26,7 @@ from apps.PaperReview.forms import mylinehelper
 from apps.crispy_forms.layout import Layout
 from apps.mail.mail import send_mail
 from conference import settings
-
+from guardian.models import UserObjectPermission
 
 class PaperListView(LoginRequiredMixin, generic.ListView):
     
@@ -35,9 +35,13 @@ class PaperListView(LoginRequiredMixin, generic.ListView):
     page_kwarg = 'page'
     paginate_by = settings.PAGE_NUM
 
-    def get_queryset(self):
-        paper_list = Paper.objects.order_by('create_time')
-        return paper_list
+    def get_queryset(self, *args, **kwargs):
+        content_type = Permission.objects.get(codename='view_paper').content_type
+        
+        return \
+            [Paper.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects\
+            .filter(user=self.request.user, content_type=content_type).all()]
+        
 
     def get_context_data(self, **kwargs):
         return super(PaperListView, self).get_context_data(**kwargs)
@@ -304,11 +308,9 @@ class ReviewDisplayView(LoginRequiredMixin, generic.DetailView):
     model = Review
 
 
-class StatusView(LoginRequiredMixin, generic.TemplateView):
+
     
-    template_name = 'Judgment/status.html'
-
-
+        
 
 
 

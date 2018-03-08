@@ -108,7 +108,7 @@ AUTHENTICATION_BACKENDS = (
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'zh-hans'
+LANGUAGE_CODE = 'en-AS'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -143,7 +143,7 @@ STATICFILES_FINDERS = (
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 
-PAGE_NUM = 6
+PAGE_NUM = 10
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

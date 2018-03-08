@@ -14,9 +14,12 @@ from django import template
 
 from itertools import zip_longest
 
+from django.contrib.auth.models import Permission
 from django.urls import reverse
+from guardian.models import UserObjectPermission
 
 from apps.PaperReview.models import Paper
+from conference import settings
 
 register = template.Library()
 
@@ -61,9 +64,33 @@ def load_scholar_list_info(scholar):
         'keywords': scholar.keywords.split(',') if isinstance(scholar.keywords, list) else [],
     }
 
+@register.simple_tag
+def load_file(filefield):
+    return os.path.join(settings.MEDIA_URL, filefield)
+
+@register.simple_tag
+def load_permission_paper(request):
     
+        content_type = Permission.objects.get(codename='view_paper').content_type
+        
+        return \
+            [Paper.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects\
+            .filter(user=request.user, content_type=content_type).all()]
 
-
+    
+@register.inclusion_tag('Judgment/sidebar.html')
+def load_judgment_sidebar(sidebar_type):
+    dic = {
+        "paper": [{"overview": "list_paper"},
+                  {"upload": "create_paper"},
+                  {"status": "status"}],
+        #TODO: waiting assign
+        "assignment": [{"overview": "list_assignment"},
+                       ],
+        #TODO: overview
+        "review": [{"review": "create_review"}]
+    }
+    return dic.get(sidebar_type)
     
     
 
