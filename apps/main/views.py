@@ -1,9 +1,3 @@
-from django.forms import formsets
-from django.shortcuts import render
-
-# Create your views here.
-from django.template import RequestContext
-from django.views.decorators.csrf import csrf_protect
 from django.views.generic import DetailView, ListView
 from django.views.generic.base import TemplateView
 
@@ -49,7 +43,9 @@ class ScholarListView(ListView):
         return super(ScholarListView, self).get_context_data(**kwargs)
     
     
-
+class ReviewIndexView(TemplateView):
+    
+    template_name = "Judgment/index.html"
 
 
 def handler404(request):
@@ -68,15 +64,3 @@ def display_data(request, data, **kwargs):
     return render_to_response('posted-data.html', dict(data=data, **kwargs))
 
 
-
-# def multiple_formsets(request):
-#     if request.method == 'POST':
-#         contact_formset, event_formset = ContactFormset(request.POST, prefix='contact_form'), EventFormset(request.POST, prefix='event_form')
-#         if contact_formset.is_valid() and event_formset.is_valid():
-#             data = [contact_formset.cleaned_data, event_formset.cleaned_data]
-#             print(contact_formset.cleaned_data)
-#             return display_data(request, data, multiple_formsets=True)
-#     else:
-#         print(11111)
-#         contact_formset, event_formset = ContactFormset(initial=[{'type':'Phone', 'value':'123', 'preferred':1}], prefix='contact_form'), EventFormset(prefix='event_form')
-#     return render(request, 'formset-multiple-formsets.html', {'contact_formset': contact_formset, 'event_formset': event_formset, 'helper': helper})

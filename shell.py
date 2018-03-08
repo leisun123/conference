@@ -154,12 +154,12 @@ def main():
     #     # GenericForeignKey from the results.
     #     if not (field.many_to_one and field.related_model is None)
     # ))))
-    
-    review = Review.objects.get(id=2)
-    if review.recommandation:
-        print(1111)
-    else:
-        print(22222)
+    [print(i.name) for i in wz1.groups.all()]
+    # review = Review.objects.get(id=2)
+    # if review.recommandation:
+    #     print(1111)
+    # else:
+    #     print(22222)
     
 if __name__ == '__main__':
     main()

@@ -77,7 +77,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'apps.main.context_processors.sidebar_processor',
-                'apps.activflow.processors.global_context',
             ],
         },
     },

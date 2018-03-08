@@ -1,20 +1,49 @@
+{% extends "share_layout/base.html" %}
+
+{% block index %}
+	<div class="container-fluid">
+		<div class="row">
+
+			<div role="tabpanel">
+				{% include "Judgment/sidebar.html" %}
+
+				<div class="col-sm-9">
+					<table class="table">
+						<thead>
+						<tr>
+							<th>{{ object.title.field_name }}</th>
+							<th>abstract:</th>
+							<th>create_time</th>
+							<th>publish_time</th>
+							<th>file:</th>
+							<th>session:</th>
+							<th>version:</th>
+							<th>serial number:</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for object in paper_list %}
+							<tr>
+								<td>{{ object.title }}</td>
+								<td>{{ object.abstract }}</td>
+								<td>{{ object.create_time }}</td>
+								<td>{{ object.publish_time }}</td>
+								<td>{{ object.file }}</td>
+								<td>{{ object.session }}</td>
+								<td>{{ object.version }}</td>
+								<td>{{ object.serial_number }}</td>
+							</tr>
+							</tbody>
+						{% endfor %}
+					</table>
 
 
-{% extends 'share_layout/base.html' %}
+					{% include 'share_layout/pagination.html' with is_paginated=is_paginated page_obj=page_obj paginator=paginator %}
 
-{% block create %}
-
-
-
-
-	{% for paper in paper_list %}
-		{{ paper.title }}
-	{% endfor %}
-
-
-	{% include 'share_layout/pagination.html' with is_paginated=is_paginated page_obj=page_obj paginator=paginator %}
-
-
-
-
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
+
+

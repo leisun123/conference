@@ -1,0 +1,44 @@
+{% extends "share_layout/base.html" %}
+
+{% block index %}
+	<div class="container-fluid">
+		<div class="row">
+
+			<div role="tabpanel">
+				{% include "Judgment/sidebar.html" %}
+
+				<div class="col-sm-9">
+					<div class="tab-content">
+						<div class="tab-pane active">
+							<div class="stepwizard">
+								<div class="stepwizard-row">
+									<div class="stepwizard-step">
+										<button type="button" class="btn btn-default btn-circle">
+											<span class=" glyphicon glyphicon-time" style="font-size: 30px"></span>
+										</button>
+										<p >Waiting Assign Reviewers</p>
+									</div>
+									<div class="stepwizard-step">
+										<button type="button" class="btn btn-primary btn-circle">
+											<span class="glyphicon glyphicon-edit" style="font-size: 30px">
+											</span>
+										</button>
+										<p>Under Review</p>
+									</div>
+									<div class="stepwizard-step">
+										<button type="button" class="btn btn-default btn-circle">
+											<span class="glyphicon glyphicon-ok" style="font-size: 30px">
+
+											</span>
+										</button>
+										<p>{{ status }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

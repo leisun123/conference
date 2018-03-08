@@ -25,4 +25,5 @@ urlpatterns = [
     
     path('createreview/<int:pk>', views.ReviewCreateView.as_view(), name='create_review'),
     path('displayreview/<int:pk>', views.ReviewDisplayView.as_view(), name='display_review'),
+    path('status', views.StatusView.as_view(), name='status'),
 ]

@@ -62,7 +62,7 @@ class MyFormSetHelper(FormHelper):
     def __init__(self, *args, **kwargs):
         super(MyFormSetHelper, self).__init__(*args, **kwargs)
         self.form_method = 'post'
-        self.template = 'bootstrap3/my_table_formset.html'
+        self.template = 'bootstrap3/table_inline_formset.html'
         
 mylinehelper = MyFormSetHelper()
 

@@ -1,22 +1,34 @@
 {% extends "share_layout/base.html" %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 
 
-{% block create %}
-	<h2>Upload Paper</h2>
-	<div class="form-container">
-	<form method="post" action="" enctype='multipart/form-data'>
-		{% csrf_token %}
+{% block index %}
+	<div class="container-fluid">
+		<div class="row">
+
+			<div role="tabpanel">
+				{% include "Judgment/sidebar.html" %}
 
 
-		{% crispy paper_form %}
-		{% crispy keywords_formset myinlinehelper  %}
-		{% crispy authors_formset myinlinehelper  %}
+				<div class="col-sm-8">
+					<div class="form-container">
+						<form method="post" action="" enctype='multipart/form-data'>
+							{% csrf_token %}
 
-		<p>
-			<input type="submit" value="Submit"/>
-		</p>
-	</form>
+
+							{% crispy paper_form %}
+							{% crispy keywords_formset myinlinehelper %}
+							{% crispy authors_formset myinlinehelper %}
+
+							<p>
+								<input type="submit" value="Submit"/>
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
 {% endblock %}

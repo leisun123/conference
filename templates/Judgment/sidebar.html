@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="col-sm-2">
+	<ul class="nav nav-pills brand-pills nav-stacked">
+		<li role="presentation" class="brand-nav active">
+			<a href="{% url "list_paper" %}">OverView</a>
+		</li>
+		<li class="brand-nav">
+			<a href="{% url "create_paper"  %}">Upload</a>
+		</li>
+		<li class="brand-nav">
+			<a href="{% url "status" %}">Status</a>
+		</li>
+	</ul>
+</div>

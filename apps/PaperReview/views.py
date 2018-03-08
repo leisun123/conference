@@ -304,6 +304,15 @@ class ReviewDisplayView(LoginRequiredMixin, generic.DetailView):
     model = Review
 
 
+class StatusView(LoginRequiredMixin, generic.TemplateView):
+    
+    template_name = 'Judgment/status.html'
+
+
+
+
+
+
 
 
 
