@@ -19,5 +19,5 @@ urlpatterns = [
         views.GenericTabContentView.as_view(),
         name='genericTagContentById'),
     path('scholarShow/', views.ScholarListView.as_view(), name='scholarList'),
-    path('reviewindex/', views.ReviewIndexView.as_view(), name='review_index')
+    
 ]

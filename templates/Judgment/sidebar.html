@@ -1,13 +1,17 @@
 <div class="col-sm-2">
 	<ul class="nav nav-pills brand-pills nav-stacked">
-		<li role="presentation" class="brand-nav active">
-			<a href="{% url "list_paper" %}">OverView</a>
-		</li>
-		<li class="brand-nav">
-			<a href="{% url "create_paper"  %}">Upload</a>
-		</li>
-		<li class="brand-nav">
-			<a href="{% url "status" %}">Status</a>
-		</li>
+		{% for node in sidebarnode_list %}
+
+
+			{% if forloop.first %}
+				<li class="brand-nav active">
+					<a href="{% url node.1 %}">{{ node.0 }}</a>
+				</li>
+			{% else %}
+				<li class="brand-nav">
+					<a href="{% url node.1 %}">{{ node.0 }}</a>
+				</li>
+			{% endif %}
+		{% endfor %}
 	</ul>
 </div>

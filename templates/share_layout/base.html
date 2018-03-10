@@ -27,20 +27,20 @@
 
 </head>
 
-
-
 <body>
 {% include "share_layout/navbar.html" %}
 
-<div id="index">
+<div id="wrap">
 	{% block login %}
 	{% endblock %}
 	{% block index %}
 	{% endblock %}
+	{% block error %}
+	{% endblock %}
 </div>
-
-
-{% include "share_layout/footer.html" %}
-
+<div id="push"></div>
+<div class="footer">
+	{% include "share_layout/footer.html" %}
+</div>
 </body>
 </html>

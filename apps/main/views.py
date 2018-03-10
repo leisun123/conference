@@ -1,6 +1,7 @@
 from django.views.generic import DetailView, ListView
 from django.views.generic.base import TemplateView
 
+from apps.PaperReview.models import Assignment, Author, Paper
 from apps.accounts.models import Scholar
 
 from apps.main.models import GenericTagContent, SideBar
@@ -36,17 +37,19 @@ class ScholarListView(ListView):
     paginate_by = settings.PAGE_NUM
     
     def get_queryset(self):
-        scholar_list = Scholar.objects.order_by('username')
-        return scholar_list
+        
+        return \
+            Author.objects.filter(paper__assignment__status='2')
+        
     
     def get_context_data(self, **kwargs):
         return super(ScholarListView, self).get_context_data(**kwargs)
     
-    
-class ReviewIndexView(TemplateView):
-    
-    template_name = "Judgment/index.html"
 
+def handler403(request):
+    response = render_to_response('share_layout/403.html', {})
+    response.status_code = 403
+    return response
 
 def handler404(request):
     response = render_to_response('share_layout/404.html', {})
@@ -62,5 +65,10 @@ def handler500(request):
 
 def display_data(request, data, **kwargs):
     return render_to_response('posted-data.html', dict(data=data, **kwargs))
+
+
+
+
+
 
 

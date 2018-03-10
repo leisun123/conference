@@ -25,7 +25,6 @@ SECRET_KEY = 'j9gk(17@_&eqf6itrmams-6alizo=e@$pr81wl2e_mckpg)lyh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
@@ -143,7 +142,7 @@ STATICFILES_FINDERS = (
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 
-PAGE_NUM = 10
+PAGE_NUM = 4
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

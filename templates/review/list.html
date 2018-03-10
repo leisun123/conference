@@ -5,7 +5,7 @@
 		<div class="row">
 
 			<div role="tabpanel">
-				{% load_judgment_sidebar "assignment" %}
+				{% load_judgment_sidebar "review" %}
 
 				<div class="col-sm-9">
 					<div class="tab-content">
@@ -20,11 +20,11 @@
 
 								</tr>
 								</thead>
-								{% for assignment in assignment_list %}
+								{% for review in review_list %}
 									<tr>
 										<td>
-											<a href="{% if assignment.status == '0' %}{% url "create_assignment" assignment.id %}{% else %}{% url "display_assignment" assignment.id %}{% endif %}">
-												{{ assignment.paper.title }}
+											<a href="{% if review.recommadation %}{% url "display_review" review.id %}{% else %}{% url "create_review" review.id %}{% endif %}">
+												{{ review.paper.title }}
 											</a></td>
 										<td>{{ assignment.get_status_display }}</td>
 										<td>{{ assignment.proposal_to_author }}</td>

@@ -19,8 +19,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from django.conf.urls import handler404, handler500
-
+handler403 = 'apps.main.views.handler403'
 handler404 = 'apps.main.views.handler404'
 handler500 = 'apps.main.views.handler500'
 

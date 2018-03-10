@@ -5,7 +5,7 @@
 		<div class="row">
 
 			<div role="tabpanel">
-				{% include "Judgment/sidebar.html" %}
+				{% load_judgment_sidebar "paper" %}
 				<h3>{{ paper.title }}</h3>
 				<div class="col-sm-9">
 					{% load_permission_paper request as paper_list %}
@@ -34,7 +34,7 @@
 									<button type="button" {% if paper.assignment.status == '5' %}
 											class="btn btn-primary btn-circle" {% else %}
 											class="btn btn-default btn-circle"{% endif %}>
-											<span class="glyphicon glyphicon-ok" style="font-size: 30px">
+											<span class="glyphicon glyphicon-user" style="font-size: 30px">
 
 											</span>
 									</button>

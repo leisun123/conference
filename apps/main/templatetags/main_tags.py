@@ -18,7 +18,7 @@ from django.contrib.auth.models import Permission
 from django.urls import reverse
 from guardian.models import UserObjectPermission
 
-from apps.PaperReview.models import Paper
+from apps.PaperReview.models import Paper, Assignment
 from conference import settings
 
 register = template.Library()
@@ -39,30 +39,27 @@ def query(qs, count=False, **kwargs):
 def filename(fname):
     return os.path.basename(fname)
     
-@register.inclusion_tag('main/tags/scholar_particular_info.html')
-def load_scholar_info(scholar, user=None):
-    
-    return {
-        'id': scholar.id,
-        'avatar': scholar.avatar.name,
-        'current_user': user.username if user else "",
-        'username': scholar.username,
-        'organization': scholar.organization,
-        'email': scholar.email,
-        'keywords': scholar.keywords.split[','] if isinstance(scholar.keywords, list) else [],
-        'thesis_set': list(zip_longest(scholar.thesis_author.all(), scholar.review_set.all(), fillvalue=""))
-    }
-@register.inclusion_tag('main/tags/scholar_list_info.html')
+@register.inclusion_tag('main/scholar_list_info.html')
 def load_scholar_list_info(scholar):
     return {
         'id': scholar.id,
         'scholar': scholar,
-        'avatar': scholar.avatar,
-        'username': scholar.username,
+        'name': scholar.name,
         'organization': scholar.organization,
-        'major': scholar.major,
-        'keywords': scholar.keywords.split(',') if isinstance(scholar.keywords, list) else [],
+        'editor_proposal': scholar.paper.assignment.proposal_to_author,
     }
+
+@register.inclusion_tag('main/scholar_particular_info.html')
+def load_scholar_detail_info(scholar):
+    
+    return {
+        'id': scholar.id,
+        'name': scholar.name,
+        'organization': scholar.organization,
+        'email': scholar.email,
+
+    }
+
 
 @register.simple_tag
 def load_file(filefield):
@@ -81,16 +78,16 @@ def load_permission_paper(request):
 @register.inclusion_tag('Judgment/sidebar.html')
 def load_judgment_sidebar(sidebar_type):
     dic = {
-        "paper": [{"overview": "list_paper"},
-                  {"upload": "create_paper"},
-                  {"status": "status"}],
+        "paper": [["overview", "list_paper"],
+                  ["upload", "create_paper"],
+                  ["status", "status"]],
         #TODO: waiting assign
-        "assignment": [{"overview": "list_assignment"},
+        "assignment": [["overview", "list_assignment"],
                        ],
         #TODO: overview
-        "review": [{"review": "create_review"}]
+        "review": [["overview", "list_review"]]
     }
-    return dic.get(sidebar_type)
+    return {'sidebarnode_list': dic.get(sidebar_type)}
     
     
 

@@ -7,7 +7,7 @@
     $(function () {
         $('#{{ formset.prefix }} tbody tr').formset({
             formCssClass: 'dynamic-contact-form',
-            prefix: "{{ contact_formset.prefix }}"
+            prefix: "{{ formset.prefix }}"
         });
     })
 </script>

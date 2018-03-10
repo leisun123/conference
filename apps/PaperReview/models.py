@@ -30,8 +30,6 @@ class Paper(models.Model):
     create_time = models.DateField(auto_now_add=True)
     publish_time = models.DateField(auto_now=True)
     
-    
-    
     uploader = models.ForeignKey(Scholar, null=True, on_delete=models.SET_NULL)
     session = models.ForeignKey(SpecialSession, on_delete=models.CASCADE, blank=False)
     
@@ -50,10 +48,9 @@ class Author(models.Model):
     organization = models.CharField(max_length=256)
     email = models.EmailField()
     index = models.IntegerField()
-    
     paper = models.ForeignKey(Paper, null=True, on_delete=models.CASCADE)
-    
     tracker = FieldTracker()
+    
     
 class Keywords(models.Model):
     
@@ -115,6 +112,12 @@ class Review(models.Model):
 
 
     
+
+    
+    
+    
+
+
 
     
 
