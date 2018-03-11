@@ -97,7 +97,7 @@ class Review(models.Model):
     recommandation = models.CharField(max_length=16, choices=RECOMMONDATION_CHOICES)
     confidentia_proposal_to_editor = models.TextField(max_length=1024, null=True)
     proposal_to_author = models.TextField(max_length=1024, null=True, blank=True)
-    creat_time = models.DateField(auto_now_add=True)
+    create_time = models.DateField(auto_now_add=True)
     finish_time = models.DateField(auto_now=True)
     
     reviewer = models.OneToOneField(Scholar, null=True, blank=False, on_delete=models.SET_NULL)
@@ -108,7 +108,8 @@ class Review(models.Model):
             ('view_review', 'View Review'),
             ('create_review', 'Create Review')
         )
-        
+
+
 
 
     

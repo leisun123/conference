@@ -66,7 +66,7 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(forms.ModelForm):
-    username = forms.CharField(min_length=3, max_length=16,  error_messages=error_messages.get('username'))
+    username = forms.CharField(min_length=0, max_length=30,  error_messages=error_messages.get('username'))
     #first_name = forms.CharField(min_length=1, max_length=16)
     #last_name = forms.CharField(min_length=1, max_length=16)
     email = forms.EmailField(min_length=6, max_length=32, error_messages=error_messages.get('email'))

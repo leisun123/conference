@@ -142,7 +142,7 @@ STATICFILES_FINDERS = (
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 
-PAGE_NUM = 4
+PAGE_NUM = 15
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

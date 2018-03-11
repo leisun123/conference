@@ -12,7 +12,7 @@
 from itertools import chain
 
 from django import forms
-from django.forms import fields, formsets, inlineformset_factory
+from django.forms import fields, formsets, inlineformset_factory, models
 from guardian.shortcuts import assign_perm
 
 from apps.accounts.models import Scholar
@@ -24,7 +24,6 @@ from crispy_forms.layout import Submit, Layout
 class PaperForm(forms.ModelForm):
     
     session = forms.ModelChoiceField(widget=forms.RadioSelect, queryset=SpecialSession.objects, empty_label=None)
-    
     
     class Meta:
         model = Paper
@@ -89,8 +88,15 @@ class AssignmentForm(forms.ModelForm):
         self.helper.template = 'bootstrap3/uni_form.html'
         self.helper.form_method = 'post'
         
-InlineReviewFormset = inlineformset_factory(Assignment, Review, fields=('reviewer',),
-                                            widgets={'reviewer': forms.Select(attrs={'required': 'required'})}, extra=1, can_delete=False)
+class AssignReviewForm(forms.ModelForm):
+    
+    reviewer = forms.ModelChoiceField(queryset=Scholar.objects, empty_label=None)
+    
+    class Meta:
+        model = Review
+        fields = ('reviewer',)
+
+AssignReviewFormset = formsets.formset_factory(AssignReviewForm, extra=1)
 
 
 class ReviewForm(forms.ModelForm):
@@ -113,15 +119,12 @@ class ReviewForm(forms.ModelForm):
          self.get_object().recommandation = self.cleaned_data['recommandation']
          self.get_object().confidentia_proposal_to_editor = self.cleaned_data['confidentia_proposal_to_editor']
          self.get_object().proposal_to_author = self.cleaned_data['proposal_to_author']
-         
-         #TODO: Signnal
+        
          if all([review.recommandation for review in self.get_object().assignment.review_set.all()]):
             self.get_object().assignment.status = '5'
-           
- 
+        
          self.get_object().save()
         
-         
          return
 
 

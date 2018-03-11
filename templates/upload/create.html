@@ -16,7 +16,6 @@
 						<form method="post" action="" enctype='multipart/form-data'>
 							{% csrf_token %}
 
-
 							{% crispy paper_form %}
 							{% crispy keywords_formset myinlinehelper %}
 							{% crispy authors_formset myinlinehelper %}

@@ -27,7 +27,8 @@ def main():
     from apps.PaperReview.models import Review,Author,SpecialSession,Assignment,Keywords,Paper
     from apps.accounts.models import Scholar
     from django.contrib.auth.models import Group
-    
+    from guardian.shortcuts import remove_perm
+    from guardian.shortcuts import assign_perm
     from django.core.files import File
     #file=File(open('/Users/wyn/wynproject/conference/media/thesis/计划财务处信息门户11-5.pdf', 'rb'))
     # # Content.objects.filter(id=1).update(version=2)
@@ -36,19 +37,19 @@ def main():
     # print(c.tracker.has_changed('version'))
     # print(c.tracker.changed())
     
-    
-    wz1=Scholar.objects.get(username="wz1")
-    wz2=Scholar.objects.get(username="wz2")
-    wz3=Scholar.objects.get(username="wz3")
-    wz4=Scholar.objects.get(username="wz4")
-    wz5=Scholar.objects.get(username="wz5")
-    
-    wzed1=Scholar.objects.get(username="wzed1")
-    wzed2=Scholar.objects.get(username="wzed2")
-    wzed3=Scholar.objects.get(username="wzed3")
-    wzrw1=Scholar.objects.get(username="wzrw1")
-    wzrw2=Scholar.objects.get(username="wzrw2")
-    wzrw3=Scholar.objects.get(username="wzrw3")
+    #
+    # wz1=Scholar.objects.get(username="wz1")
+    # wz2=Scholar.objects.get(username="wz2")
+    # wz3=Scholar.objects.get(username="wz3")
+    # wz4=Scholar.objects.get(username="wz4")
+    # wz5=Scholar.objects.get(username="wz5")
+    #
+    # wzed1=Scholar.objects.get(username="wzed1")
+    # wzed2=Scholar.objects.get(username="wzed2")
+    # wzed3=Scholar.objects.get(username="wzed3")
+    # wzrw1=Scholar.objects.get(username="wzrw1")
+    # wzrw2=Scholar.objects.get(username="wzrw2")
+    # wzrw3=Scholar.objects.get(username="wzrw3")
 
     
     #Group.objects.create(name="editor")
@@ -108,14 +109,14 @@ def main():
     #                                    name='Can Create Paper',
     #                                    content_type=content_type)
     
-    permission = Permission.objects.get(codename='view_paper')
-    #group = Group.objects.get(name='scholar')
-    #group.permissions.add(permission)
+    # permission = Permission.objects.get(codename='view_paper')
+    # group = Group.objects.get(name='scholar')
+    # group.permissions.remove(permission)
     # print(wz1.has_perm('PaperReview.view_paper'))
     # print(wz1.has_perm('PaperReview.create_paper'))
     # [print(i) for i in wz1.get_group_permissions()]
-    paper = Paper.objects.get(id=1)
-    tmp = Paper.objects.get(id=1)._meta.get_fields()
+    # paper = Paper.objects.get(id=1)
+    # tmp = Paper.objects.get(id=1)._meta.get_fields()
     # [print(field.name, getattr(paper, field.name)
     #     if field.concrete else [([print(j.name) for j in i._meta.get_fields( )  if not j.auto_created]) for i in field.related_model.objects.filter(paper=paper).all()  ]
     #             ) for field in tmp
@@ -154,13 +155,17 @@ def main():
     #     # GenericForeignKey from the results.
     #     if not (field.many_to_one and field.related_model is None)
     # ))))
-    [print(i.name) for i in wz1.groups.all()]
+    #[print(i.username) for i in Group.objects.get(name="reviewer").user_set.all()]
     # review = Review.objects.get(id=2)
     # if review.recommandation:
     #     print(1111)
     # else:
     #     print(22222)
-
+    [print(i.reviewer) for i in Paper.objects.get(id=1).assignment.review_set.all()]
+    #Group.objects.get(name="editor").user_set.add(Scholar.objects.get(username="wangzi"))
+    #remove_perm('create_assignment', Scholar.objects.get(username="wangzi"), Assignment.objects.get(id=2))
+  
+    #assign_perm('create_assignment', Scholar.objects.get(username="wangzi"), Assignment.objects.get(id=2))
 if __name__ == '__main__':
     main()
     

@@ -84,7 +84,7 @@ def permission_required(perm, lookup_variables=None, **kwargs):
                                        login_url=login_url, redirect_field_name=redirect_field_name,
                                        return_403=return_403, return_404=return_404, accept_global_perms=accept_global_perms)
             if response:
-                return render(request, 'share_layout/403.html')
+                return response
             return view_func(request, *args, **kwargs)
         return wraps(view_func)(_wrapped_view)
     return decorator

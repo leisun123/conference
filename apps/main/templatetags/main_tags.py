@@ -81,10 +81,10 @@ def load_judgment_sidebar(sidebar_type):
         "paper": [["overview", "list_paper"],
                   ["upload", "create_paper"],
                   ["status", "status"]],
-        #TODO: waiting assign
+        
         "assignment": [["overview", "list_assignment"],
                        ],
-        #TODO: overview
+        
         "review": [["overview", "list_review"]]
     }
     return {'sidebarnode_list': dic.get(sidebar_type)}

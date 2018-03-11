@@ -49,6 +49,7 @@
 		{% endif %}
 
 		<tr id="{{ form.prefix }}-row">
+
 			{% for field in form %}
 				{% include 'bootstrap3/field.html' with tag="td" form_show_labels=False %}
 			{% endfor %}

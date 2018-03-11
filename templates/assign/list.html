@@ -10,35 +10,52 @@
 				<div class="col-sm-9">
 					<div class="tab-content">
 						<div class="tab-pane active">
-							<table class="table">
-								<thead>
-								<tr>
-									<th>paper title</th>
-									<th>status</th>
-									<th>proposal to author</th>
-									<th>reviewers</th>
-
-								</tr>
-								</thead>
-								{% for assignment in assignment_list %}
+							{% if not assignment_list %}
+								<h3 class="lead">You have no assign task now.</h3>
+							{% else %}
+								<table class="table">
+									<thead>
 									<tr>
-										<td>
-											<a href="{% if assignment.status == '0' %}{% url "create_assignment" assignment.id %}{% else %}{% url "display_assignment" assignment.id %}{% endif %}">
-												{{ assignment.paper.title }}
-											</a></td>
-										<td>{{ assignment.get_status_display }}</td>
-										<td>{{ assignment.proposal_to_author }}</td>
-										<td>
-											{% for reviewe in assignment.review_set.all %}
-												<p>{{ reviewe.reviewer.username }}:&nbsp; {{ reviewe.get_recommandation_display }} </p>
-											{% endfor %}
-										</td>
+										<th>paper title</th>
+										<th>status</th>
+										<th>proposal to author</th>
+										<th>reviewers</th>
+
 									</tr>
-								{% endfor %}
+									</thead>
+									{% for assignment in assignment_list %}
+										<tr>
+											<td>
+												<a href="
+
+														{% if assignment.status == '0' %}
+																{% url "create_assignment"  assignment.id %}
+
+														{% else %}
+															{% url "display_assignment" assignment.id %}
+														{% endif %}">
+													{{ assignment.paper.title }}
+												</a></td>
+											<td>
+												{% if assignment.status == '0' %}
+													<a href="{% url "create_assignment" assignment.id %}">
+														{{ assignment.get_status_display }}, Asign it now</a>
+
+													{% else %}{{ assignment.get_status_display }}
+												{% endif %}
+											</td>
+											<td>{{ assignment.proposal_to_author }}</td>
+											<td>
+												{% for reviewer in assignment.review_set.all %}
+													<p>{{ reviewer.reviewer.username }}:&nbsp; {{ reviewer.get_recommandation_display }} </p>
+												{% endfor %}
+											</td>
+										</tr>
+									{% endfor %}
 
 
-							</table>
-
+								</table>
+							{% endif %}
 
 							{% include 'share_layout/pagination.html' with is_paginated=is_paginated page_obj=page_obj paginator=paginator %}
 						</div>

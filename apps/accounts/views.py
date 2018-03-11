@@ -1,4 +1,5 @@
 #coding:utf8
+from django.contrib.auth.models import Group
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponsePermanentRedirect
 from django.contrib.auth import login as auth_login, logout as auth_logout, authenticate
@@ -34,7 +35,8 @@ def login(request):
 @csrf_protect
 def logout(request):
     auth_logout(request)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
+    # return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
+    return HttpResponseRedirect(reverse('index'))
 
 @csrf_protect
 def register(request):
@@ -42,6 +44,7 @@ def register(request):
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
             user = register_form.save()
+            Group.objects.get(name="scholar").user_set.add(user)
             if user is not None:
                 user = authenticate(username=register_form.cleaned_data['username'],password=register_form.cleaned_data['password'])
                 auth_login(request,user)

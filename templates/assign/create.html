@@ -12,14 +12,14 @@
 				<iframe src="{% get_media_prefix %}thesis/数据清洗工作.pdf" height="1000px" width="100%"></iframe>
 			</div>
 			<div class="col-sm-4">
-				{% include 'upload/display.html' with object=paper_object %}
+				{% include 'upload/tag_display.html' with object=paper_object %}
 				<div class="form-container">
 					<form method="post" action="" enctype='multipart/form-data'>
 						{% csrf_token %}
 
 
 						{% crispy assignment_form %}
-						{% crispy inline_review_formset myinlinehelper %}
+						{% crispy assignreview_formset myinlinehelper %}
 
 						<p>
 							<input type="submit" value="Submit"/>

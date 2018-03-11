@@ -9,50 +9,55 @@
 				<h3>{{ paper.title }}</h3>
 				<div class="col-sm-9">
 					{% load_permission_paper request as paper_list %}
-					{% for paper in paper_list %}
-						<p class="lead">{{ paper.title }}</p>
-						<div class="stepwizard">
-							<div class="stepwizard-row">
-								<div class="stepwizard-step">
-									<button type="button" {% if paper.assignment.status == '0' %}
-											class="btn btn-primary btn-circle" {% else %}
-											class="btn btn-default btn-circle"{% endif %}>
-										<span class=" glyphicon glyphicon-time" style="font-size: 30px"></span>
-									</button>
-									<p>Waiting Assign Reviewers</p>
-								</div>
-								<div class="stepwizard-step">
-									<button type="button" {% if paper.assignment.status == '1' %}
-											class="btn btn-primary btn-circle" {% else %}
-											class="btn btn-default btn-circle"{% endif %}>
+
+					{% if not paper_list %}
+						<h3 class="lead">You have not upload paper</h3>
+					{% else %}
+						{% for paper in paper_list %}
+							<p class="lead">{{ paper.title }}</p>
+							<div class="stepwizard">
+								<div class="stepwizard-row">
+									<div class="stepwizard-step">
+										<button type="button" {% if paper.assignment.status == '0' %}
+												class="btn btn-primary btn-circle" {% else %}
+												class="btn btn-default btn-circle"{% endif %}>
+											<span class=" glyphicon glyphicon-time" style="font-size: 30px"></span>
+										</button>
+										<p>Waiting Assign Reviewers</p>
+									</div>
+									<div class="stepwizard-step">
+										<button type="button" {% if paper.assignment.status == '1' %}
+												class="btn btn-primary btn-circle" {% else %}
+												class="btn btn-default btn-circle"{% endif %}>
 											<span class="glyphicon glyphicon-edit" style="font-size: 30px">
 											</span>
-									</button>
-									<p>Under Review</p>
-								</div>
-								<div class="stepwizard-step">
-									<button type="button" {% if paper.assignment.status == '5' %}
-											class="btn btn-primary btn-circle" {% else %}
-											class="btn btn-default btn-circle"{% endif %}>
+										</button>
+										<p>Under Review</p>
+									</div>
+									<div class="stepwizard-step">
+										<button type="button" {% if paper.assignment.status == '5' %}
+												class="btn btn-primary btn-circle" {% else %}
+												class="btn btn-default btn-circle"{% endif %}>
 											<span class="glyphicon glyphicon-user" style="font-size: 30px">
 
 											</span>
-									</button>
-									<p> Waiting for Editor </p>
-								</div>
-								<div class="stepwizard-step">
-									<button type="button" {% if paper.assignment.status in "234"|make_list %}
-											class="btn btn-primary btn-circle" {% else %}
-											class="btn btn-default btn-circle"{% endif %}>
+										</button>
+										<p> Waiting for Editor </p>
+									</div>
+									<div class="stepwizard-step">
+										<button type="button" {% if paper.assignment.status in "234"|make_list %}
+												class="btn btn-primary btn-circle" {% else %}
+												class="btn btn-default btn-circle"{% endif %}>
 											<span class="glyphicon glyphicon-ok" style="font-size: 30px">
 
 											</span>
-									</button>
-									<p> Result: {{ paper.assignment.get_status_display }} </p>
+										</button>
+										<p> Result: {{ paper.assignment.get_status_display }} </p>
+									</div>
 								</div>
 							</div>
-						</div>
-					{% endfor %}
+						{% endfor %}
+					{% endif %}
 				</div>
 			</div>
 		</div>
