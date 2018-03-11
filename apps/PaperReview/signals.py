@@ -66,18 +66,23 @@ def paper_update_callback(sender, **kwargs):
                                                               paper=new_paper_object)
         lastest_assignment_object.review_set.set(lastest_review_set)
         
+        #TODO: mail to reviewers
         send_mail(subject="123", body="123", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com', ], fail_silently=False,
                   html=email_content)
+    
+    send_mail(subject="123", body="123", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com', ], fail_silently=False,
+                html=email_content)
         
-    assign_perm('PaperReview.view_paper', request.user, old_paper_object)
-    assign_perm('PaperReview.view_paper', lastest_assignment_object.editor, old_paper_object)
+    assign_perm('PaperReview.view_paper', request.user, new_paper_object)
+    assign_perm('PaperReview.view_paper', lastest_assignment_object.editor, new_paper_object)
+    
     assign_perm('PaperReview.view_assignment', lastest_assignment_object.editor, lastest_assignment_object)
     assign_perm('PaperReview.create_assignment', lastest_assignment_object.editor, lastest_assignment_object)
 
     
-@receiver(pre_save, sender=assignment_save_signal)
+@receiver(assignment_save_signal)
 def assignment_save_callback(sender, **kwargs):
-    print(11111)
+    
     for review in kwargs['reviews']:
         review_object = Review.objects.create(reviewer=review['reviewer'], assignment=kwargs['object'])
         review_object.reviewer.groups.add(Group.objects.get(name="reviewer"))

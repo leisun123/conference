@@ -94,13 +94,13 @@ class Review(models.Model):
         ('3', 'reject')
     )
     
-    recommandation = models.CharField(max_length=16, choices=RECOMMONDATION_CHOICES)
+    recommandation = models.CharField(max_length=16, blank=False, choices=RECOMMONDATION_CHOICES)
     confidentia_proposal_to_editor = models.TextField(max_length=1024, null=True)
     proposal_to_author = models.TextField(max_length=1024, null=True, blank=True)
     create_time = models.DateField(auto_now_add=True)
     finish_time = models.DateField(auto_now=True)
     
-    reviewer = models.OneToOneField(Scholar, null=True, blank=False, on_delete=models.SET_NULL)
+    reviewer = models.ForeignKey(Scholar, null=True, blank=False, on_delete=models.SET_NULL)
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     
     class Meta:

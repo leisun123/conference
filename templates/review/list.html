@@ -1,4 +1,5 @@
 {% extends "share_layout/base.html" %}
+{% load static %}
 {% load main_tags %}
 {% block index %}
 	<div class="container-fluid">
@@ -18,10 +19,9 @@
 									<thead>
 									<tr>
 										<th>paper title</th>
-										<th>status</th>
+										<th>recommandation</th>
 										<th>proposal to author</th>
-										<th>reviewers</th>
-
+										<th>all reviewers</th>
 									</tr>
 									</thead>
 
@@ -29,13 +29,24 @@
 										<tr>
 											<td>
 												<a href="{% if review.recommadation %}{% url "display_review" review.id %}{% else %}{% url "create_review" review.id %}{% endif %}">
-													{{ review.paper.title }}
+													{{ review.assignment.paper.title }}
 												</a></td>
-											<td>{{ assignment.get_status_display }}</td>
-											<td>{{ assignment.proposal_to_author }}</td>
 											<td>
-												{% for reviewer in assignment.review_set.all %}
-													<p>{{ reviewer.reviewer.username }}:&nbsp; {{ reviewer.get_recommandation_display }} </p>
+												{% if review.recommandation %}
+												{{ review.get_recommandation_display }}
+													{% else %}
+													<a href="{% url 'display_review' review.id %}" >
+														Unprocessed, Review it now
+													</a>
+												{% endif %}
+											</td>
+											<td>{{ review.create_time }}</td>
+
+											<td>
+												{% for reviewer in review.assignment.review_set.all %}
+													{{ reviewer.reviewer.username }} <br>
+
+
 												{% endfor %}
 											</td>
 										</tr>

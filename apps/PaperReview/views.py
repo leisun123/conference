@@ -32,7 +32,7 @@ from conference import settings
 from guardian.models import UserObjectPermission
 from apps.PaperReview.mixins import AccessDeniedMixin
 from apps.PaperReview.signals import paper_save_signal, assignment_save_signal, \
-    assignment_save_callback, paper_save_callback, paper_update_callback, paper_update_signal
+    assignment_save_callback, paper_save_callback, paper_update_callback, paper_update_signal, email_content
 
 
 class PaperListView(AccessDeniedMixin, generic.ListView):
@@ -84,7 +84,7 @@ class PaperCreateView(AccessDeniedMixin, generic.CreateView):
         if paper_form.is_valid() and keywords_formset.is_valid() and authors_formset.is_valid():
             return self.form_valid(request, [paper_form, keywords_formset, authors_formset])
         else:
-            return self.form_invalid([paper_form, keywords_formset, authors_formset])
+            return self.form_invalid()
     
     def form_valid(self, request, forms):
         self.object = None
@@ -106,7 +106,7 @@ class PaperCreateView(AccessDeniedMixin, generic.CreateView):
             reverse('display_paper', kwargs={'pk': paper_object.id})
         )
     
-    def form_invalid(self, *forms):
+    def form_invalid(self):
         self.object = None
         return self.render_to_response(
             self.get_context_data()
@@ -144,7 +144,7 @@ class PaperUpdateView(AccessDeniedMixin, generic.UpdateView):
         if paper_form.is_valid() and keywords_formset.is_valid() and authors_formset.is_valid():
             return self.form_valid(request, [paper_form, keywords_formset, authors_formset])
         else:
-            return self.form_invalid([paper_form, keywords_formset, authors_formset])
+            return self.form_invalid()
     
     def form_valid(self, request, forms):
         self.object = self.get_object()
@@ -165,7 +165,7 @@ class PaperUpdateView(AccessDeniedMixin, generic.UpdateView):
             [Author.objects.create(**author) for author in authors]
         )
         
-        
+        #TODO: wait to improve
         paper_update_signal.send(sender=self.__class__, request=request,
                                new_paper_object=new_paper_obj, old_paper_object=self.object,
                                 lastest_review_set=self.object.assignment.review_set.all())
@@ -175,7 +175,7 @@ class PaperUpdateView(AccessDeniedMixin, generic.UpdateView):
             {"pk": new_paper_obj.id}
                     ))
     
-    def form_invalid(self, *forms):
+    def form_invalid(self):
         self.object = self.get_object()
         return self.render_to_response(
             self.get_context_data()
@@ -201,7 +201,7 @@ class AssignmentListView(AccessDeniedMixin, generic.ListView):
     
  
     def get_queryset(self):
-        assignment_list = Assignment.objects.order_by('id')
+        assignment_list = Assignment.objects.order_by('status')
         return assignment_list
     
     def get_context_data(self, **kwargs):
@@ -221,6 +221,7 @@ class AssignmentCreateView(AccessDeniedMixin, generic.UpdateView):
         context['assignment_form'] = AssignmentForm
         context['assignreview_formset'] = AssignReviewFormset(prefix='assignreview_formset')
         context['myinlinehelper'] = mylinehelper
+        context['paper_object'] = self.get_object().paper
         return context
     
     @transaction.atomic
@@ -238,17 +239,22 @@ class AssignmentCreateView(AccessDeniedMixin, generic.UpdateView):
     def form_valid(self, request, forms):
         self.object = self.get_object()
         assignment, reviews = [form.cleaned_data for form in forms]
+        
+        
+        #TOdO: send email
         if assignment['status']:
             self.object.status = assignment['status']
             if assignment['status'] == "3":
-                assign_perm('update_paper', self.object.paper.uploader, self.object.paper)
+                assign_perm('PaperReview.update_paper', self.object.paper.uploader, self.object.paper)
             if assignment['status'] == "2":
                 pass
             if assignment['status'] == "1":
                 pass
+            
         if assignment['proposal_to_author']:
             self.object.proposal_to_author = assignment['proposal_to_author']
         self.object.save()
+        
         
         assignment_save_signal.send(sender=self.__class__, reviews=reviews, object=self.object)
     
@@ -258,7 +264,7 @@ class AssignmentCreateView(AccessDeniedMixin, generic.UpdateView):
                     ))
     
     def form_invalid(self):
-        print(11121111)
+        
         self.object = self.get_object()
         return self.render_to_response(
             self.get_context_data()
@@ -294,18 +300,29 @@ class ReviewCreateView(AccessDeniedMixin, generic.UpdateView):
     
     @method_decorator(permission_required_or_403('PaperReview.create_review', (Review, 'id', 'pk')))
     def dispatch(self, request, *args, **kwargs):
-        return super(ReviewCreateView, self).dispatch(request)
+        return super(ReviewCreateView, self).dispatch(request, *args, **kwargs)
+    
     
     def get_success_url(self):
-        return HttpResponseRedirect(
-            reverse('displayreview', kwargs={"pk": self.get_object().id}))
-
+        return reverse('display_review', kwargs={"pk": self.get_object().id})
+    
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+    
+        if all([review.recommandation for review in self.get_object().assignment.review_set.all()]):
+           instance.assignment.status = '5'
+           send_mail(subject="123", body="123", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com', ], fail_silently=False,
+                html=email_content)
+            
+        instance.save()
+        return HttpResponseRedirect(self.get_success_url())
+        
 
 class ReviewDisplayView(AccessDeniedMixin, generic.DetailView):
     template_name = 'review/display.html'
     model = Review
     
-    @method_decorator(permission_required_or_403('review.view_review'))
+    @method_decorator(permission_required_or_403('PaperReview.view_review', (Review, 'id', 'pk')))
     def dispatch(self, request, *args, **kwargs):
         return super(ReviewDisplayView, self).dispatch(request)
 

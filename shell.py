@@ -161,11 +161,13 @@ def main():
     #     print(1111)
     # else:
     #     print(22222)
-    [print(i.reviewer) for i in Paper.objects.get(id=1).assignment.review_set.all()]
+    # [print(i.reviewer) for i in Paper.objects.get(id=1).assignment.review_set.all()]
     #Group.objects.get(name="editor").user_set.add(Scholar.objects.get(username="wangzi"))
     #remove_perm('create_assignment', Scholar.objects.get(username="wangzi"), Assignment.objects.get(id=2))
   
     #assign_perm('create_assignment', Scholar.objects.get(username="wangzi"), Assignment.objects.get(id=2))
+    [print(review.reviewer.username) for review in Assignment.objects.get(id=8).review_set.all()]
+
 if __name__ == '__main__':
     main()
     

@@ -101,6 +101,8 @@ AssignReviewFormset = formsets.formset_factory(AssignReviewForm, extra=1)
 
 class ReviewForm(forms.ModelForm):
 
+     
+     
      class Meta:
          model = Review
          fields = ('recommandation', 'confidentia_proposal_to_editor', 'proposal_to_author',)
@@ -115,17 +117,6 @@ class ReviewForm(forms.ModelForm):
  
 
 
-     def save(self, commit=False):
-         self.get_object().recommandation = self.cleaned_data['recommandation']
-         self.get_object().confidentia_proposal_to_editor = self.cleaned_data['confidentia_proposal_to_editor']
-         self.get_object().proposal_to_author = self.cleaned_data['proposal_to_author']
-        
-         if all([review.recommandation for review in self.get_object().assignment.review_set.all()]):
-            self.get_object().assignment.status = '5'
-        
-         self.get_object().save()
-        
-         return
 
 
 
