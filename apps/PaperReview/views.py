@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth.models import Group, Permission
 from django.forms import inlineformset_factory
 from django.shortcuts import render
@@ -29,8 +31,8 @@ from apps.mail.mail import send_mail
 from conference import settings
 from guardian.models import UserObjectPermission
 from apps.PaperReview.mixins import AccessDeniedMixin
-from apps.PaperReview.signals import paper_save_signal, paper_update_signal, assignment_save_signal, \
-    assignment_save_callback
+from apps.PaperReview.signals import paper_save_signal, assignment_save_signal, \
+    assignment_save_callback, paper_save_callback, paper_update_callback, paper_update_signal
 
 
 class PaperListView(AccessDeniedMixin, generic.ListView):
@@ -163,7 +165,11 @@ class PaperUpdateView(AccessDeniedMixin, generic.UpdateView):
             [Author.objects.create(**author) for author in authors]
         )
         
-        paper_update_signal.send(sender=self.__class__, request=request, new_paper_object=new_paper_obj, old_paper_object=self.get_object())
+        
+        paper_update_signal.send(sender=self.__class__, request=request,
+                               new_paper_object=new_paper_obj, old_paper_object=self.object,
+                                lastest_review_set=self.object.assignment.review_set.all())
+        
         return HttpResponseRedirect(
             reverse('display_paper', kwargs=
             {"pk": new_paper_obj.id}
@@ -231,32 +237,21 @@ class AssignmentCreateView(AccessDeniedMixin, generic.UpdateView):
     
     def form_valid(self, request, forms):
         self.object = self.get_object()
-        assignment, reviewers = [form.cleaned_data for form in forms]
+        assignment, reviews = [form.cleaned_data for form in forms]
+        if assignment['status']:
+            self.object.status = assignment['status']
+            if assignment['status'] == "3":
+                assign_perm('update_paper', self.object.paper.uploader, self.object.paper)
+            if assignment['status'] == "2":
+                pass
+            if assignment['status'] == "1":
+                pass
+        if assignment['proposal_to_author']:
+            self.object.proposal_to_author = assignment['proposal_to_author']
+        self.object.save()
         
-        # if assignment['status']:
-        #     self.object.status = assignment['status']
-        #     if assignment['status'] == "3":
-        #         assign_perm('update_paper', self.object.paper.uploader, self.object.paper)
-        #
-        #     # TODO: send email with three templates according to difffent status
-        #     if assignment['status'] == "2":
-        #         pass
-        #
-        #     if assignment['status'] == "1":
-        #         pass
-        #
-        # if assignment['proposal_to_author']:
-        #     self.object.proposal_to_author = assignment['proposal_to_author']
-        # self.object.save()
-        #
-        #
-        # for review in reviews:
-        #     if "reviewer" in review.keys():
-        #         review_object = Review.objects.create(reviewer=review['reviewer'], assignment=self.object)
-        #         assign_perm('view_paper', review['reviewer'], self.object().paper)
-        #         assign_perm('view_review', review['reviewer'], review_object)
-        #         assign_perm('create_review', review['reviewer'], review_object)
-        
+        assignment_save_signal.send(sender=self.__class__, reviews=reviews, object=self.object)
+    
         return HttpResponseRedirect(
             reverse('display_assignment', kwargs=
             {"pk": self.get_object().id}

@@ -90,7 +90,7 @@ class AssignmentForm(forms.ModelForm):
         
 class AssignReviewForm(forms.ModelForm):
     
-    reviewer = forms.ModelChoiceField(queryset=Scholar.objects, empty_label=None)
+    reviewer = forms.ModelChoiceField(queryset=Scholar.objects.exclude(id=1), empty_label=None)
     
     class Meta:
         model = Review
