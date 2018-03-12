@@ -1,29 +1,15 @@
 import os
 import uuid
-
-from django.db import models
-
-# Create your models here.
-from django.urls import reverse
-
-from django.utils.text import slugify
-
-from apps.PaperReview.wrappers import file_rename
 from apps.accounts.models import Scholar, SpecialSession
 from django.db import models
-from django.contrib.postgres.fields import JSONField, ArrayField
-from apps.smart_selects.db_fields import ChainedForeignKey
-
 from django.core.validators import FileExtensionValidator
-
-from conference import settings
 from apps.PaperReview.tracker import FieldTracker
 
 class Paper(models.Model):
 
     title = models.CharField(max_length=128)
     abstract = models.TextField(max_length=1024)
-    file = models.FileField(upload_to='thesis/', validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    file = models.FileField(upload_to='thesis/', max_length=1024*50 ,validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
     version = models.IntegerField(default=1)
     serial_number = models.UUIDField(primary_key=False, unique=False, default=uuid.uuid4)
     

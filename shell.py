@@ -37,30 +37,17 @@ def main():
     # print(c.tracker.has_changed('version'))
     # print(c.tracker.changed())
     
-    #
-    # wz1=Scholar.objects.get(username="wz1")
-    # wz2=Scholar.objects.get(username="wz2")
-    # wz3=Scholar.objects.get(username="wz3")
-    # wz4=Scholar.objects.get(username="wz4")
-    # wz5=Scholar.objects.get(username="wz5")
-    #
-    # wzed1=Scholar.objects.get(username="wzed1")
-    # wzed2=Scholar.objects.get(username="wzed2")
-    # wzed3=Scholar.objects.get(username="wzed3")
-    # wzrw1=Scholar.objects.get(username="wzrw1")
-    # wzrw2=Scholar.objects.get(username="wzrw2")
-    # wzrw3=Scholar.objects.get(username="wzrw3")
 
-    Group.objects.create(name='register')
-    Group.objects.create(name="editor")
-    Group.objects.create(name="reviewer")
+    # Group.objects.create(name='scholar')
+    # Group.objects.create(name="editor")
+    # Group.objects.create(name="reviewer")
     
     #Group.objects.get(name="scholar").user_set.set([wz1, wz2, wz3, wz4, wz5])
     
-    SpecialSession.objects.create(name="session1")
-    SpecialSession.objects.create(name="session2")
-    SpecialSession.objects.create(name="session3")
-    SpecialSession.objects.create(name="session4")
+    # SpecialSession.objects.create(name="session1")
+    # SpecialSession.objects.create(name="session2")
+    # SpecialSession.objects.create(name="session3")
+    # SpecialSession.objects.create(name="session4")
     
 #    session1=SpecialSession.objects.get(name="session1")
 #    session2=SpecialSession.objects.get(name="session2")
@@ -87,7 +74,10 @@ def main():
     # Author.objects.create(**a3)
     # Author.objects.create(**a4)
     
-
+    ed1= Scholar.objects.get(username='ed1')
+    ed2=Scholar.objects.get(username='ed2')
+    Group.objects.get(name='scholar').user_set.set([ed1, ed2])
+    #Group.objects.get(name='editor').user_set.set([ed1, ed2])
     #
     # k1=Keywords.objects.create(keyword="k1", paper=paper1)
     # k2=Keywords.objects.create(keyword="k2", paper=paper1)

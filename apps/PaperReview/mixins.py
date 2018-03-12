@@ -9,8 +9,12 @@
 @description:
             --
 """
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
+
 
 class AccessDeniedMixin(LoginRequiredMixin, object):
     
@@ -22,6 +26,11 @@ class AccessDeniedMixin(LoginRequiredMixin, object):
         
         if self.request.user.is_superuser:
             return
+        
+        if self.request.user.is_anonymous:
+            return HttpResponseRedirect(
+                reverse('login')
+            )
         
         def check_access_view():
     

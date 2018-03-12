@@ -201,8 +201,13 @@ class AssignmentListView(AccessDeniedMixin, generic.ListView):
     
  
     def get_queryset(self):
-        assignment_list = Assignment.objects.order_by('status')
-        return assignment_list
+        content_type = Permission.objects.get(codename='view_paper').content_type
+
+        return \
+            [Assignment.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
+                .filter(user=self.request.user, content_type=content_type).all()]
+        
+  
     
     def get_context_data(self, **kwargs):
         return super(AssignmentListView, self).get_context_data(**kwargs)

@@ -21,6 +21,7 @@ from conference import settings
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout
 
+
 class PaperForm(forms.ModelForm):
     
     session = forms.ModelChoiceField(widget=forms.RadioSelect, queryset=SpecialSession.objects, empty_label=None)
@@ -28,6 +29,9 @@ class PaperForm(forms.ModelForm):
     class Meta:
         model = Paper
         fields = ('title',  'abstract', 'file', 'session')
+        help_texts = {
+            'file': 'Only PDF Allowed'
+        }
         
     def __init__(self, *args, **kwargs):
         super(PaperForm, self).__init__(*args, **kwargs)
@@ -35,7 +39,6 @@ class PaperForm(forms.ModelForm):
         self.helper.template = 'bootstrap3/uni_form.html'
         self.helper.form_method = 'post'
         
-
 
 
 class AuthorForm(forms.ModelForm):

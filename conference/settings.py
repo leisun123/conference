@@ -12,10 +12,10 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 import sys
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -24,9 +24,8 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'j9gk(17@_&eqf6itrmams-6alizo=e@$pr81wl2e_mckpg)lyh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =True
+DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.38.1']
-
 
 # Application definition
 
@@ -62,7 +61,6 @@ ROOT_URLCONF = 'conference.urls'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap3'
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -87,25 +85,26 @@ USE_DJANGO_JQUERY = True
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #    }
-#}
+# }
 
 DATABASES = {
     'default': {
+        'HOST': '47.254.38.1',
+        'PORT': '5432',
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'conference',
-	'USER':'wyn',
-	'PASSWORD':'weiaizq1314'
+        'USER': 'wyn',
+        'PASSWORD': 'weiaizq1314'
     }
 }
 
-
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend', # default
+    'django.contrib.auth.backends.ModelBackend',  # default
     'guardian.backends.ObjectPermissionBackend',
 )
 
@@ -133,31 +132,27 @@ AUTH_USER_MODEL = 'accounts.Scholar'
 
 STATIC_URL = '/static/'
 STATICFILES = os.path.join(BASE_DIR, 'static')
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder"
 )
 
-
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 
 PAGE_NUM = 15
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST= 'smtp.qq.com'
-EMAIL_PORT= 25
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
 EMAIL_HOST_USER = '1178180942@qq.com'
 EMAIL_HOST_PASSWORD = 'zaiawbkhnlpujhia'
 EMAIL_SUBJECT_PREFIX = 'website'
