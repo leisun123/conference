@@ -26,7 +26,7 @@ def main():
     
     from apps.PaperReview.models import Review,Author,SpecialSession,Assignment,Keywords,Paper
     from apps.accounts.models import Scholar
-    from django.contrib.auth.models import Group
+    from django.contrib.auth.models import Group, User
     from guardian.shortcuts import remove_perm
     from guardian.shortcuts import assign_perm
     from django.core.files import File
@@ -51,21 +51,21 @@ def main():
     # wzrw2=Scholar.objects.get(username="wzrw2")
     # wzrw3=Scholar.objects.get(username="wzrw3")
 
-    
-    #Group.objects.create(name="editor")
-    #Group.objects.create(name="reviewer")
+    Group.objects.create(name='register')
+    Group.objects.create(name="editor")
+    Group.objects.create(name="reviewer")
     
     #Group.objects.get(name="scholar").user_set.set([wz1, wz2, wz3, wz4, wz5])
     
-    # SpecialSession.objects.create(name="session1")
-    # SpecialSession.objects.create(name="session2")
-    # SpecialSession.objects.create(name="session3")
-    # SpecialSession.objects.create(name="session4")
+    SpecialSession.objects.create(name="session1")
+    SpecialSession.objects.create(name="session2")
+    SpecialSession.objects.create(name="session3")
+    SpecialSession.objects.create(name="session4")
     
-    session1=SpecialSession.objects.get(name="session1")
-    session2=SpecialSession.objects.get(name="session2")
-    session3=SpecialSession.objects.get(name="session3")
-    session4=SpecialSession.objects.get(name="session4")
+#    session1=SpecialSession.objects.get(name="session1")
+#    session2=SpecialSession.objects.get(name="session2")
+#    session3=SpecialSession.objects.get(name="session3")
+#    session4=SpecialSession.objects.get(name="session4")
     
     # SpecialSession.objects.get(name="session1").scholar_set.set([wzrw1, wzrw2])
     # SpecialSession.objects.get(name="session2").scholar_set.set([wzrw1, wzrw3])
@@ -98,11 +98,11 @@ def main():
 
     #Review.objects.create(reviewer=wzrw1, recommandation="1", assignment=asm)
     
-    editors = Group.objects.get(name="editor").user_set.all()
+ #   editors = Group.objects.get(name="editor").user_set.all()
     
     
-    from django.contrib.auth.models import User,Group,Permission
-    from django.contrib.contenttypes.models import ContentType
+ #   from django.contrib.auth.models import User,Group,Permission
+ #   from django.contrib.contenttypes.models import ContentType
     
     # content_type = ContentType.objects.get(app_label='PaperReview', model='paper')
     # permission = Permission.objects.create(codename='create_paper',
@@ -166,7 +166,10 @@ def main():
     #remove_perm('create_assignment', Scholar.objects.get(username="wangzi"), Assignment.objects.get(id=2))
   
     #assign_perm('create_assignment', Scholar.objects.get(username="wangzi"), Assignment.objects.get(id=2))
-    [print(review.reviewer.username) for review in Assignment.objects.get(id=8).review_set.all()]
+   # [print(review.reviewer.username) for review in Assignment.objects.get(id=8).review_set.all()]
+    #scholar= User.objects.create_user('root',password='WEIaizq1314')
+    #scholar.save()
+
 
 if __name__ == '__main__':
     main()

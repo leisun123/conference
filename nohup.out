@@ -2646,3 +2646,2198 @@ Not Found: /content/1.png
 Not Found: /content/1.png
 Not Found: /content/1.png
 Not Found: /content/1.png
+[2018-03-12 01:40:03 +0800] [29657] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 01:40:03 +0800] [29657] [INFO] Listening at: http://127.0.0.1:8000 (29657)
+[2018-03-12 01:40:03 +0800] [29657] [INFO] Using worker: sync
+[2018-03-12 01:40:03 +0800] [29660] [INFO] Booting worker with pid: 29660
+[2018-03-12 01:40:03 +0800] [29660] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/arbiter.py", line 557, in spawn_worker
+    worker.init_process()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/workers/base.py", line 136, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+  File "/home/wyn/conference/conference/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/__init__.py", line 27, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/apps/config.py", line 90, in create
+    module = import_module(entry)
+  File "/home/wyn/wynpythonlib/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'guardian'
+[2018-03-12 01:40:03 +0800] [29660] [INFO] Worker exiting (pid: 29660)
+[2018-03-12 01:40:03 +0800] [29657] [INFO] Shutting down: Master
+[2018-03-12 01:40:03 +0800] [29657] [INFO] Reason: Worker failed to boot.
+[2018-03-12 01:44:14 +0800] [29750] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 01:44:14 +0800] [29750] [INFO] Listening at: http://127.0.0.1:8000 (29750)
+[2018-03-12 01:44:14 +0800] [29750] [INFO] Using worker: sync
+[2018-03-12 01:44:14 +0800] [29753] [INFO] Booting worker with pid: 29753
+[2018-03-12 02:06:56 +0800] [29750] [INFO] Handling signal: term
+[2018-03-12 02:06:56 +0800] [29753] [INFO] Worker exiting (pid: 29753)
+[2018-03-12 02:06:56 +0800] [29750] [INFO] Shutting down: Master
+[2018-03-12 02:07:12 +0800] [12601] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 02:07:12 +0800] [12601] [INFO] Listening at: http://127.0.0.1:8000 (12601)
+[2018-03-12 02:07:12 +0800] [12601] [INFO] Using worker: sync
+[2018-03-12 02:07:12 +0800] [12604] [INFO] Booting worker with pid: 12604
+[2018-03-12 02:12:52 +0800] [12601] [INFO] Handling signal: term
+[2018-03-12 02:12:52 +0800] [12604] [INFO] Worker exiting (pid: 12604)
+[2018-03-12 02:12:52 +0800] [12601] [INFO] Shutting down: Master
+[2018-03-12 02:47:20 +0800] [13423] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 02:47:20 +0800] [13423] [INFO] Listening at: http://127.0.0.1:8000 (13423)
+[2018-03-12 02:47:20 +0800] [13423] [INFO] Using worker: sync
+[2018-03-12 02:47:20 +0800] [13426] [INFO] Booting worker with pid: 13426
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 161, in render
+    values = self.sequence.resolve(context, True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 161, in render
+    values = self.sequence.resolve(context, True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 161, in render
+    values = self.sequence.resolve(context, True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 161, in render
+    values = self.sequence.resolve(context, True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 212, in inner
+    if not self.has_permission(request):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 186, in has_permission
+    return request.user.is_active and request.user.is_staff
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+[2018-03-12 02:48:48 +0800] [13423] [INFO] Handling signal: term
+[2018-03-12 02:48:48 +0800] [13426] [INFO] Worker exiting (pid: 13426)
+[2018-03-12 02:48:48 +0800] [13423] [INFO] Shutting down: Master
+[2018-03-12 02:56:05 +0800] [13537] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 02:56:05 +0800] [13537] [INFO] Listening at: http://127.0.0.1:8000 (13537)
+[2018-03-12 02:56:05 +0800] [13537] [INFO] Using worker: sync
+[2018-03-12 02:56:05 +0800] [13540] [INFO] Booting worker with pid: 13540
+Invalid HTTP_HOST header: '47.254.38.1'. You may need to add '47.254.38.1' to ALLOWED_HOSTS.
+[2018-03-12 02:56:31 +0800] [13537] [INFO] Handling signal: term
+[2018-03-12 02:56:31 +0800] [13540] [INFO] Worker exiting (pid: 13540)
+[2018-03-12 02:56:31 +0800] [13537] [INFO] Shutting down: Master
+[2018-03-12 02:56:34 +0000] [13546] [INFO] Starting gunicorn 19.7.1
+[2018-03-12 02:56:34 +0000] [13546] [INFO] Listening at: http://127.0.0.1:8000 (13546)
+[2018-03-12 02:56:34 +0000] [13546] [INFO] Using worker: sync
+[2018-03-12 02:56:34 +0000] [13550] [INFO] Booting worker with pid: 13550
+[2018-03-12 02:56:34 +0000] [13550] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python2.7/dist-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/wyn/conference/conference/wsgi.py", line 12, in <module>
+    from django.core.wsgi import get_wsgi_application
+ImportError: No module named django.core.wsgi
+[2018-03-12 02:56:34 +0000] [13550] [INFO] Worker exiting (pid: 13550)
+[2018-03-12 02:56:34 +0000] [13546] [INFO] Shutting down: Master
+[2018-03-12 02:56:34 +0000] [13546] [INFO] Reason: Worker failed to boot.
+[2018-03-12 02:58:43 +0800] [13566] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 02:58:43 +0800] [13566] [INFO] Listening at: http://127.0.0.1:8000 (13566)
+[2018-03-12 02:58:43 +0800] [13566] [INFO] Using worker: sync
+[2018-03-12 02:58:43 +0800] [13569] [INFO] Booting worker with pid: 13569
+Invalid HTTP_HOST header: '47.254.38.1'. You may need to add '47.254.38.1' to ALLOWED_HOSTS.
+[2018-03-12 03:01:09 +0800] [13583] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 03:01:09 +0800] [13583] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2018-03-12 03:01:09 +0800] [13583] [ERROR] Retrying in 1 second.
+[2018-03-12 03:01:10 +0800] [13583] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2018-03-12 03:01:10 +0800] [13583] [ERROR] Retrying in 1 second.
+[2018-03-12 03:01:11 +0800] [13583] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2018-03-12 03:01:11 +0800] [13583] [ERROR] Retrying in 1 second.
+[2018-03-12 03:01:12 +0800] [13583] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2018-03-12 03:01:12 +0800] [13583] [ERROR] Retrying in 1 second.
+[2018-03-12 03:01:13 +0800] [13583] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2018-03-12 03:01:13 +0800] [13583] [ERROR] Retrying in 1 second.
+[2018-03-12 03:01:14 +0800] [13583] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2018-03-12 03:01:21 +0800] [13566] [INFO] Handling signal: term
+[2018-03-12 03:01:21 +0800] [13569] [INFO] Worker exiting (pid: 13569)
+[2018-03-12 03:01:21 +0800] [13566] [INFO] Shutting down: Master
+[2018-03-12 03:01:49 +0800] [13604] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 03:01:49 +0800] [13604] [INFO] Listening at: http://127.0.0.1:8000 (13604)
+[2018-03-12 03:01:49 +0800] [13604] [INFO] Using worker: sync
+[2018-03-12 03:01:49 +0800] [13607] [INFO] Booting worker with pid: 13607
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 161, in render
+    values = self.sequence.resolve(context, True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+[2018-03-12 03:13:11 +0800] [13604] [INFO] Handling signal: term
+[2018-03-12 03:13:11 +0800] [13607] [INFO] Worker exiting (pid: 13607)
+[2018-03-12 03:13:11 +0800] [13604] [INFO] Shutting down: Master
+[2018-03-12 03:13:16 +0800] [13734] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 03:13:16 +0800] [13734] [INFO] Listening at: http://127.0.0.1:8000 (13734)
+[2018-03-12 03:13:16 +0800] [13734] [INFO] Using worker: sync
+[2018-03-12 03:13:16 +0800] [13737] [INFO] Booting worker with pid: 13737
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+Invalid HTTP_HOST header: 'www.csg.ac.cn'. You may need to add 'www.csg.ac.cn' to ALLOWED_HOSTS.
+[2018-03-12 11:10:24 +0800] [13734] [INFO] Handling signal: term
+[2018-03-12 11:10:24 +0800] [13737] [INFO] Worker exiting (pid: 13737)
+[2018-03-12 11:10:24 +0800] [13734] [INFO] Shutting down: Master
+[2018-03-12 11:13:18 +0800] [15789] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 11:13:18 +0800] [15789] [INFO] Listening at: http://127.0.0.1:8000 (15789)
+[2018-03-12 11:13:18 +0800] [15789] [INFO] Using worker: sync
+[2018-03-12 11:13:18 +0800] [15792] [INFO] Booting worker with pid: 15792
+[2018-03-12 11:14:02 +0800] [15789] [INFO] Handling signal: term
+[2018-03-12 11:14:02 +0800] [15792] [INFO] Worker exiting (pid: 15792)
+[2018-03-12 11:14:02 +0800] [15789] [INFO] Shutting down: Master
+[2018-03-12 11:14:21 +0800] [15809] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 11:14:21 +0800] [15809] [INFO] Listening at: http://127.0.0.1:8000 (15809)
+[2018-03-12 11:14:21 +0800] [15809] [INFO] Using worker: sync
+[2018-03-12 11:14:21 +0800] [15812] [INFO] Booting worker with pid: 15812
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  role "root" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  role "root" does not exist
+
+[2018-03-12 11:19:15 +0800] [15926] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 11:19:15 +0800] [15926] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2018-03-12 11:19:15 +0800] [15926] [ERROR] Retrying in 1 second.
+[2018-03-12 11:19:16 +0800] [15926] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2018-03-12 11:19:16 +0800] [15926] [ERROR] Retrying in 1 second.
+[2018-03-12 11:19:17 +0800] [15926] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2018-03-12 11:19:17 +0800] [15926] [ERROR] Retrying in 1 second.
+[2018-03-12 11:19:18 +0800] [15926] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2018-03-12 11:19:18 +0800] [15926] [ERROR] Retrying in 1 second.
+[2018-03-12 11:19:19 +0800] [15926] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2018-03-12 11:19:19 +0800] [15926] [ERROR] Retrying in 1 second.
+[2018-03-12 11:19:20 +0800] [15926] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2018-03-12 11:19:24 +0800] [15809] [INFO] Handling signal: term
+[2018-03-12 11:19:24 +0800] [15812] [INFO] Worker exiting (pid: 15812)
+[2018-03-12 11:19:24 +0800] [15809] [INFO] Shutting down: Master
+[2018-03-12 11:19:29 +0800] [15932] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 11:19:29 +0800] [15932] [INFO] Listening at: http://127.0.0.1:8000 (15932)
+[2018-03-12 11:19:29 +0800] [15932] [INFO] Using worker: sync
+[2018-03-12 11:19:29 +0800] [15935] [INFO] Booting worker with pid: 15935
+[2018-03-12 11:20:42 +0800] [15932] [INFO] Handling signal: term
+[2018-03-12 11:20:42 +0800] [15935] [INFO] Worker exiting (pid: 15935)
+[2018-03-12 11:20:42 +0800] [15932] [INFO] Shutting down: Master
+[2018-03-12 11:20:44 +0800] [15968] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 11:20:44 +0800] [15968] [INFO] Listening at: http://127.0.0.1:8000 (15968)
+[2018-03-12 11:20:44 +0800] [15968] [INFO] Using worker: sync
+[2018-03-12 11:20:44 +0800] [15971] [INFO] Booting worker with pid: 15971
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  password authentication failed for user "wyn"
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  password authentication failed for user "wyn"
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  password authentication failed for user "wyn"
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  password authentication failed for user "wyn"
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 191, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  password authentication failed for user "wyn"
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/loader_tags.py", line 194, in render
+    return template.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 307, in render
+    match = condition.eval(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/defaulttags.py", line 880, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 676, in resolve
+    obj = self.var.resolve(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 802, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 215, in inner
+    self._setup()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/functional.py", line 349, in _setup
+    self._wrapped = self._setupfunc()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/base.py", line 196, in _get_session
+    self._session_cache = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/contrib/sessions/backends/db.py", line 34, in load
+    expire_date__gt=timezone.now()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor = self.connection.cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/backends/postgresql/base.py", line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: FATAL:  password authentication failed for user "wyn"
+
+[2018-03-12 11:26:04 +0800] [15968] [INFO] Handling signal: term
+[2018-03-12 11:26:04 +0800] [15971] [INFO] Worker exiting (pid: 15971)
+[2018-03-12 11:26:04 +0800] [15968] [INFO] Shutting down: Master
+[2018-03-12 11:26:08 +0800] [16246] [INFO] Starting gunicorn 19.6.0
+[2018-03-12 11:26:08 +0800] [16246] [INFO] Listening at: http://127.0.0.1:8000 (16246)
+[2018-03-12 11:26:08 +0800] [16246] [INFO] Using worker: sync
+[2018-03-12 11:26:08 +0800] [16249] [INFO] Booting worker with pid: 16249
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/views/generic/list.py:88: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'apps.PaperReview.models.Author'> QuerySet.
+  allow_empty_first_page=allow_empty_first_page, **kwargs)
+Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/wyn/conference/apps/accounts/views.py", line 47, in register
+    Group.objects.get(name="scholar").user_set.add(user)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+django.contrib.auth.models.DoesNotExist: Group matching query does not exist.
+Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/wyn/conference/apps/accounts/views.py", line 47, in register
+    Group.objects.get(name="scholar").user_set.add(user)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+django.contrib.auth.models.DoesNotExist: Group matching query does not exist.
+Not Found: /farm/libs/modules/tween/tween.min.js
+Not Found: /media/

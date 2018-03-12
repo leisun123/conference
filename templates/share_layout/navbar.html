@@ -10,11 +10,13 @@
 			<span class="icon-bar"></span>
 		</button>
 		<a class="navbar-brand" href="{% url "index" %}">Conference</a>
-	</div>
+</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		
 		<ul class="nav navbar-nav">
+			{% if request.user.is_authenticated %}
 			<li class="active"><a href="{% url 'list_paper' %}">I'm Uploader</a></li>
 			<li class="active"><a href="{% url 'list_review' %}">I'm Reviewer</a></li>
 			{% for i in request.user.groups.all %}
@@ -22,6 +24,7 @@
 					<li class="active"><a href="{% url 'list_assignment' %}">I'm Editor</a></li>
 				{% endif %}
 			{% endfor %}
+			{%endif%}
 
 		</ul>
 		<div class="col-sm-3 col-md-3">
