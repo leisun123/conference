@@ -93,8 +93,7 @@ def assignment_save_callback(sender, **kwargs):
         #TODO: send to each reviewers
         send_mail(subject="123", body="123", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com', ], fail_silently=False,
                 html=email_content)
-    kwargs['object'].status = '1'
-    kwargs['object'].save()
+ 
 
 
 

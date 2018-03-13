@@ -9,7 +9,7 @@
 
 			{% load_judgment_sidebar "assignment" %}
 			<div class="col-sm-6">
-				<iframe src="{% load_file paper_object.file %}" height="1000px" width="100%"></iframe>
+				<iframe src="{% load_file paper_object.file.name %}" height="1000px" width="100%"></iframe>
 			</div>
 			<div class="col-sm-4">
 				{% include 'upload/tag_display.html' with object=paper_object %}

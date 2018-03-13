@@ -7,7 +7,7 @@
 		<div class="row">
 			{% load_judgment_sidebar "review" %}
 			<div class="col-sm-6">
-				<iframe src="{% load_file paper_object.file %}" height="1000px" width="100%"></iframe>
+				<iframe src="{% load_file review.assignment.paper.file.name %}" height="1000px" width="100%"></iframe>
 			</div>
 			<div class="col-sm-4">
 				<form method="post" action="" enctype='multipart/form-data'>

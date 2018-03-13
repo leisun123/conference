@@ -21,6 +21,7 @@
 										<th>paper title</th>
 										<th>recommandation</th>
 										<th>proposal to author</th>
+										<th>create time</th>
 										<th>all reviewers</th>
 									</tr>
 									</thead>
@@ -28,18 +29,19 @@
 									{% for review in review_list %}
 										<tr>
 											<td>
-												<a href="{% if review.recommadation %}{% url "display_review" review.id %}{% else %}{% url "create_review" review.id %}{% endif %}">
+												<a href="{% if review.recommadation  in "123"|make_list %}{% url "display_review" review.id %}{% else %}{% url "create_review" review.id %}{% endif %}">
 													{{ review.assignment.paper.title }}
 												</a></td>
 											<td>
-												{% if review.recommandation %}
+												{% if review.recommandation in "123"|make_list %}
 												{{ review.get_recommandation_display }}
 													{% else %}
-													<a href="{% url 'display_review' review.id %}" >
+													<a href="{% url 'create_review' review.id %}" >
 														Unprocessed, Review it now
 													</a>
 												{% endif %}
 											</td>
+											<td>{{ review.proposal_to_author }}</td>
 											<td>{{ review.create_time }}</td>
 
 											<td>

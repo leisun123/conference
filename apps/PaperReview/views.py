@@ -201,7 +201,7 @@ class AssignmentListView(AccessDeniedMixin, generic.ListView):
     
  
     def get_queryset(self):
-        content_type = Permission.objects.get(codename='view_paper').content_type
+        content_type = Permission.objects.get(codename='view_assignment').content_type
 
         return \
             [Assignment.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
@@ -244,9 +244,8 @@ class AssignmentCreateView(AccessDeniedMixin, generic.UpdateView):
     def form_valid(self, request, forms):
         self.object = self.get_object()
         assignment, reviews = [form.cleaned_data for form in forms]
-        
-        
-        #TOdO: send email
+        self.object.status = '1'
+        self.object.save()
         if assignment['status']:
             self.object.status = assignment['status']
             if assignment['status'] == "3":
@@ -294,8 +293,11 @@ class ReviewListView(AccessDeniedMixin, generic.ListView):
             super(ReviewListView, self).dispatch(request)
 
     def get_queryset(self, *args, **kwargs):
-        queryset = Review.objects.filter(reviewer=self.request.user).order_by('create_time')
-        return queryset
+        content_type = Permission.objects.get(codename='view_review').content_type
+
+        return \
+            [Review.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
+                .filter(user=self.request.user, content_type=content_type).all()]
 
 
 class ReviewCreateView(AccessDeniedMixin, generic.UpdateView):

@@ -9,7 +9,7 @@ class Paper(models.Model):
 
     title = models.CharField(max_length=128)
     abstract = models.TextField(max_length=1024)
-    file = models.FileField(upload_to='thesis/', max_length=1024*50 ,validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    file = models.FileField(upload_to='thesis/', max_length=1024*50, validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
     version = models.IntegerField(default=1)
     serial_number = models.UUIDField(primary_key=False, unique=False, default=uuid.uuid4)
     
