@@ -30,6 +30,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('PaperReview.urls')),
     path('chaining/', include('smart_selects.urls')),
+    path('', include('chat.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

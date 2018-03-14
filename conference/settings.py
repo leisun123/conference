@@ -13,23 +13,50 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 import sys
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'j9gk(17@_&eqf6itrmams-6alizo=e@$pr81wl2e_mckpg)lyh'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.38.1']
 
-# Application definition
+ROOT_URLCONF = 'conference.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap3'
+USE_DJANGO_JQUERY = True
+
+LANGUAGE_CODE = 'en-AS'
+TIME_ZONE = 'Asia/Shanghai'
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+AUTH_USER_MODEL = 'accounts.Scholar'
+
+
+STATIC_URL = '/static/'
+STATICFILES = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+)
+
+
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
+
+PAGE_NUM = 10
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +70,7 @@ INSTALLED_APPS = [
     'gunicorn',
     'apps.smart_selects',
     'apps.PaperReview',
+    'apps.chat',
     'guardian',
 ]
 
@@ -56,10 +84,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'conference.urls'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
-CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap3'
 
 TEMPLATES = [
     {
@@ -79,27 +103,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'conference.wsgi.application'
-
-USE_DJANGO_JQUERY = True
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-# }
-
 DATABASES = {
     'default': {
         'HOST': '47.254.38.1',
         'PORT': '5432',
-        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'conference',
         'USER': 'wyn',
-        'PASSWORD': 'weiaizq1314'
+        'PASSWORD': 'weiaizq1314',
+        'ENGINE': 'django.db.backends.postgresql'
     }
 }
 
@@ -108,47 +119,6 @@ AUTHENTICATION_BACKENDS = (
     'guardian.backends.ObjectPermissionBackend',
 )
 
-# Password validation
-# https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
-
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.10/topics/i18n/
-
-LANGUAGE_CODE = 'en-AS'
-
-TIME_ZONE = 'Asia/Shanghai'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-AUTH_USER_MODEL = 'accounts.Scholar'
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
-
-STATIC_URL = '/static/'
-STATICFILES = os.path.join(BASE_DIR, 'static')
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-STATICFILES_FINDERS = (
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
-)
-
-LOGIN_URL = '/login/'
-LOGOUT_URL = '/logout/'
-
-PAGE_NUM = 15
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.qq.com'
@@ -158,3 +128,18 @@ EMAIL_HOST_PASSWORD = 'zaiawbkhnlpujhia'
 EMAIL_SUBJECT_PREFIX = 'website'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = SERVER_EMAIL = EMAIL_HOST_USER
+
+
+WSGI_APPLICATION = 'conference.wsgi.application'
+ASGI_APPLICATION = 'conference.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('47.254.38.1', 6379)],
+        },
+    },
+}
+
+
+
