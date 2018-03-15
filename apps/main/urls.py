@@ -18,6 +18,6 @@ urlpatterns = [
     path('content/<int:content_id>',
         views.GenericTabContentView.as_view(),
         name='genericTagContentById'),
-    path('scholarShow/', views.ScholarListView.as_view(), name='scholarList'),
+    path('showscholar/', views.ScholarListView.as_view(), name='scholarList'),
     
 ]

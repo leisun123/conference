@@ -159,7 +159,11 @@ def main():
    # [print(review.reviewer.username) for review in Assignment.objects.get(id=8).review_set.all()]
     #scholar= User.objects.create_user('root',password='WEIaizq1314')
     #scholar.save()
-    print(all([review.recommandation in ['1','2','3'] for review in Paper.objects.get(title='final_test').assignment.review_set.all()]))
+    import pymemcache
+    from pymemcache.client import Client
+    client = Client(('47.254.38.1', 11211))
+    client.set('some_key', 'some_value')
+    result = client.get('some_key')
 
 if __name__ == '__main__':
     main()

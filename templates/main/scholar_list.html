@@ -4,20 +4,48 @@
 {% include 'share_layout/carousel.html' %}
 	<div class="container">
 		<div class="row">
-			<div role="tabpanel">
+
 				{% include "main/sidebar.html" %}
 				<div class="col-sm-9" >
-						<div class="tab-pane text-style" id="tab10">
-							<header class="archive-header">
-								<h1 class="archive-title">{{ page_type }} <span>{{ tag_name }}</span></h1>
-							</header>
-							{% for scholar in scholar_list %}
-								{% load_scholar_list_info scholar %}
+				<table class="table">
+					<thead>
+					<tr>
+						<th>Serial Number</th>
+						<th>Title</th>
+						<th>Session</th>
+						<th>Keywords</th>
+						<th>First Author</th>
+					</tr>
+					</thead>
+
+					{% for assignment in assignment_list %}
+					<tr>
+						<td>
+							{{ assignment.paper.serial_number }}
+						</td>
+						<td>
+							{{ assignment.paper.title }}
+						</td>
+						<td>
+							{{ assignment.paper.session }}
+						</td>
+						<td>
+							{% for keyword in assignment.paper.keywords_set.all %}{{ keyword.keyword }};{% endfor %}
+						</td>
+						<td>
+							{% for author in assignment.paper.author_set.all|dictsort:"index" %}
+								{% if forloop.first %}
+								<p>{{ author.name }} ({{ author.organization }})</p>
+								{% endif %}
 							{% endfor %}
+						</td>
+					</tr>
+					{% endfor %}
+
 							{% include 'share_layout/pagination.html' with is_paginated=is_paginated page_obj=page_obj paginator=paginator %}
-						</div>
-					</div>
-			</div>
+				</table>
+				</div>
+
 		</div>
 	</div>
 {% endblock %}

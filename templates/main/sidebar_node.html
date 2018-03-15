@@ -1,5 +1,16 @@
-<li role="presentation" class="brand-nav">
-	<a aria-controls="tab2" role="tab" href="{% url "genericTagContentById" node.id %}">
+<li class="brand-nav">
+	<a href="{% url "genericTagContentById" node.id %}">
 		{{ node.node_name }}
+		{% load main_tags %}
+		{% query sidebar_node_list parent_node=node as child_categorys  %}
+		{% if child_categorys %}
+			<ul class="sub-menu">
+            {% for child in child_categorys %}
+                {% with node=child template_name="share_layout/nav_node.html" %}
+                    {% include template_name %}
+                {% endwith %}
+            {% endfor %}
+        	</ul>
+		{% endif %}
 	</a>
 </li>

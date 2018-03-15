@@ -16,31 +16,19 @@ class GenericTabContentView(DetailView):
 
     template_name = 'main/generic_tab_content.html'
     model = GenericTagContent
-    pk_url_kwarg = 'content_id'
-    context_object_name = "GenericTagContent"
-
-
-    def get_context_data(self, **kwargs):
-        content_id = int(self.kwargs[self.pk_url_kwarg])
-        user = self.request.user
-
-        content = GenericTagContent.objects.filter(id=content_id).first()
-        
-        kwargs['content'] = content
-        return super(GenericTabContentView, self).get_context_data(**kwargs)
     
 class ScholarListView(ListView):
     
     template_name = 'main/scholar_list.html'
-    context_object_name = 'scholar_list'
+    context_object_name = 'assignment_list'
     page_kwarg = 'page'
     paginate_by = settings.PAGE_NUM
     
     def get_queryset(self):
         
         return \
-            Author.objects.filter(paper__assignment__status='2').order_by('name')
-        
+            Assignment.objects.filter(status='2').order_by('paper__create_time')
+            
     
     def get_context_data(self, **kwargs):
         return super(ScholarListView, self).get_context_data(**kwargs)

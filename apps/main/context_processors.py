@@ -15,9 +15,6 @@ from apps.PaperReview.models import Paper
 def sidebar_processor(requests):
     value = {
         'sidebar_node_list': SideBar.objects.all(),
-        'generic_tag_content': GenericTagContent.objects.filter(status='p'),
-        
-        
     }
     return  value
 

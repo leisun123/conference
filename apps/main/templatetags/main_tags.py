@@ -25,12 +25,7 @@ register = template.Library()
 
 @register.simple_tag
 def query(qs, count=False, **kwargs):
-    """ template tag which allows queryset filtering. Usage:
-          {% query books author=author as mybooks %}
-          {% for book in mybooks %}
-            ...
-          {% endfor %}
-    """
+
     if count is True:
         return qs.filter(**kwargs).count()
     return qs.filter(**kwargs)
@@ -39,27 +34,6 @@ def query(qs, count=False, **kwargs):
 def filename(fname):
     return os.path.basename(fname)
     
-@register.inclusion_tag('main/scholar_list_info.html')
-def load_scholar_list_info(scholar):
-    return {
-        'id': scholar.id,
-        'scholar': scholar,
-        'name': scholar.name,
-        'organization': scholar.organization,
-        'editor_proposal': scholar.paper.assignment.proposal_to_author,
-    }
-
-@register.inclusion_tag('main/scholar_particular_info.html')
-def load_scholar_detail_info(scholar):
-    
-    return {
-        'id': scholar.id,
-        'name': scholar.name,
-        'organization': scholar.organization,
-        'email': scholar.email,
-
-    }
-
 
 @register.simple_tag
 def load_file(filefield):

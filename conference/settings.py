@@ -35,19 +35,7 @@ USE_TZ = True
 AUTH_USER_MODEL = 'accounts.Scholar'
 
 
-STATIC_URL = '/static/'
-STATICFILES = os.path.join(BASE_DIR, 'static')
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-STATICFILES_FINDERS = (
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
-)
 
 
 LOGIN_URL = '/login/'
@@ -75,6 +63,7 @@ INSTALLED_APPS = [
     'channels_redis',
     'apps.chat',
     'guardian',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -143,6 +132,29 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '47.254.38.1:11211',
+    }
+}
+
+
+STATIC_URL = '/static/'
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+)
 
 
 

@@ -5,10 +5,10 @@ from django.contrib import admin
 from apps.main.models import SideBar, GenericTagContent
 
 class SideBarAdmin(admin.ModelAdmin):
-    exclude = ['created_time, last_mod_time']
+    pass
     
 class GenericTagContentAdmin(admin.ModelAdmin):
-    exclude = ['created_time, last_mod_time, status']
+    pass
 
 admin.site.register(SideBar, SideBarAdmin)
 admin.site.register(GenericTagContent, GenericTagContentAdmin)
