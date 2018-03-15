@@ -159,7 +159,7 @@ def main():
    # [print(review.reviewer.username) for review in Assignment.objects.get(id=8).review_set.all()]
     #scholar= User.objects.create_user('root',password='WEIaizq1314')
     #scholar.save()
-
+    print(all([review.recommandation in ['1','2','3'] for review in Paper.objects.get(title='final_test').assignment.review_set.all()]))
 
 if __name__ == '__main__':
     main()

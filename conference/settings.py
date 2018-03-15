@@ -52,11 +52,12 @@ STATICFILES_FINDERS = (
 
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 PAGE_NUM = 10
 
 INSTALLED_APPS = [
-    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,6 +71,8 @@ INSTALLED_APPS = [
     'gunicorn',
     'apps.smart_selects',
     'apps.PaperReview',
+    'channels',
+    'channels_redis',
     'apps.chat',
     'guardian',
 ]

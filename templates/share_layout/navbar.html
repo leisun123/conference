@@ -10,15 +10,21 @@
 			<span class="icon-bar"></span>
 		</button>
 		<a class="navbar-brand" href="{% url "index" %}">Conference</a>
-</div>
+	</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		
 		<ul class="nav navbar-nav">
+			<li class="active"><a href="{% url 'list_paper' %}">I'm Author</a></li>
+			{% for i in request.user.groups.all %}
+				{% if i.name == 'reviewer' %}
+					<li class="active"><a
+							href="{% url 'list_review' %}">I'm Reviewer</a></li>
+				{% endif %}
+			{% endfor %}
 
-			<li class="active"><a href="{% url 'list_paper' %}">I'm Uploader</a></li>
-			<li class="active"><a href="{% url 'list_review' %}">I'm Reviewer</a></li>
+
 			{% for i in request.user.groups.all %}
 				{% if i.name == 'editor' %}
 					<li class="active"><a href="{% url 'list_assignment' %}">I'm Editor</a></li>
@@ -40,15 +46,17 @@
 		</div>
 		<ul class="nav navbar-nav navbar-right">
 			{% if request.user.is_authenticated %}
-			<li><img src="{% get_media_prefix %}{{ request.user.avatar.name }}" style="margin-top: 8px" class="img-circle" width="30" height="30"></li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, {{ request.user.username }} <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="{% url 'updateimage' %}">Change Avatar</a></li>
-					<li class="divider"></li>
-					<li><a href="{% url "logout" %}">Log Out</a></li>
-				</ul>
-			</li>
+				<li><img src="{% get_media_prefix %}{{ request.user.avatar.name }}" style="margin-top: 8px"
+						 class="img-circle" width="30" height="30"></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, {{ request.user.username }} <b
+							class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="{% url 'updateimage' %}">Change Avatar</a></li>
+						<li class="divider"></li>
+						<li><a href="{% url "logout" %}">Log Out</a></li>
+					</ul>
+				</li>
 			{% else %}
 				<li><a href="{% url "register" %}">Register</a></li>
 				<li><a href="{% url "login" %}">Log In</a></li>

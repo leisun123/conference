@@ -15,6 +15,6 @@ from django.urls import path
 from apps.chat import views
 
 urlpatterns = [
-    path('chat/', views.index, name='index'),
+    path('chat/', views.index, name='chatindex'),
     path('chat/<slug:room_name>/', views.room, name='room'),
 ]

@@ -43,8 +43,8 @@ def paper_save_callback(sender, **kwargs):
     assign_perm('PaperReview.view_assignment', editor, assignment)
     assign_perm('PaperReview.create_assignment', editor, assignment)
     
-    
-    send_mail(subject="123", body="123", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com', ], fail_silently=False,
+    #mail to editor to assign
+    send_mail(subject="editor assign", body="editor assign", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=[assignment.editor.email, ], fail_silently=False,
                   html=email_content)
     
 
@@ -66,12 +66,11 @@ def paper_update_callback(sender, **kwargs):
                                                               paper=new_paper_object)
         lastest_assignment_object.review_set.set(lastest_review_set)
         
-        #TODO: mail to reviewers
-        send_mail(subject="123", body="123", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com', ], fail_silently=False,
+        #mail to reviewers
+        send_mail(subject="reviewer review", body="paper has revised", from_email=settings.DEFAULT_FROM_EMAIL,
+                  recipient_list=[review.reviewer.email for review in lastest_review_set], fail_silently=False,
                   html=email_content)
     
-    send_mail(subject="123", body="123", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com', ], fail_silently=False,
-                html=email_content)
         
     assign_perm('PaperReview.view_paper', request.user, new_paper_object)
     assign_perm('PaperReview.view_paper', lastest_assignment_object.editor, new_paper_object)
@@ -90,8 +89,8 @@ def assignment_save_callback(sender, **kwargs):
         assign_perm('view_paper', review['reviewer'], kwargs['object'].paper)
         assign_perm('view_review', review['reviewer'], review_object)
         assign_perm('create_review', review['reviewer'], review_object)
-        #TODO: send to each reviewers
-        send_mail(subject="123", body="123", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com', ], fail_silently=False,
+        #mail to each reviewers
+        send_mail(subject="review after assign", body="reviewer review", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=[review.reviewer.email, ], fail_silently=False,
                 html=email_content)
  
 

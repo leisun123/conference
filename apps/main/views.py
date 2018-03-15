@@ -39,7 +39,7 @@ class ScholarListView(ListView):
     def get_queryset(self):
         
         return \
-            Author.objects.filter(paper__assignment__status='2')
+            Author.objects.filter(paper__assignment__status='2').order_by('name')
         
     
     def get_context_data(self, **kwargs):

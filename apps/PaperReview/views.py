@@ -49,11 +49,11 @@ class PaperListView(AccessDeniedMixin, generic.ListView):
     
     
     def get_queryset(self, *args, **kwargs):
-        content_type = Permission.objects.get(codename='view_paper').content_type
+        permission = Permission.objects.get(codename='view_paper')
 
         return \
             [Paper.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
-                .filter(user=self.request.user, content_type=content_type).all()]
+                .filter(user=self.request.user, permission=permission).all()]
     
     def get_context_data(self, **kwargs):
         return super(PaperListView, self).get_context_data(**kwargs)
@@ -101,6 +101,7 @@ class PaperCreateView(AccessDeniedMixin, generic.CreateView):
             [Author.objects.create(**author) for author in authors]
         )
         
+        #mail to editor to assign
         paper_save_signal.send(sender=self.__class__, request=request, paper_object=paper_object)
         return HttpResponseRedirect(
             reverse('display_paper', kwargs={'pk': paper_object.id})
@@ -201,11 +202,11 @@ class AssignmentListView(AccessDeniedMixin, generic.ListView):
     
  
     def get_queryset(self):
-        content_type = Permission.objects.get(codename='view_assignment').content_type
+        permission = Permission.objects.get(codename='view_assignment')
 
         return \
             [Assignment.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
-                .filter(user=self.request.user, content_type=content_type).all()]
+                .filter(user=self.request.user, permission=permission).all()]
         
   
     
@@ -293,11 +294,11 @@ class ReviewListView(AccessDeniedMixin, generic.ListView):
             super(ReviewListView, self).dispatch(request)
 
     def get_queryset(self, *args, **kwargs):
-        content_type = Permission.objects.get(codename='view_review').content_type
+        permission = Permission.objects.get(codename='view_review')
 
         return \
             [Review.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
-                .filter(user=self.request.user, content_type=content_type).all()]
+                .filter(user=self.request.user, permission=permission).all()]
 
 
 class ReviewCreateView(AccessDeniedMixin, generic.UpdateView):
@@ -314,14 +315,18 @@ class ReviewCreateView(AccessDeniedMixin, generic.UpdateView):
         return reverse('display_review', kwargs={"pk": self.get_object().id})
     
     def form_valid(self, form):
-        instance = form.save(commit=False)
     
-        if all([review.recommandation for review in self.get_object().assignment.review_set.all()]):
-           instance.assignment.status = '5'
-           send_mail(subject="123", body="123", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com', ], fail_silently=False,
+        self.object = form.save(commit=True)
+        if all([review.recommandation in ['1','2','3']  for review in self.object.assignment.review_set.all()]):
+           
+           self.object.assignment.status = '5'
+           self.object.save()
+           
+           #mail to editor verdict
+           send_mail(subject="verdict", body="verdict", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=[self.object.assignment.editor.email, ], fail_silently=False,
                 html=email_content)
             
-        instance.save()
+        
         return HttpResponseRedirect(self.get_success_url())
         
 

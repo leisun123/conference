@@ -24,7 +24,6 @@ from crispy_forms.layout import Submit, Layout
 
 class PaperForm(forms.ModelForm):
     
-    session = forms.ModelChoiceField(widget=forms.RadioSelect, queryset=SpecialSession.objects, empty_label=None)
     
     class Meta:
         model = Paper
@@ -45,7 +44,10 @@ class AuthorForm(forms.ModelForm):
     
     class Meta:
         model = Author
-        fields = ('name', 'organization', 'email', 'index')
+        fields = ( 'index', 'name', 'organization', 'email',)
+        help_texts = {
+            'Index s Author Order'
+        }
         
 AuthorFormset = formsets.formset_factory(AuthorForm, extra=1)
 
@@ -104,7 +106,6 @@ AssignReviewFormset = formsets.formset_factory(AssignReviewForm, extra=1)
 
 class ReviewForm(forms.ModelForm):
 
-     
      
      class Meta:
          model = Review
