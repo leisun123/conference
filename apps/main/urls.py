@@ -15,7 +15,7 @@ from . import views
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('content/<int:content_id>',
+    path('content/<int:pk>',
         views.GenericTabContentView.as_view(),
         name='genericTagContentById'),
     path('showscholar/', views.ScholarListView.as_view(), name='scholarList'),

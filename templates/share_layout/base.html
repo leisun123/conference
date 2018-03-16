@@ -1,19 +1,16 @@
 {% load static %}
 {% load cache %}
-{% load compress %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	{% compress css %}
+
 	<link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}?{% now "U" %}">
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
 		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 		  crossorigin="anonymous">
 	<link src="{% static 'css/uni-form.css' %}?{% now "U" %}" rel="stylesheet" type="text/css" media="screen"/>
 	<link src="{% static 'css/style.uni-form.css' %}?{% now "U" %}" rel="stylesheet" type="text/css" media="screen"/>
-		{% block compress_css %}
-		{% endblock %}
-	{% endcompress %}
 
 </head>
 
@@ -35,15 +32,14 @@
 <div>
 	<footer>
 		{% include "share_layout/footer.html" %}
-		{% compress js %}
-				<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+			<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 			<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
 					integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 					crossorigin="anonymous"></script>
 			<script type="text/javascript" src="{% static 'js/uni-form.jquery.min.js' %}"></script>
 			<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 			<script src="https://cdn.bootcss.com/jquery.formset/1.2.2/jquery.formset.min.js"></script>
-		{% endcompress %}
+
 	</footer>
 </div>
 </body>

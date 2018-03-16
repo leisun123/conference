@@ -21,44 +21,26 @@ from apps.accounts.models import Scholar
 from guardian.shortcuts import assign_perm
 from django.utils import timezone
 
-error_messages = {
-    'username': {
-        'required': u'用户名不能为空',
-        'min_length': u'用户名过短',
-        'max_length': u'用户名过长',
-        'invalid': '用户名格式错误',
-    },
-    'email': {
-        'required': u'E-mail不能为空',
-        'min_length': u'Email长度过短',
-        'max_length': u'Email长度过长',
-        'invalid': u'电子邮件格式不正确',
-    },
-    'password': {
-        'required': u'密码不能为空',
-        'min_length': u'密码长度过短（6-16个字符）',
-        'max_length': u'密码长度过长（6-16个字符）',
-    }
-}
+class LoginForm(forms.ModelForm):
 
-class LoginForm(forms.Form):
-    username = forms.CharField(label=u'用户名')
-    password = forms.CharField(label=u'密码')
+    class Meta:
+        model = Scholar
+        fields = ('email', 'password',)
 
     def __init__(self, *args, **kwargs):
         self.user_cache = None
         super(LoginForm, self).__init__(*args, **kwargs)
 
     def clean(self):
-        username = self.cleaned_data.get('username')
+        email = self.cleaned_data.get('email')
         password = self.cleaned_data.get('password')
 
-        if username and password:
-            self.user_cache = auth.authenticate(username=username, password=password)
+        if email and password:
+            self.user_cache = auth.authenticate(email=email, password=password)
             if self.user_cache is None:
-                raise forms.ValidationError(u'用户名或密码错误')
+                raise forms.ValidationError('email or password invalid')
             elif not self.user_cache.is_active:
-                raise forms.ValidationError(u'用户已被锁定，请联系管理员解锁')
+                raise forms.ValidationError('error, connect administrator(isolationwyn@gmail.com)')
         return self.cleaned_data
 
     def get_user(self):
@@ -66,18 +48,7 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(forms.ModelForm):
-    username = forms.CharField(min_length=0, max_length=30,  error_messages=error_messages.get('username'))
-    #first_name = forms.CharField(min_length=1, max_length=16)
-    #last_name = forms.CharField(min_length=1, max_length=16)
-    email = forms.EmailField(min_length=6, max_length=32, error_messages=error_messages.get('email'))
-    password = forms.CharField(min_length=6, max_length=16,error_messages=error_messages.get('password'))
-    res_password = forms.CharField(required=False)
-    organization = forms.CharField()
-    keywords = forms.CharField()
-    major = forms.CharField()
     
-    
-
     class Meta:
         model = Scholar
         fields = ('username', 'organization', 'email',
@@ -87,13 +58,6 @@ class RegisterForm(forms.ModelForm):
         self.user = None
         super(RegisterForm, self).__init__(*args, **kwargs)
 
-    def clean_username(self):
-        username = self.cleaned_data['username']
-        try:
-            Scholar.objects.get(username=username)
-            raise forms.ValidationError(u'该用户名已被使用')
-        except Scholar.DoesNotExist:
-            return username
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -119,13 +83,14 @@ class RegisterForm(forms.ModelForm):
 
 
 class PasswordChangeForm(forms.Form):
-    old_password = forms.CharField(min_length=6, max_length=16, error_messages=error_messages.get('password'))
-    password = forms.CharField(min_length=6, max_length=16, error_messages=error_messages.get('password'))
-    res_password = forms.CharField(required=False)
+
+    class Meta:
+        model = Scholar
+        fields = ['old_password', 'password', 'res_password',]
 
     def clean_password2(self):
         password = self.cleaned_data.get("password")
-        res_password = self.cleaned_data.get("respassword")
+        res_password = self.cleaned_data.get("res_password")
         if password and res_password and password != res_password:
             raise forms.ValidationError("两次密码不相同")
         return password

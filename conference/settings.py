@@ -16,7 +16,7 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
-SECRET_KEY = 'j9gk(17@_&eqf6itrmams-6alizo=e@$pr81wl2e_mckpg)lyh'
+SECRET_KEY = 'j9gk(17@_&eqf6itrwerwerwerwerams-6alizo=e@$pr81wl2e_mckpg)lyh'
 
 DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.38.1']
@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'channels_redis',
     'apps.chat',
     'guardian',
-    'compressor',
+    #'compressor',
 ]
 
 MIDDLEWARE = [
@@ -142,7 +142,8 @@ CACHES = {
 
 
 STATIC_URL = '/static/'
-COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -153,7 +154,7 @@ STATICFILES_DIRS = (
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
 
 
