@@ -90,8 +90,9 @@ def assignment_save_callback(sender, **kwargs):
         assign_perm('view_review', review['reviewer'], review_object)
         assign_perm('create_review', review['reviewer'], review_object)
         #mail to each reviewers
-        send_mail(subject="review after assign", body="reviewer review", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=[review.reviewer.email, ], fail_silently=False,
-                html=email_content)
+        send_mail(subject="review after assign", body="reviewer review", from_email=settings.DEFAULT_FROM_EMAIL,
+                  recipient_list=[review_object.reviewer.email, ], fail_silently=False,
+                  html=email_content)
  
 
 

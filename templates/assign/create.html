@@ -17,8 +17,12 @@
 					<form method="post" action="" enctype='multipart/form-data'>
 						{% csrf_token %}
 
-						<div style="display: none;">{% crispy assignment_form %}</div>
+						<div {% if paper_object.assignment.status != '5' %}style="display: none;"{% endif %}>
+							 {% crispy assignment_form %}
+						</div>
+						<div {% if paper_object.assignment.status == '5'  %}style="display: none;"{% endif %}>
 						{% crispy assignreview_formset myinlinehelper %}
+						</div>
 
 						<p>
 							<input type="submit" value="Submit"/>

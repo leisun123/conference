@@ -20,5 +20,8 @@ class Scholar(AbstractUser):
     session = models.ForeignKey(SpecialSession, null=True, on_delete=models.SET_NULL)
     REQUIRED_FIELDS = []
     
+    def __str__(self):
+        return self.username
+    
     class Meta(object):
         unique_together = ('email',)

@@ -90,6 +90,7 @@ class PaperCreateView(AccessDeniedMixin, generic.CreateView):
         self.object = None
         
         paper, keywords, authors = [form.cleaned_data for form in forms]
+        print(request.user)
         paper['uploader'] = Scholar.objects.get(email=request.user)
         paper_object = Paper.objects.create(**paper)
         
@@ -206,7 +207,7 @@ class AssignmentListView(AccessDeniedMixin, generic.ListView):
 
         return \
             [Assignment.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
-                .filter(email=self.request.user, permission=permission).all()]
+                .filter(user=self.request.user, permission=permission).all()]
         
   
     
@@ -298,7 +299,7 @@ class ReviewListView(AccessDeniedMixin, generic.ListView):
 
         return \
             [Review.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
-                .filter(email=self.request.user, permission=permission).all()]
+                .filter(user=self.request.user, permission=permission).all()]
 
 
 class ReviewCreateView(AccessDeniedMixin, generic.UpdateView):
