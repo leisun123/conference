@@ -10,19 +10,21 @@
             --
 """
 #coding:utf8
-import random
 
+from crispy_forms.bootstrap import StrictButton, InlineField, InlineCheckboxes
+from crispy_forms.layout import Layout, Submit, Div, ButtonHolder, HTML, Fieldset, BaseInput
 from django import forms
 from django.contrib import auth
-
-from apps import PaperReview
-from apps.PaperReview.models import Paper
 from apps.accounts.models import Scholar
-from guardian.shortcuts import assign_perm
-from django.utils import timezone
+from crispy_forms.helper import FormHelper
+
+
+
 
 class LoginForm(forms.ModelForm):
 
+    remember_me = forms.BooleanField(required=False, widget=forms.CheckboxInput())
+    
     class Meta:
         model = Scholar
         fields = ('email', 'password',)
@@ -30,6 +32,30 @@ class LoginForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.user_cache = None
         super(LoginForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-sm-3 control-label'
+        self.helper.field_class = 'col-sm-9'
+        self.helper.layout = Layout(
+            'email',
+            'password',
+            'remember_me',
+            Div(
+                Div(
+                    HTML("<a href='{% url 'password_reset' %}'>forget password?</a>"),
+                    css_class='col-sm-offset-3 col-sm-9'
+                ),
+                css_class='form-group'
+            ),
+            
+            Div(
+                Div(
+                    Submit('Sign in', value='login', css_class='btn-default'),
+                    css_class='col-sm-offset-3 col-sm-9'
+                ),
+                css_class='form-group'
+            ),
+        )
 
     def clean(self):
         email = self.cleaned_data.get('email')
@@ -49,21 +75,43 @@ class LoginForm(forms.ModelForm):
 
 class RegisterForm(forms.ModelForm):
     
+    password = forms.CharField(widget=forms.PasswordInput())
+    res_password = forms.CharField(widget=forms.PasswordInput())
+    
     class Meta:
         model = Scholar
-        fields = ('username', 'organization', 'email',
-                  'keywords', 'major')
+        fields = ('first_name', 'last_name', 'organization', 'email',)
 
     def __init__(self, *args, **kwargs):
         self.user = None
         super(RegisterForm, self).__init__(*args, **kwargs)
-
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-sm-3 control-label'
+        self.helper.field_class = 'col-sm-9'
+        self.helper.layout = Layout(
+            'first_name',
+            'last_name',
+            'organization',
+            'email',
+            'password',
+            'res_password',
+            Div(
+                Div(
+                    Submit('Register', value='register', css_class='btn-default'),
+                    css_class='col-sm-offset-3 col-sm-9'
+                ),
+                css_class='form-group'
+            ),
+        )
 
     def clean_email(self):
         email = self.cleaned_data['email']
         try:
             Scholar.objects.get(email=email)
-            raise forms.ValidationError(u'该邮箱已被注册')
+            raise forms.ValidationError('Sorry,the email address has been registered ')
         except Scholar.DoesNotExist:
             return email
 
@@ -71,12 +119,13 @@ class RegisterForm(forms.ModelForm):
         password1 = self.cleaned_data.get('password')
         password2 = self.cleaned_data.get('res_password')
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError(u'两次输入密码不一致')
+            raise forms.ValidationError('Inconsistent password entered twice')
         return password2
 
     def save(self, commit=True):
         user = super(RegisterForm, self).save(commit=False)
         user.set_password(self.cleaned_data['password'])
+        user.username = self.cleaned_data['first_name'] + self.cleaned_data['last_name']
         if commit:
             user.save()
         return user
@@ -88,11 +137,31 @@ class PasswordChangeForm(forms.Form):
         model = Scholar
         fields = ['old_password', 'password', 'res_password',]
 
+    def __init__(self, *args, **kwargs):
+        self.user = None
+        super(PasswordChangeForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-sm-3 control-label'
+        self.helper.field_class = 'col-sm-9'
+        self.helper.layout = Layout(
+            'old_password',
+            'password',
+            'res_password',
+            Div(
+                Div(
+                    Submit('Submit', value='submit', css_class='btn-default'),
+                    css_class='col-sm-offset-3 col-sm-9'
+                ),
+                css_class='form-group'
+            ),
+        )
+        
     def clean_password2(self):
         password = self.cleaned_data.get("password")
         res_password = self.cleaned_data.get("res_password")
         if password and res_password and password != res_password:
-            raise forms.ValidationError("两次密码不相同")
+            raise forms.ValidationError('Inconsistent password entered twice')
         return password
 
 class ChangeUserImageForm(forms.Form):

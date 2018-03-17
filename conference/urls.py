@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('django.contrib.auth.urls')),
     path('', include('main.urls')),
-    path('', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
     path('', include('PaperReview.urls')),
     path('chaining/', include('smart_selects.urls')),
     path('', include('chat.urls')),

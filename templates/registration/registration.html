@@ -1,0 +1,12 @@
+{% extends 'share_layout/base.html' %}
+{% load crispy_forms_tags %}
+{% block login %}
+	<div class="container">
+
+		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			<h2 class='col-sm-offset-3 col-sm-9'>{{ title }}</h2>
+			{% csrf_token %}
+			{% crispy form %}
+		</div>
+	</div>
+{% endblock %}

@@ -45,10 +45,7 @@ class AuthorForm(forms.ModelForm):
     class Meta:
         model = Author
         fields = ( 'index', 'name', 'organization', 'email',)
-        help_texts = {
-            'index' : 'Author Order'
-        }
-        
+
 AuthorFormset = formsets.formset_factory(AuthorForm, extra=1)
 
 

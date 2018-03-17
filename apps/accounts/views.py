@@ -26,11 +26,17 @@ def login(request):
         else:
             auth_logout(request)
             
-            return render(request, 'registration/login.html', {'errors': login_form.errors})
+            return render(request, 'registration/registration.html',
+                          {'form': login_form,
+                           'errors': login_form.errors,
+                           'title': 'Sign In'})
 
     else:
-        request.session['next_url'] = request.GET.get('next')
-    return render(request, 'registration/login.html')
+        # request.session['next_url'] = request.GET.get('next')
+        login_form = LoginForm()
+    return render(request, 'registration/registration.html',
+                  {'form': login_form,
+                   'title': 'Sign In'})
 
 @csrf_protect
 def logout(request):
@@ -46,17 +52,22 @@ def register(request):
             user = register_form.save()
             Group.objects.get(name="scholar").user_set.add(user)
             if user is not None:
-                user = authenticate(username=register_form.cleaned_data['username'],password=register_form.cleaned_data['password'])
+                user = authenticate(email=register_form.cleaned_data['email'],password=register_form.cleaned_data['password'])
                 auth_login(request,user)
                 return HttpResponseRedirect(reverse('index'))
         else:
             auth_logout(request)
-            return render(request, 'registration/register.html', {'errors': register_form.errors})
+            return render(request, 'registration/registration.html',
+                          {'form': register_form,
+                           'errors': register_form.errors,
+                           'title':'Register'})
         
     else:
         register_form = RegisterForm()
         user = None
-    return render(request, 'registration/register.html')
+    return render(request, 'registration/registration.html',
+                  {'form': register_form,
+                   'title': 'Register'})
 
 
 @csrf_protect
@@ -76,11 +87,16 @@ def password(request):
                 return HttpResponseRedirect(reverse("login"))
             else:
                 messages.error(request,'当前密码输入错误')
-                return render(request, "users/password.html", {'errors': form.errors})
+                return render(request, "/registration/registration.html",
+                              {'form': form,
+                               'errors': form.errors,
+                               'title':'Change Password'})
     else:
         form = PasswordChangeForm()
 
-    return render(request, "registration/password.html")
+    return render(request, "registration/password.html",
+                  {'form': form,
+                   'title': 'Change Password'})
 
 def updateImage(request):
     if request.method == 'POST':

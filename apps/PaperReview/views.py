@@ -84,14 +84,14 @@ class PaperCreateView(AccessDeniedMixin, generic.CreateView):
         if paper_form.is_valid() and keywords_formset.is_valid() and authors_formset.is_valid():
             return self.form_valid(request, [paper_form, keywords_formset, authors_formset])
         else:
-            return self.form_invalid()
+            return self.form_invalid(paper_form, keywords_formset, authors_formset)
     
     def form_valid(self, request, forms):
         self.object = None
         
         paper, keywords, authors = [form.cleaned_data for form in forms]
-        print(request.user)
-        paper['uploader'] = Scholar.objects.get(email=request.user)
+        
+        paper['uploader'] = Scholar.objects.get(email=request.user.email)
         paper_object = Paper.objects.create(**paper)
         
         paper_object.keywords_set.set(
@@ -108,10 +108,14 @@ class PaperCreateView(AccessDeniedMixin, generic.CreateView):
             reverse('display_paper', kwargs={'pk': paper_object.id})
         )
     
-    def form_invalid(self):
+    def form_invalid(self, paper_form, keywords_formset, authors_formset):
         self.object = None
         return self.render_to_response(
-            self.get_context_data()
+            {"paper_form": paper_form,
+             "keywords_formset": keywords_formset,
+             "authors_formset": authors_formset,
+             "myinlinehelper": mylinehelper
+            }
         )
 
 
@@ -146,16 +150,16 @@ class PaperUpdateView(AccessDeniedMixin, generic.UpdateView):
         if paper_form.is_valid() and keywords_formset.is_valid() and authors_formset.is_valid():
             return self.form_valid(request, [paper_form, keywords_formset, authors_formset])
         else:
-            return self.form_invalid()
+            return self.form_invalid(paper_form, keywords_formset, authors_formset)
     
     def form_valid(self, request, forms):
         self.object = self.get_object()
         paper, keywords, authors = [form.cleaned_data for form in forms]
-        
+    
         lastest_version = self.get_object().version
-        paper['uploader'] = Scholar.objects.get(email=request.user)
+        paper['uploader'] = Scholar.objects.get(username=request.user)
         paper['version'] = lastest_version + 1
-        paper['serial_number'] = self.get_object().serial_number
+        paper['serial_number'] = self.get_object().serial_numberaccounts_scholar
         
         new_paper_obj = Paper.objects.create(**paper)
         
@@ -177,10 +181,13 @@ class PaperUpdateView(AccessDeniedMixin, generic.UpdateView):
             {"pk": new_paper_obj.id}
                     ))
     
-    def form_invalid(self):
+    def form_invalid(self, paper_form, keywords_formset, authors_formset):
         self.object = self.get_object()
         return self.render_to_response(
-            self.get_context_data()
+            {'paper_form': paper_form,
+             'keywords_formset': keywords_formset,
+             'authors_formset': authors_formset,
+             'myinlinehelper': mylinehelper}
         )
 
 
@@ -241,7 +248,7 @@ class AssignmentCreateView(AccessDeniedMixin, generic.UpdateView):
             
             return self.form_valid(request, [assignment_form, assignreview_formset])
         else:
-            return self.form_invalid()
+            return self.form_invalid(assignment_form, assignreview_formset)
     
     def form_valid(self, request, forms):
         self.object = self.get_object()
@@ -269,11 +276,13 @@ class AssignmentCreateView(AccessDeniedMixin, generic.UpdateView):
             {"pk": self.get_object().id}
                     ))
     
-    def form_invalid(self):
+    def form_invalid(self, assignment_form, assignreview_formset):
         
         self.object = self.get_object()
         return self.render_to_response(
-            self.get_context_data()
+            {'assignment_form': assignment_form,
+             'assignreview_formset': assignreview_formset,
+             'mylinehelper': mylinehelper}
         )
 
 
@@ -319,9 +328,8 @@ class ReviewCreateView(AccessDeniedMixin, generic.UpdateView):
     
         self.object = form.save(commit=True)
         if all([review.recommandation in ['1','2','3']  for review in self.object.assignment.review_set.all()]):
-           
-           self.object.assignment.status = '5'
-           self.object.save()
+           print(111111)
+           Assignment.objects.filter(review=self.object).update(status="5")
            
            #mail to editor verdict
            send_mail(subject="verdict", body="verdict", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=[self.object.assignment.editor.email, ], fail_silently=False,
