@@ -22,12 +22,14 @@ from crispy_forms.helper import FormHelper
 
 
 class LoginForm(forms.ModelForm):
-
+    
+    password = forms.CharField(widget=forms.PasswordInput())
     remember_me = forms.BooleanField(required=False, widget=forms.CheckboxInput())
+    
     
     class Meta:
         model = Scholar
-        fields = ('email', 'password',)
+        fields = ('email', )
 
     def __init__(self, *args, **kwargs):
         self.user_cache = None
@@ -132,7 +134,11 @@ class RegisterForm(forms.ModelForm):
 
 
 class PasswordChangeForm(forms.Form):
-
+    
+    old_password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput())
+    res_password = forms.CharField(widget=forms.PasswordInput())
+    
     class Meta:
         model = Scholar
         fields = ['old_password', 'password', 'res_password',]
