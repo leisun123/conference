@@ -21,15 +21,15 @@ from conference import settings
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout
 
-
 class PaperForm(forms.ModelForm):
     
     
     class Meta:
         model = Paper
-        fields = ('title',  'abstract', 'file', 'session')
+        fields = ('title',  'abstract', 'file', 'session', 'copyright',)
         help_texts = {
-            'file': 'Only PDF Allowed'
+            'file': 'Only PDF Allowed',
+            'copyright': 'Only PDF Allowed'
         }
         
     def __init__(self, *args, **kwargs):
@@ -54,6 +54,11 @@ class KeywordsForm(forms.ModelForm):
     class Meta:
         model = Keywords
         fields = ('keyword',)
+    
+    
+    def __init__(self, *args, **kwargs):
+        super(KeywordsForm, self).__init__(*args, **kwargs)
+        self.fields['keyword'].label = "Keyword"
         
 KeywordsFormset = formsets.formset_factory(KeywordsForm, extra=1)
 

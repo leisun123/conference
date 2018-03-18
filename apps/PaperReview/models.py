@@ -9,7 +9,8 @@ class Paper(models.Model):
 
     title = models.CharField(max_length=128)
     abstract = models.TextField(max_length=1024)
-    file = models.FileField(upload_to='thesis/', max_length=1024*50, validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    file = models.FileField(verbose_name="Paper Resource", upload_to='thesis/', max_length=1024*50, validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    copyright = models.FileField(verbose_name="Copyright", upload_to='copyright/',validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
     version = models.IntegerField(default=1)
     serial_number = models.UUIDField(primary_key=False, unique=False, default=uuid.uuid4)
     
@@ -30,17 +31,17 @@ class Paper(models.Model):
         
 class Author(models.Model):
     
-    name = models.CharField(max_length=128)
-    organization = models.CharField(max_length=256)
-    email = models.EmailField()
-    index = models.IntegerField()
+    name = models.CharField(verbose_name="Name", max_length=128)
+    organization = models.CharField(verbose_name="Organization",max_length=256)
+    email = models.EmailField(verbose_name="Email")
+    index = models.IntegerField(verbose_name="Index")
     paper = models.ForeignKey(Paper, null=True, on_delete=models.CASCADE)
     tracker = FieldTracker()
     
     
 class Keywords(models.Model):
     
-    keyword = models.CharField(max_length=64)
+    keyword = models.CharField(verbose_name='Keyword', max_length=64)
     
     paper = models.ForeignKey(Paper, null=True, on_delete=models.CASCADE)
     
@@ -49,12 +50,12 @@ class Keywords(models.Model):
 class Assignment(models.Model):
     
     STATUS_CHOICES = (
-        ('0', 'unassign'),
-        ('1', 'underreview'),
-        ('2', 'accpet'),
-        ('3', 'revision'),
-        ('4', 'reject'),
-        ('5', 'waitingverdict')
+        ('0', 'Unassign'),
+        ('1', 'Underreview'),
+        ('2', 'Accpet'),
+        ('3', 'Revision'),
+        ('4', 'Reject'),
+        ('5', 'WaitingVerdict')
     )
     
     status = models.CharField(max_length=16, choices=STATUS_CHOICES, default='0')
@@ -75,9 +76,9 @@ class Assignment(models.Model):
 class Review(models.Model):
     
     RECOMMONDATION_CHOICES = (
-        ('1', 'accpet'),
-        ('2', 'revision'),
-        ('3', 'reject')
+        ('1', 'Accpet'),
+        ('2', 'Revision'),
+        ('3', 'Reject')
     )
     
     recommandation = models.CharField(max_length=16, blank=False, choices=RECOMMONDATION_CHOICES)

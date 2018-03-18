@@ -43,9 +43,6 @@ def paper_save_callback(sender, **kwargs):
     assign_perm('PaperReview.view_assignment', editor, assignment)
     assign_perm('PaperReview.create_assignment', editor, assignment)
     
-    #mail to editor to assign
-    send_mail(subject="editor assign", body="editor assign", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=[assignment.editor.email, ], fail_silently=False,
-                  html=email_content)
     
 
     

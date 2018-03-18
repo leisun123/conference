@@ -9,17 +9,23 @@
 @description:
             --
 """
-import os
-from django.template import loader
 
+import os
+
+import django
+SETTINGS = 'conference.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
+django.setup()
+from django.template.loader import get_template
+from django.template import loader
+from conference import settings
 
 from django.core.mail import send_mail as core_send_mail
 from django.core.mail import EmailMultiAlternatives
 import threading
+from conference import settings
 
-# from conference import settings
-# SETTINGS = 'conference.settings'
-# os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
+
 
 class EmailThread(threading.Thread):
     def __init__(self, subject, body, from_email, recipient_list, fail_silently, html):
@@ -42,7 +48,10 @@ def send_mail(subject, body, from_email, recipient_list, fail_silently=False, ht
     
 #send_mail("123", "123", settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com',], html='core/base.html')
 
+data = {'scholarname':'wang'}
 
+email_content = get_template('share_layout/email.html').render(data)
+send_mail("123", "123", settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com',], html=email_content)
 
 
 

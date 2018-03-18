@@ -27,7 +27,7 @@ from guardian.shortcuts import assign_perm
 from guardian.decorators import permission_required_or_403
 from apps.PaperReview.forms import mylinehelper
 from apps.crispy_forms.layout import Layout
-from apps.mail.mail import send_mail
+
 from conference import settings
 from guardian.models import UserObjectPermission
 from apps.PaperReview.mixins import AccessDeniedMixin
@@ -328,14 +328,8 @@ class ReviewCreateView(AccessDeniedMixin, generic.UpdateView):
     
         self.object = form.save(commit=True)
         if all([review.recommandation in ['1','2','3']  for review in self.object.assignment.review_set.all()]):
-           print(111111)
            Assignment.objects.filter(review=self.object).update(status="5")
            
-           #mail to editor verdict
-           send_mail(subject="verdict", body="verdict", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=[self.object.assignment.editor.email, ], fail_silently=False,
-                html=email_content)
-            
-        
         return HttpResponseRedirect(self.get_success_url())
         
 

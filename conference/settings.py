@@ -20,7 +20,7 @@ SECRET_KEY = 'j9gk(17@_&eqf6itrwerwerwerwerams-6alizo=e@$pr81wl2e_mckpg)lyh'
 
 DEBUG = True
 CRISPY_FAIL_SILENTLY = not DEBUG
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.38.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.38.1', 'www.zzwyn.cn']
 
 ROOT_URLCONF = 'conference.urls'
 
@@ -118,7 +118,7 @@ EMAIL_HOST_USER = '1178180942@qq.com'
 EMAIL_HOST_PASSWORD = 'zaiawbkhnlpujhia'
 EMAIL_SUBJECT_PREFIX = 'website'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = SERVER_EMAIL = 'isolationwyn@gmail.com'
 
 
 WSGI_APPLICATION = 'conference.wsgi.application'

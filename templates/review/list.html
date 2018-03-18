@@ -18,11 +18,10 @@
 								<table class="table">
 									<thead>
 									<tr>
-										<th>paper title</th>
-										<th>recommandation</th>
-										<th>proposal to author</th>
-										<th>create time</th>
-										<th>all reviewers</th>
+										<th>Paper title</th>
+										<th>Recommandation</th>
+										<th>Comment to author</th>
+										<th>Create time</th>
 									</tr>
 									</thead>
 
@@ -43,14 +42,6 @@
 											</td>
 											<td>{{ review.proposal_to_author }}</td>
 											<td>{{ review.create_time }}</td>
-
-											<td>
-												{% for reviewer in review.assignment.review_set.all %}
-													{{ reviewer.reviewer.username }} <br>
-
-
-												{% endfor %}
-											</td>
 										</tr>
 									{% endfor %}
 

@@ -52,14 +52,14 @@ def load_permission_paper(request):
 @register.inclusion_tag('Judgment/sidebar.html')
 def load_judgment_sidebar(sidebar_type):
     dic = {
-        "paper": [["overview", "list_paper"],
-                  ["upload", "create_paper"],
-                  ["status", "status"]],
+        "paper": [["Overview", "list_paper"],
+                  ["Upload", "create_paper"],
+                  ["Status", "status"]],
         
-        "assignment": [["overview", "list_assignment"],
+        "assignment": [["Overview", "list_assignment"],
                        ],
         
-        "review": [["overview", "list_review"]]
+        "review": [["Overview", "list_review"]]
     }
     return {'sidebarnode_list': dic.get(sidebar_type)}
     

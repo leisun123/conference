@@ -19,6 +19,12 @@ footer {
     height: 60px;
     background-color: #f5f5f5
 }
+.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+    background: white
+}
 
 .carousel-indicators .active {
     background-color: #2980b9
@@ -26,19 +32,13 @@ footer {
 
 .carousel-inner img {
     width: 100%;
-    max-height: 200px
+    max-height: 500px
 }
 
 .carousel-control {
     width: 0
 }
 
-.disabled {
-    pointer-events: none;
-    cursor: not-allowed;
-    opacity: 0.6;
-    background: white
-}
 
 .carousel-control.left, .carousel-control.right {
     opacity: 1;
@@ -72,7 +72,7 @@ footer {
 }
 
 .carousel-control.left span, .carousel-control.right span {
-    background-color: #000
+    /*background-color: #000*/
 }
 
 .carousel-control.left span:hover, .carousel-control.right span:hover {
@@ -94,12 +94,10 @@ footer {
 }
 
 .header-text h2 span {
-    background-color: #2980b9;
     padding: 10px
 }
 
 .header-text h3 span {
-    background-color: #000;
     padding: 15px
 }
 
