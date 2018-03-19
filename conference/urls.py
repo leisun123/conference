@@ -31,7 +31,9 @@ urlpatterns = [
     path('', include('PaperReview.urls')),
     path('chaining/', include('smart_selects.urls')),
     path('', include('chat.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+if settings.DEBUG is True:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
