@@ -13,9 +13,9 @@ import os
 import django
 
 
+
 SETTINGS = 'conference.settings'
 os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
-
 
 
 def main():
@@ -27,6 +27,8 @@ def main():
     from guardian.shortcuts import remove_perm
     from guardian.shortcuts import assign_perm
     from django.core.files import File
+    from apps.PaperReview.signals import paper_save_signal
+    from apps.PaperReview.views import PaperCreateView
     #file=File(open('/Users/wyn/wynproject/conference/media/thesis/计划财务处信息门户11-5.pdf', 'rb'))
     # # Content.objects.filter(id=1).update(version=2)
     # c = Content.objects.get(id=1)
@@ -36,18 +38,20 @@ def main():
     
     #scholar = Group.objects.create(name='scholar')
     #reviewer = Group.objects.create(name='reviewer')
-    editor = Group.objects.get(name='editor')
+    #editor = Group.objects.get(name='editor')
 
     #Scholar.objects.create_superuser(username='wyn', email='isolationwyn@gmail.com', password='python123')
-    Scholar.objects.get(username='wyn')
-    editor.user_set.add(Scholar.objects.get(username='wyn'))
- 
+    #Scholar.objects.get(username='wyn')
+    #editor.user_set.add(Scholar.objects.get(email='leizhao@jsnu.edu.cn'))
+    paper_object = Paper.objects.get(id=6)
+    PaperCreateView
+    paper_save_signal.send(sender=PaperCreateView, request=, paper_object=paper_object)
 
     
     
 if __name__ == '__main__':
     main()
-
+    
 
 
 

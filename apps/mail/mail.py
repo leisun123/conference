@@ -13,9 +13,9 @@
 import os
 
 import django
-# SETTINGS = 'conference.settings'
-# os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
-# django.setup()
+SETTINGS = 'conference.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
+django.setup()
 from django.template.loader import get_template
 from django.template import loader
 from conference import settings
@@ -46,7 +46,9 @@ class EmailThread(threading.Thread):
 def send_mail(subject, body, from_email, recipient_list, fail_silently=False, html=None, *args, **kwargs):
     EmailThread(subject, body, from_email, recipient_list, fail_silently, html).start()
     
-#send_mail("123", "123", settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com',], html='core/base.html')
+    
+    
+
 
 
 

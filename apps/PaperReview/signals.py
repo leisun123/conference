@@ -13,7 +13,6 @@ import django.dispatch
 from django.contrib.auth.models import Group
 from django.db.models.signals import pre_save, post_save
 from django.template.loader import get_template
-
 from apps.mail.mail import send_mail
 from django.dispatch import receiver
 from django.conf import settings
@@ -21,7 +20,7 @@ from guardian.shortcuts import assign_perm
 import random
 from apps.PaperReview.models import Assignment, Review, Paper
 
-paper_save_signal = django.dispatch.Signal(providing_args=['request', 'paper_object',''])
+paper_save_signal = django.dispatch.Signal(providing_args=['request', 'paper_object'])
 paper_update_signal = django.dispatch.Signal(providing_args=['request', 'new_paper_object', 'old_paper_object'])
 assignment_save_signal = django.dispatch.Signal(providing_args=['reviews','object'])
 
@@ -39,14 +38,13 @@ def paper_save_callback(sender, **kwargs):
     assign_perm('PaperReview.view_assignment', editor, assignment)
     assign_perm('PaperReview.create_assignment', editor, assignment)
     
-    data = {'id':assignment.paper.id, 'name': assignment.paper.uploader.username}
+    data = {'id': kwargs['paper_object'].id, 'title': kwargs['paper_object'].title}
     email_content = get_template('share_layout/submit_email.html').render(data)
     send_mail(subject="submit success", body="", from_email=settings.DEFAULT_FROM_EMAIL,
-                  recipient_list=[kwargs['request'].user.email,], fail_silently=False,
+                  recipient_list=[kwargs['paper_object'].uploader.email,], fail_silently=False,
                   html=email_content)
     
 
-    
 @receiver(paper_update_signal)
 def paper_update_callback(sender, **kwargs):
     
@@ -65,9 +63,9 @@ def paper_update_callback(sender, **kwargs):
         lastest_assignment_object.review_set.set(lastest_review_set)
         
         #TODO
-        data = {'id':old_paper_object.paper.id, 'title': new_paper_object.title}
-        email_content = get_template('share_layout/email.html').render(data)
-        send_mail(subject="reviewer review", body="paper has revised", from_email=settings.DEFAULT_FROM_EMAIL,
+        data = {'id':old_paper_object.paper.id, 'title': old_paper_object.title}
+        email_content = get_template('share_layout/submit_email.html').render(data)
+        send_mail(subject="reviewer review", body="", from_email=settings.DEFAULT_FROM_EMAIL,
                   recipient_list=[review.reviewer.email for review in lastest_review_set], fail_silently=False,
                   html=email_content)
     
@@ -93,11 +91,9 @@ def assignment_save_callback(sender, **kwargs):
         
         data = {'id':kwargs['object'].paper.id, 'title': kwargs['object'].paper.title}
         email_content = get_template('share_layout/email.html').render(data)
-        send_mail(subject="review after assign", body="reviewer review", from_email=settings.DEFAULT_FROM_EMAIL,
-                  recipient_list=[review_object.reviewer.email, ], fail_silently=False,
+        send_mail(subject="assign over", body="", from_email=settings.DEFAULT_FROM_EMAIL,
+                  recipient_list=[review_object.assignment.paper.uploader.email], fail_silently=False,
                   html=email_content)
  
 
-
-
-
+    

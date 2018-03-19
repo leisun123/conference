@@ -32,7 +32,7 @@ from conference import settings
 from guardian.models import UserObjectPermission
 from apps.PaperReview.mixins import AccessDeniedMixin
 from apps.PaperReview.signals import paper_save_signal, assignment_save_signal, \
-    assignment_save_callback, paper_save_callback, paper_update_callback, paper_update_signal, email_content
+    assignment_save_callback, paper_save_callback, paper_update_callback, paper_update_signal
 
 
 class PaperListView(AccessDeniedMixin, generic.ListView):
