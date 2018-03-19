@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 import sys
 
-BASE_DIR = os.path.abspath(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 SECRET_KEY = 'j9gk(17@_&eqf6itrwerwerwerwerams-6alizo=e@$pr81wl2e_mckpg)lyh'
@@ -75,6 +75,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+FILE_UPLOAD_HANDLERS = \
+    ["django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler"]
 
 TEMPLATES = [
     {
@@ -118,7 +121,7 @@ EMAIL_HOST_USER = '1178180942@qq.com'
 EMAIL_HOST_PASSWORD = 'zaiawbkhnlpujhia'
 EMAIL_SUBJECT_PREFIX = 'website'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = SERVER_EMAIL = 'isolationwyn@gmail.com'
+DEFAULT_FROM_EMAIL = SERVER_EMAIL = EMAIL_HOST_USER
 
 
 WSGI_APPLICATION = 'conference.wsgi.application'
@@ -155,11 +158,6 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
-
-FILE_UPLOAD_HANDLERS = \
-    ["django.core.files.uploadhandler.MemoryFileUploadHandler",
-     "django.core.files.uploadhandler.TemporaryFileUploadHandler"]
-
 
 LOGGING = {
     'version': 1,
