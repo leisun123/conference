@@ -158,6 +158,7 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
+MAX_UPLOAD_SIZE = 5242880
 
 LOGGING = {
     'version': 1,

@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bf05d23-bf0e-491f-ae71-b14713aec989" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/apps/PaperReview/signals.py" afterPath="$PROJECT_DIR$/apps/PaperReview/signals.py" />
-      <change beforePath="$PROJECT_DIR$/apps/PaperReview/views.py" afterPath="$PROJECT_DIR$/apps/PaperReview/views.py" />
-      <change beforePath="$PROJECT_DIR$/apps/mail/mail.py" afterPath="$PROJECT_DIR$/apps/mail/mail.py" />
-      <change beforePath="$PROJECT_DIR$/shell.py" afterPath="$PROJECT_DIR$/shell.py" />
-      <change beforePath="$PROJECT_DIR$/templates/share_layout/email.html" afterPath="$PROJECT_DIR$/templates/share_layout/email.html" />
-      <change beforePath="$PROJECT_DIR$/templates/share_layout/submit_email.html" afterPath="$PROJECT_DIR$/templates/share_layout/submit_email.html" />
+      <change beforePath="$PROJECT_DIR$/apps/PaperReview/models.py" afterPath="$PROJECT_DIR$/apps/PaperReview/models.py" />
+      <change beforePath="$PROJECT_DIR$/conference/settings.py" afterPath="$PROJECT_DIR$/conference/settings.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -94,7 +90,7 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.42070895">
+    <splitter split-orientation="horizontal" split-proportion="0.3607011">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="shell.py" pinned="false" current-in-tab="false">
@@ -161,11 +157,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="submit_email.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="submit_email.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/share_layout/submit_email.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="288">
-                  <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+                  <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
                   <folding />
                 </state>
               </provider>
@@ -175,7 +171,7 @@
             <entry file="file://$PROJECT_DIR$/templates/share_layout/email.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="360">
-                  <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+                  <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
@@ -193,11 +189,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/apps/PaperReview/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="185">
-                  <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+                <state relative-caret-position="168">
+                  <caret line="12" column="83" lean-forward="false" selection-start-line="12" selection-start-column="83" selection-end-line="12" selection-end-column="83" />
                   <folding />
                 </state>
               </provider>
@@ -207,11 +203,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="signals.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="signals.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/apps/PaperReview/signals.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="649">
-                  <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+                <state relative-caret-position="169">
+                  <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -239,21 +235,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="list.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/templates/upload/list.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="253">
-                  <caret line="35" column="53" lean-forward="false" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="71" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="tag_display.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/upload/tag_display.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="310">
                   <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/conference/settings.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="333">
+                  <caret line="161" column="0" lean-forward="true" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -273,7 +269,7 @@
             <entry file="file://$PROJECT_DIR$/templates/main/index.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="406">
-                  <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+                  <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -405,15 +401,15 @@
         <option value="$PROJECT_DIR$/templates/review/display.html" />
         <option value="$PROJECT_DIR$/templates/upload/tag_display.html" />
         <option value="$PROJECT_DIR$/templates/share_layout/navbar.html" />
-        <option value="$PROJECT_DIR$/apps/PaperReview/models.py" />
         <option value="$PROJECT_DIR$/apps/PaperReview/forms.py" />
-        <option value="$PROJECT_DIR$/conference/settings.py" />
         <option value="$PROJECT_DIR$/apps/mail/mail.py" />
         <option value="$PROJECT_DIR$/shell.py" />
         <option value="$PROJECT_DIR$/apps/PaperReview/views.py" />
         <option value="$PROJECT_DIR$/templates/share_layout/email.html" />
         <option value="$PROJECT_DIR$/apps/PaperReview/signals.py" />
         <option value="$PROJECT_DIR$/templates/share_layout/submit_email.html" />
+        <option value="$PROJECT_DIR$/apps/PaperReview/models.py" />
+        <option value="$PROJECT_DIR$/conference/settings.py" />
       </list>
     </option>
   </component>
@@ -423,11 +419,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="1440" />
-    <option name="y" value="-540" />
-    <option name="width" value="2560" />
-    <option name="height" value="1440" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -493,24 +487,12 @@
             <path>
               <item name="conference" type="b2602c69:ProjectViewProjectNode" />
               <item name="conference" type="462c0819:PsiDirectoryNode" />
+              <item name="conference" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="conference" type="b2602c69:ProjectViewProjectNode" />
+              <item name="conference" type="462c0819:PsiDirectoryNode" />
               <item name="media" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="conference" type="b2602c69:ProjectViewProjectNode" />
-              <item name="conference" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="conference" type="b2602c69:ProjectViewProjectNode" />
-              <item name="conference" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="conference" type="b2602c69:ProjectViewProjectNode" />
-              <item name="conference" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="share_layout" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -941,17 +923,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="-540" width="2560" height="1440" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289777" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3320951" sideWeight="0.49720892" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744044" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23325062" sideWeight="0.49135447" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29940563" sideWeight="0.49641147" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3870728" sideWeight="0.50279105" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29940563" sideWeight="0.49641147" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39330024" sideWeight="0.50279105" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36443383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14513557" sideWeight="0.49610677" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21902017" sideWeight="0.49610677" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17424242" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24888559" sideWeight="0.48712328" order="1" side_tool="false" content_ui="tabs" />
@@ -1299,14 +1280,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conference/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/share_layout/carousel.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
@@ -1362,10 +1335,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/shell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1121">
-          <caret line="51" column="26" lean-forward="false" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
+        <state relative-caret-position="441">
+          <caret line="39" column="53" lean-forward="false" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
           <folding>
-            <element signature="e#195#204#0" expanded="true" />
+            <marker date="1521447238956" expanded="true" signature="316:1177" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1378,18 +1351,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/PaperReview/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/mail/mail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="624">
+          <caret line="47" column="3" lean-forward="false" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
           <folding>
             <element signature="e#196#205#0" expanded="true" />
           </folding>
@@ -1399,43 +1364,55 @@
     <entry file="file://$PROJECT_DIR$/templates/main/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
-          <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+          <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/PaperReview/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="70" column="41" lean-forward="false" selection-start-line="70" selection-start-column="41" selection-end-line="70" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="500">
+          <caret line="262" column="1" lean-forward="false" selection-start-line="262" selection-start-column="1" selection-end-line="262" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/share_layout/email.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/PaperReview/signals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="82" column="18" lean-forward="false" selection-start-line="82" selection-start-column="18" selection-end-line="82" selection-end-column="18" />
-          <folding>
-            <element signature="e#199#221#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/share_layout/submit_email.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/PaperReview/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="82" column="3" lean-forward="false" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/PaperReview/signals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conference/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="161" column="0" lean-forward="true" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
           <folding />
         </state>
       </provider>
