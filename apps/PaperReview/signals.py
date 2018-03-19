@@ -25,10 +25,6 @@ paper_save_signal = django.dispatch.Signal(providing_args=['request', 'paper_obj
 paper_update_signal = django.dispatch.Signal(providing_args=['request', 'new_paper_object', 'old_paper_object'])
 assignment_save_signal = django.dispatch.Signal(providing_args=['reviews','object'])
 
-data = {'scholarname':'wang'}
-
-email_content = get_template('share_layout/email.html').render(data)
-
 
 @receiver(paper_save_signal)
 def paper_save_callback(sender, **kwargs):
@@ -43,7 +39,7 @@ def paper_save_callback(sender, **kwargs):
     assign_perm('PaperReview.view_assignment', editor, assignment)
     assign_perm('PaperReview.create_assignment', editor, assignment)
     
-    data = {'id':assignment.paper.id, 'title': assignment.paper.title}
+    data = {'id':assignment.paper.id, 'name': assignment.paper.uploader.username}
     email_content = get_template('share_layout/submit_email.html').render(data)
     send_mail(subject="submit success", body="", from_email=settings.DEFAULT_FROM_EMAIL,
                   recipient_list=[kwargs['request'].user.email,], fail_silently=False,
