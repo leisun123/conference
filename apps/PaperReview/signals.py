@@ -21,7 +21,7 @@ from guardian.shortcuts import assign_perm
 import random
 from apps.PaperReview.models import Assignment, Review, Paper
 
-paper_save_signal = django.dispatch.Signal(providing_args=['request', 'paper_object'])
+paper_save_signal = django.dispatch.Signal(providing_args=['request', 'paper_object',''])
 paper_update_signal = django.dispatch.Signal(providing_args=['request', 'new_paper_object', 'old_paper_object'])
 assignment_save_signal = django.dispatch.Signal(providing_args=['reviews','object'])
 
@@ -43,6 +43,11 @@ def paper_save_callback(sender, **kwargs):
     assign_perm('PaperReview.view_assignment', editor, assignment)
     assign_perm('PaperReview.create_assignment', editor, assignment)
     
+    data = {'id':assignment.paper.id, 'title': assignment.paper.title}
+    email_content = get_template('share_layout/submit_email.html').render(data)
+    send_mail(subject="submit success", body="", from_email=settings.DEFAULT_FROM_EMAIL,
+                  recipient_list=[kwargs['request'].user.email,], fail_silently=False,
+                  html=email_content)
     
 
     
@@ -63,7 +68,9 @@ def paper_update_callback(sender, **kwargs):
                                                               paper=new_paper_object)
         lastest_assignment_object.review_set.set(lastest_review_set)
         
-        #mail to reviewers
+        #TODO
+        data = {'id':old_paper_object.paper.id, 'title': new_paper_object.title}
+        email_content = get_template('share_layout/email.html').render(data)
         send_mail(subject="reviewer review", body="paper has revised", from_email=settings.DEFAULT_FROM_EMAIL,
                   recipient_list=[review.reviewer.email for review in lastest_review_set], fail_silently=False,
                   html=email_content)
@@ -87,6 +94,9 @@ def assignment_save_callback(sender, **kwargs):
         assign_perm('view_review', review['reviewer'], review_object)
         assign_perm('create_review', review['reviewer'], review_object)
         #mail to each reviewers
+        
+        data = {'id':kwargs['object'].paper.id, 'title': kwargs['object'].paper.title}
+        email_content = get_template('share_layout/email.html').render(data)
         send_mail(subject="review after assign", body="reviewer review", from_email=settings.DEFAULT_FROM_EMAIL,
                   recipient_list=[review_object.reviewer.email, ], fail_silently=False,
                   html=email_content)

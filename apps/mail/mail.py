@@ -13,9 +13,9 @@
 import os
 
 import django
-SETTINGS = 'conference.settings'
-os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
-django.setup()
+# SETTINGS = 'conference.settings'
+# os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
+# django.setup()
 from django.template.loader import get_template
 from django.template import loader
 from conference import settings
@@ -48,10 +48,7 @@ def send_mail(subject, body, from_email, recipient_list, fail_silently=False, ht
     
 #send_mail("123", "123", settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com',], html='core/base.html')
 
-data = {'scholarname':'wang'}
 
-email_content = get_template('share_layout/email.html').render(data)
-send_mail("123", "123", settings.DEFAULT_FROM_EMAIL, recipient_list=['genius_wz@aliyun.com',], html=email_content)
 
 
 

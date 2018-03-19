@@ -41,7 +41,7 @@ class Author(models.Model):
     
 class Keywords(models.Model):
     
-    keyword = models.CharField(verbose_name='Keyword', max_length=64)
+    keyword = models.CharField(max_length=64, blank=False, null=False)
     
     paper = models.ForeignKey(Paper, null=True, on_delete=models.CASCADE)
     

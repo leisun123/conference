@@ -19,7 +19,7 @@
 								<th>Create_time</th>
 								<th>Session:</th>
 								<th>Version:</th>
-								<th>Serial number:</th>
+								<th>Number:</th>
 								<th>Revise</th>
 							</tr>
 							</thead>
@@ -33,7 +33,7 @@
 
 									<td>{{ object.session.name }}</td>
 									<td>{{ object.version }}</td>
-									<td>{{ object.serial_number }}</td>
+									<td>{{ object.id|stringformat:"03d" }}</td>
 									{% if object.assignment.status in "23"|make_list %}
 										<td><a href="{% url 'update_paper' object.id %}">Revise</a></td>
 									{% else %}

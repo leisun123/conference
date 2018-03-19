@@ -51,6 +51,8 @@ AuthorFormset = formsets.formset_factory(AuthorForm, extra=1)
 
 class KeywordsForm(forms.ModelForm):
     
+    keyword = forms.CharField(label="Keyword", required=True)
+    
     class Meta:
         model = Keywords
         fields = ('keyword',)
@@ -58,7 +60,6 @@ class KeywordsForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super(KeywordsForm, self).__init__(*args, **kwargs)
-        self.fields['keyword'].label = "Keyword"
         
 KeywordsFormset = formsets.formset_factory(KeywordsForm, extra=1)
 
