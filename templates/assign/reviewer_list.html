@@ -1,0 +1,50 @@
+{% extends "share_layout/base.html" %}
+{% load static %}
+{% load main_tags %}
+{% block index %}
+	<div class="container-fluid">
+		<div class="row">
+
+			<div role="tabpanel">
+				{% load_judgment_sidebar "assignment" %}
+				<div class="col-sm-9">
+					<div class="tab-content">
+						<div class="tab-pane active">
+							{% if not reviewer_list %}
+								<h3 class="lead">No Reviewers</h3>
+							{% else %}
+
+								<table class="table">
+									<thead>
+									<tr>
+										<th>Id</th>
+										<th>Username</th>
+										<th>Email</th>
+										<th>Organization</th>
+										<th>Session</th>
+										<th>Has Joined</th>
+									</tr>
+									</thead>
+
+									{% for reviewer in reviewer_list %}
+										<tr>
+											<td>{{ reviewer.id }}</td>
+											<td>{{ reviewer.username }}</td>
+											<td>{{ reviewer.email }}</td>
+											<td>{{ reviewer.organization }}</td>
+											<td>{{ reviewer.session }}</td>
+											<td>{{ reviewer.is_active }}</td>
+										</tr>
+									{% endfor %}
+								</table>
+							{% endif %}
+
+							{% include 'share_layout/pagination.html' with is_paginated=is_paginated page_obj=page_obj paginator=paginator %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

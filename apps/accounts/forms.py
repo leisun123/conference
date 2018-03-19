@@ -11,15 +11,13 @@
 """
 #coding:utf8
 
-from crispy_forms.bootstrap import StrictButton, InlineField, InlineCheckboxes
 from crispy_forms.layout import Layout, Submit, Div, ButtonHolder, HTML, Fieldset, BaseInput
 from django import forms
 from django.contrib import auth
+from django.forms import formsets
+
 from apps.accounts.models import Scholar
 from crispy_forms.helper import FormHelper
-
-
-
 
 class LoginForm(forms.ModelForm):
     
@@ -177,4 +175,19 @@ class ChangeUserImageForm(forms.Form):
         super(ChangeUserImageForm, self).__init__(*args, **kwargs)
 
 
+class ReviewerAccountForm(forms.ModelForm):
+    
+    class Meta:
+        model = Scholar
+        fields = ('username', 'email', 'organization', 'session', )
+    
+ReviewerAccountFormset = formsets.formset_factory(ReviewerAccountForm, extra=1)
 
+class FormSetHelper(FormHelper):
+    
+    def __init__(self, *args, **kwargs):
+        super(FormSetHelper, self).__init__(*args, **kwargs)
+        self.form_method = 'post'
+        self.template = 'bootstrap3/my_table_formset.html'
+        
+formhelper = FormSetHelper()

@@ -24,7 +24,7 @@ handler404 = 'apps.main.views.handler404'
 handler500 = 'apps.main.views.handler500'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls,),
     path('auth/', include('django.contrib.auth.urls')),
     path('', include('main.urls')),
     path('accounts/', include('accounts.urls')),

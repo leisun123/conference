@@ -18,7 +18,7 @@ class Scholar(AbstractUser):
     avatar = models.ImageField('avatar', upload_to='avatars/', blank=True)
     organization = models.CharField(verbose_name='organization',max_length=200, blank=False)
     session = models.ForeignKey(SpecialSession, null=True, on_delete=models.SET_NULL)
-    
+    is_assigned_password = models.BooleanField(default=False)
     REQUIRED_FIELDS = []
     
     def __str__(self):

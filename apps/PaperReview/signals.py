@@ -10,8 +10,8 @@
             --
 """
 import django.dispatch
+import os
 from django.contrib.auth.models import Group
-from django.db.models.signals import pre_save, post_save
 from django.template.loader import get_template
 from apps.mail.mail import send_mail
 from django.dispatch import receiver
@@ -28,6 +28,12 @@ assignment_save_signal = django.dispatch.Signal(providing_args=['reviews','objec
 @receiver(paper_save_signal)
 def paper_save_callback(sender, **kwargs):
     
+    
+    new_name = 'thesis/{}.pdf'.format(kwargs['paper_object'].serial_number)
+    os.rename(kwargs['paper_object'].file.path, os.path.join(settings.MEDIA_ROOT, new_name))
+    kwargs['paper_object'].file.name = new_name
+    kwargs['paper_object'].save()
+    
     editors = Group.objects.get(name="editor").user_set.all()
     editor = random.choice(editors)
     
@@ -38,9 +44,9 @@ def paper_save_callback(sender, **kwargs):
     assign_perm('PaperReview.view_assignment', editor, assignment)
     assign_perm('PaperReview.create_assignment', editor, assignment)
     
-    data = {'id': kwargs['paper_object'].id, 'title': kwargs['paper_object'].title}
-    email_content = get_template('share_layout/submit_email.html').render(data)
-    send_mail(subject="submit success", body="", from_email=settings.DEFAULT_FROM_EMAIL,
+    data = {'id': kwargs['paper_object'].id, 'title': kwargs['paper_object'].title, 'version': kwargs['paper_object'].version}
+    email_content = get_template('email/submission.html').render(data)
+    send_mail(subject="CSQRWC TEAM", body="", from_email=settings.DEFAULT_FROM_EMAIL,
                   recipient_list=[kwargs['paper_object'].uploader.email,], fail_silently=False,
                   html=email_content)
     
@@ -63,9 +69,9 @@ def paper_update_callback(sender, **kwargs):
         lastest_assignment_object.review_set.set(lastest_review_set)
         
         #TODO
-        data = {'id':old_paper_object.paper.id, 'title': old_paper_object.title}
-        email_content = get_template('share_layout/submit_email.html').render(data)
-        send_mail(subject="reviewer review", body="", from_email=settings.DEFAULT_FROM_EMAIL,
+        data = {'id':old_paper_object.paper.id, 'title': old_paper_object.title, 'version': kwargs['paper_object'].version}
+        email_content = get_template('email/submission.html').render(data)
+        send_mail(subject="CSQRWC TEAM", body="", from_email=settings.DEFAULT_FROM_EMAIL,
                   recipient_list=[review.reviewer.email for review in lastest_review_set], fail_silently=False,
                   html=email_content)
     
@@ -87,13 +93,33 @@ def assignment_save_callback(sender, **kwargs):
         assign_perm('view_paper', review['reviewer'], kwargs['object'].paper)
         assign_perm('view_review', review['reviewer'], review_object)
         assign_perm('create_review', review['reviewer'], review_object)
-        #mail to each reviewers
         
-        data = {'id':kwargs['object'].paper.id, 'title': kwargs['object'].paper.title}
-        email_content = get_template('share_layout/email.html').render(data)
-        send_mail(subject="assign over", body="", from_email=settings.DEFAULT_FROM_EMAIL,
-                  recipient_list=[review_object.assignment.paper.uploader.email], fail_silently=False,
+        data = {'id':kwargs['object'].paper.id, 'title': kwargs['object'].paper.title,\
+                'name': review['reviewer'].username, 'email':review['reviewer'].email, 'password':review['reviewer'].password }
+        
+        email_content = get_template('email/first_review.html').render(data) \
+                    if review['reviewer'].is_assigned_password else get_template('email/review.html').render(data)
+        
+        send_mail(subject="CSQRWC TEAM", body="", from_email=settings.DEFAULT_FROM_EMAIL,
+                  recipient_list=[review['reviewer'].email,], fail_silently=False,
                   html=email_content)
- 
+      
+    data = {'id':kwargs['object'].paper.id, 'title': kwargs['object'].paper.title}
+    if kwargs['object'].status == '2':
+        email_content = get_template('email/accpect.html').render(data)
+    elif kwargs['object'].status == '3':
+        email_content = get_template('email/revise.html').render(data)
+    elif kwargs['object'].status == '4':
+        email_content = get_template('email/reject.html').render(data)
+    else:
+        email_content = None
+    
+    if email_content:
+        send_mail(subject="CSQRWC TEAM", body="", from_email=settings.DEFAULT_FROM_EMAIL,
+                  recipient_list=[kwargs['object'].paper.uploader.email,], fail_silently=False,
+                  html=email_content)
+    
+    
+    
 
     

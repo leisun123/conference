@@ -57,7 +57,8 @@ def load_judgment_sidebar(sidebar_type):
                   ["Status", "status"]],
         
         "assignment": [["Overview", "list_assignment"],
-                       ],
+                       ["Create Review Account", "create_reviewer_account"],
+                       ["Reviewer List", "reviewer_list"]],
         
         "review": [["Overview", "list_review"]]
     }

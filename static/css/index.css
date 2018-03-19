@@ -32,7 +32,7 @@ footer {
 
 .carousel-inner img {
     width: 100%;
-    max-height: 500px
+    max-height: 200px
 }
 
 .carousel-control {
@@ -479,7 +479,6 @@ p.small.text-muted {
 .caret {
     position: absolute;
     right: 37px;
-    top: 23px
 }
 
 .strong, b, strong {

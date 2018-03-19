@@ -28,4 +28,7 @@ urlpatterns = [
     path('createreview/<int:pk>', views.ReviewCreateView.as_view(), name='create_review'),
     path('displayreview/<int:pk>', views.ReviewDisplayView.as_view(), name='display_review'),
     path('status/', TemplateView.as_view(template_name='Judgment/status.html'), name='status'),
+    
+    path('createaccount/', views.AssignmentAccountCreateView.as_view(), name="create_reviewer_account"),
+    path('reviewerlist/', views.AssignmentAccountListView.as_view(), name="reviewer_list"),
 ]

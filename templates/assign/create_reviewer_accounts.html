@@ -1,0 +1,19 @@
+{% extends 'share_layout/base.html' %}
+{% load main_tags %}
+{% load crispy_forms_tags %}
+{% block login %}
+	<div class="container-fluid">
+		<div class="row">
+			{% load_judgment_sidebar "assignment" %}
+			<div class="col-sm-10">
+				<form method="post" action="" enctype='multipart/form-data'>
+					{% csrf_token %}
+					{% crispy reviewer_account_formset myinlinehelper %}
+					<p>
+						<input type="submit" value="Submit"/>
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

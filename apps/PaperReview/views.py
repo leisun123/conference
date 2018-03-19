@@ -2,7 +2,7 @@ import uuid
 
 from django.contrib.auth.models import Group, Permission
 from django.forms import inlineformset_factory
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.utils.decorators import method_decorator
@@ -19,7 +19,8 @@ from django.http import HttpResponseRedirect, Http404, HttpResponseForbidden
 from django.shortcuts import render
 from django.views import generic
 from apps.PaperReview.models import Paper, Assignment, Review, Keywords, Author
-from apps.accounts.models import Scholar
+from apps.accounts.forms import ReviewerAccountForm, ReviewerAccountFormset, formhelper
+from apps.accounts.models import Scholar, SpecialSession
 #from apps.PaperReview.wrappers import permission_required_or_403
 from guardian.mixins import PermissionRequiredMixin
 from guardian.core import ObjectPermissionChecker
@@ -49,11 +50,8 @@ class PaperListView(AccessDeniedMixin, generic.ListView):
     
     
     def get_queryset(self, *args, **kwargs):
-        permission = Permission.objects.get(codename='view_paper')
 
-        return \
-            [Paper.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
-                .filter(user=self.request.user, permission=permission).all()]
+        return Paper.objects.filter(uploader=self.request.user).order_by('create_time')
     
     def get_context_data(self, **kwargs):
         return super(PaperListView, self).get_context_data(**kwargs)
@@ -101,7 +99,6 @@ class PaperCreateView(AccessDeniedMixin, generic.CreateView):
         paper_object.author_set.set(
             [Author.objects.create(**author) for author in authors]
         )
-        
         #mail to editor to assign
         paper_save_signal.send(sender=self.__class__, request=request, paper_object=paper_object)
         return HttpResponseRedirect(
@@ -257,12 +254,9 @@ class AssignmentCreateView(AccessDeniedMixin, generic.UpdateView):
         self.object.save()
         if assignment['status']:
             self.object.status = assignment['status']
-            if assignment['status'] == "3":
+            if assignment['status'] == "2" or "3":
                 assign_perm('PaperReview.update_paper', self.object.paper.uploader, self.object.paper)
-            if assignment['status'] == "2":
-                pass
-            if assignment['status'] == "1":
-                pass
+            
             
         if assignment['proposal_to_author']:
             self.object.proposal_to_author = assignment['proposal_to_author']
@@ -346,13 +340,68 @@ class ReviewDisplayView(AccessDeniedMixin, generic.DetailView):
 
 
 
+class AssignmentAccountCreateView(AccessDeniedMixin, generic.CreateView):
+    template_name = 'assign/create_reviewer_accounts.html'
+    model = Scholar
+    form_class = ReviewerAccountForm
+    
+    def dispatch(self, request, *args, **kwargs):
+        denind = self.check(request, **kwargs)
+        return denind if denind else \
+            super(AssignmentAccountCreateView, self).dispatch(request)
+    
+    def get_context_data(self, **kwargs):
+        
+        context = super(AssignmentAccountCreateView, self).get_context_data(**kwargs)
+
+        context['reviewer_account_formset'] = ReviewerAccountFormset(prefix='reviewer_account_form')
+        context['myinlinehelper'] = formhelper
+        return context
+    
+    @transaction.atomic
+    def post(self, request, *args, **kwargs):
+        reviewer_account_form  = ReviewerAccountFormset(request.POST, prefix='reviewer_account_form')
+        if reviewer_account_form.is_valid():
+            return self.form_valid(request, reviewer_account_form)
+        else:
+            return self.form_invalid(reviewer_account_form)
+        
+    def form_valid(self, request, forms):
+        self.object = None
+        reviewer_account = forms.cleaned_data
+        reviewer_list = []
+        for account in reviewer_account:
+            account['password'] = uuid.uuid4().hex
+            account['is_assigned_password'] = True
+            reviewer_list.append(Scholar(**account))
+        Scholar.objects.bulk_create(reviewer_list)
+        return HttpResponseRedirect(reverse('admin:index'))
+    
+    
+    def form_invalid(self, form):
+        self.object = None
+        return self.render_to_response(
+            {"reviewer_account_formset": form,
+             "myinlinehelper": formhelper
+            }
+        )
 
 
+class AssignmentAccountListView(AccessDeniedMixin, generic.ListView):
+    template_name = 'assign/reviewer_list.html'
+    context_object_name = 'reviewer_list'
+    page_kwarg = 'page'
+    paginate_by = settings.PAGE_NUM
 
 
+    def dispatch(self, request, *args, **kwargs):
+        denind = self.check(request, **kwargs)
+        return denind if denind else \
+            super(AssignmentAccountListView, self).dispatch(request)
 
-
-
+    def get_queryset(self, *args, **kwargs):
+        
+        return Group.objects.get(name='reviewer').user_set.all().order_by('date_joined')
 
 
 
