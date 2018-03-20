@@ -41,12 +41,9 @@ def load_file(filefield):
 
 @register.simple_tag
 def load_permission_paper(request):
-    
-        content_type = Permission.objects.get(codename='view_paper').content_type
         
         return \
-            [Paper.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects\
-            .filter(user=request.user, content_type=content_type).all()]
+            [Paper.objects.filter(uploader=request.user).all().order_by('create_time')]
 
     
 @register.inclusion_tag('Judgment/sidebar.html')
