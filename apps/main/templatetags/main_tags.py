@@ -43,8 +43,7 @@ def load_file(filefield):
 def load_permission_paper(request):
         
         return \
-            [Paper.objects.filter(uploader=request.user).all().order_by('create_time')]
-
+            Paper.objects.filter(uploader=request.user).all().order_by('create_time')
     
 @register.inclusion_tag('Judgment/sidebar.html')
 def load_judgment_sidebar(sidebar_type):

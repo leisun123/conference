@@ -13,7 +13,7 @@ class Scholar(AbstractUser):
     
     USERNAME_FIELD = 'email'
     
-    username = models.CharField(max_length=8, null=True, blank=True)
+    username = models.CharField(max_length=50, null=True, blank=True)
     email = models.EmailField(blank=False, unique=True)
     avatar = models.ImageField('avatar', upload_to='avatars/', blank=True)
     organization = models.CharField(verbose_name='organization',max_length=200, blank=False)

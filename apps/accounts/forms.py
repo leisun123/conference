@@ -21,6 +21,7 @@ from crispy_forms.helper import FormHelper
 
 class LoginForm(forms.ModelForm):
     
+    
     password = forms.CharField(widget=forms.PasswordInput())
     remember_me = forms.BooleanField(required=False, widget=forms.CheckboxInput())
     
@@ -125,7 +126,7 @@ class RegisterForm(forms.ModelForm):
     def save(self, commit=True):
         user = super(RegisterForm, self).save(commit=False)
         user.set_password(self.cleaned_data['password'])
-        user.username = self.cleaned_data['first_name'] + self.cleaned_data['last_name']
+        user.username = self.cleaned_data['first_name'] + ' ' + self.cleaned_data['last_name']
         if commit:
             user.save()
         return user
