@@ -15,7 +15,7 @@ import os
 import django
 SETTINGS = 'conference.settings'
 os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
-django.setup()
+#django.setup()
 from django.template.loader import get_template
 from django.template import loader
 from conference import settings
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     data = {'id':1, 'title': "test", 'version': 2}
     email_content = get_template('email/submission.html').render(data)
     send_mail(subject="CSQRWC TEAM", body="", from_email=settings.DEFAULT_FROM_EMAIL,
-          recipient_list=['1178180942@qq.com',], fail_silently=False,
+          recipient_list=['genius_wz@aliyun.com',], fail_silently=False,
           html=email_content)
     
 

@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-</head>
-<body>
+<h3>Decision on Manuscript ID **</h3>
 
-</body>
-</html>
+<h4>Dear Prof.{{ username }}:</h4>
+
+<p>It is a pleasure to accept your manuscript entitled <strong>{{ title }}</strong> for publication in the 2018 Cross Strait Quad-Regional Radio Science and Wireless Technology Conference.</p>
+
+<p>Below are the revisions, if any, that must be made when returning your manuscript in its final form. Please do not make any other changes, and if you do, send a separate note highlighting what the changes are.</p>
+
+<p>Thank you for your fine contribution. I also take this opportunity to thank the reviewers for their timely and thoughtful comments.</p>
+
+<p>I look forward to receiving your resubmission.</p>
+
+<p>Prof. Lei Zhao</p>
+<p>TPC Chair</p>
+<p>2018 CSQRWC</p>
+<p>leizhao@jsnu.edu.cn</p>
+
+Reviewers' Comments to Author:
+
+{% for review in reviews %}
+Reviewer: {{ forloop.counter }}
+
+{{ review.proposal_to_author }}
+{% endfor %}

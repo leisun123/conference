@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-</head>
-<body>
+<h3>Decision on Manuscript ID {{ id }}</h3>>
 
-</body>
-</html>
+<h4>Dear Prof.{{ username }}:</h4>
+<p>It is our regret to inform you that your paper entitled {{ title }} has been found unsuitable </p>
+<p>for the conference will not be considered further for publication at the 2018 Cross Strait
+	Quad-Regional Radio Science and Wireless Technology Conference.</p>
+
+<p>We regret to convey this decision, however, please accept our regards and thanks for considering CSQRWC2018. </p>
+
+
+<p>Prof. Lei Zhao</p>
+<p>TPC Chair</p>
+<p>2018 CSQRWC</p>
+<p>leizhao@jsnu.edu.cn</p>
+
+
+Reviewers' Comments to Author:
+
+{% for review in reviews %}
+Reviewer: {{ forloop.counter }}
+
+{{ review.proposal_to_author }}
+{% endfor %}

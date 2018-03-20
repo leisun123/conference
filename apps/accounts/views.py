@@ -21,7 +21,8 @@ def login(request):
             user = login_form.get_user()
             if user is not None:
                 if user.is_assigned_password:
-                    return HttpResponseRedirect(reverse('accounts/password_change/'))
+                    return HttpResponseRedirect(reverse('password_change'))
+                
                 auth_login(request, user)
                 return HttpResponseRedirect(reverse('index'))
         else:

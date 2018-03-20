@@ -33,7 +33,7 @@
 											<td>{{ reviewer.email }}</td>
 											<td>{{ reviewer.organization }}</td>
 											<td>{{ reviewer.session }}</td>
-											<td>{{ reviewer.is_active }}</td>
+											<td>{{ reviewer.is_assigned_password|yesno:"False,True" }}</td>
 										</tr>
 									{% endfor %}
 								</table>

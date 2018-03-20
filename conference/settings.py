@@ -34,7 +34,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 AUTH_USER_MODEL = 'accounts.Scholar'
-
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
 
 LOGIN_URL = '/login/'

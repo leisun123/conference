@@ -104,7 +104,9 @@ def assignment_save_callback(sender, **kwargs):
                   recipient_list=[review['reviewer'].email,], fail_silently=False,
                   html=email_content)
       
-    data = {'id':kwargs['object'].paper.id, 'title': kwargs['object'].paper.title}
+    data = {'id':kwargs['object'].paper.id, 'title': kwargs['object'].paper.title,
+            'username': kwargs['object'].paper.uploader.username,
+            'reviews': kwargs['object'].review_set.all()}
     if kwargs['object'].status == '2':
         email_content = get_template('email/accpect.html').render(data)
     elif kwargs['object'].status == '3':
