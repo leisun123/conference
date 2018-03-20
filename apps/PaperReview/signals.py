@@ -95,7 +95,7 @@ def assignment_save_callback(sender, **kwargs):
         assign_perm('create_review', review['reviewer'], review_object)
         
         data = {'id':kwargs['object'].paper.id, 'title': kwargs['object'].paper.title,\
-                'name': review['reviewer'].username, 'email':review['reviewer'].email, 'password':review['reviewer'].password }
+                'name': review['reviewer'].username, 'email':review['reviewer'].email, 'password':review['reviewer'].email }
         
         email_content = get_template('email/first_review.html').render(data) \
                     if review['reviewer'].is_assigned_password else get_template('email/review.html').render(data)

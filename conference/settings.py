@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 SECRET_KEY = 'j9gk(17@_&eqf6itrwerwerwerwerams-6alizo=e@$pr81wl2e_mckpg)lyh'
 
-DEBUG = True
+DEBUG = False
 CRISPY_FAIL_SILENTLY = DEBUG
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.38.1', 'www.zzwyn.cn']
 
@@ -115,11 +115,11 @@ AUTHENTICATION_BACKENDS = (
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.qq.com'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = '1178180942@qq.com'
-EMAIL_HOST_PASSWORD = 'zaiawbkhnlpujhia'
-EMAIL_SUBJECT_PREFIX = 'website'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'isolationwyn@gmail.com'
+EMAIL_HOST_PASSWORD = 'weiaizq1314'
+EMAIL_SUBJECT_PREFIX = 'CSQRWC'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = SERVER_EMAIL = EMAIL_HOST_USER
 

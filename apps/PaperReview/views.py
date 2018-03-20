@@ -1,5 +1,7 @@
+import base64
 import uuid
 
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group, Permission
 from django.forms import inlineformset_factory
 from django.shortcuts import render, redirect
@@ -338,8 +340,6 @@ class ReviewDisplayView(AccessDeniedMixin, generic.DetailView):
 
 
 
-
-
 class AssignmentAccountCreateView(AccessDeniedMixin, generic.CreateView):
     template_name = 'assign/create_reviewer_accounts.html'
     model = Scholar
@@ -371,9 +371,10 @@ class AssignmentAccountCreateView(AccessDeniedMixin, generic.CreateView):
         reviewer_account = forms.cleaned_data
         reviewer_list = []
         for account in reviewer_account:
-            account['password'] = uuid.uuid4().hex
+            account['password'] = make_password(account['email'])
             account['is_assigned_password'] = True
             reviewer_list.append(Scholar(**account))
+            
         Scholar.objects.bulk_create(reviewer_list)
         return HttpResponseRedirect(reverse('admin:index'))
     

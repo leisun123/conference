@@ -10,12 +10,12 @@
             --
 """
 
-import os
-
-import django
-SETTINGS = 'conference.settings'
-os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
-django.setup()
+# import os
+#
+# import django
+# SETTINGS = 'conference.settings'
+# os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
+# django.setup()
 from django.template.loader import get_template
 from django.template import loader
 from conference import settings
@@ -47,8 +47,14 @@ def send_mail(subject, body, from_email, recipient_list, fail_silently=False, ht
     EmailThread(subject, body, from_email, recipient_list, fail_silently, html).start()
     
     
+# if __name__ == '__main__':
+#
+#     data = {'id':1, 'title': "test", 'version': 2}
+#     email_content = get_template('email/submission.html').render(data)
+#     send_mail(subject="CSQRWC TEAM", body="", from_email=settings.DEFAULT_FROM_EMAIL,
+#           recipient_list=['1178180942@qq.com'], fail_silently=False,
+#           html=email_content)
     
-
 
 
 
