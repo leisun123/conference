@@ -17,10 +17,6 @@ SETTINGS = 'conference.settings'
 os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
 #django.setup()
 from django.template.loader import get_template
-from django.template import loader
-from conference import settings
-
-from django.core.mail import send_mail as core_send_mail
 from django.core.mail import EmailMultiAlternatives
 import threading
 from conference import settings

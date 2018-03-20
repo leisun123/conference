@@ -14,10 +14,9 @@
 <p>leizhao@jsnu.edu.cn</p>
 
 
-Reviewers' Comments to Author:
+<p>Reviewers' Comments to Author:</p>
 
 {% for review in reviews %}
-Reviewer: {{ forloop.counter }}
-
-{{ review.proposal_to_author }}
+	<p>Reviewer: {{ forloop.counter }}</p>
+	<p>{{ review.proposal_to_author }}</p>
 {% endfor %}

@@ -46,7 +46,7 @@ def paper_save_callback(sender, **kwargs):
     
     data = {'id': kwargs['paper_object'].id, 'title': kwargs['paper_object'].title, 'version': kwargs['paper_object'].version}
     email_content = get_template('email/submission.html').render(data)
-    send_mail(subject="CSQRWC TEAM", body="", from_email=settings.DEFAULT_FROM_EMAIL,
+    send_mail(subject="2018CSQRWC Paper Submission Confirmation", body="", from_email=settings.DEFAULT_FROM_EMAIL,
                   recipient_list=[kwargs['paper_object'].uploader.email,], fail_silently=False,
                   html=email_content)
     
@@ -71,7 +71,7 @@ def paper_update_callback(sender, **kwargs):
         #TODO
         data = {'id':old_paper_object.paper.id, 'title': old_paper_object.title, 'version': kwargs['paper_object'].version}
         email_content = get_template('email/submission.html').render(data)
-        send_mail(subject="CSQRWC TEAM", body="", from_email=settings.DEFAULT_FROM_EMAIL,
+        send_mail(subject="2018CSQRWC Paper Submission Confirmation", body="", from_email=settings.DEFAULT_FROM_EMAIL,
                   recipient_list=[review.reviewer.email for review in lastest_review_set], fail_silently=False,
                   html=email_content)
     
@@ -117,7 +117,7 @@ def assignment_save_callback(sender, **kwargs):
         email_content = None
     
     if email_content:
-        send_mail(subject="CSQRWC TEAM", body="", from_email=settings.DEFAULT_FROM_EMAIL,
+        send_mail(subject="Decision on Manuscript ID {}".format(data['id']), body="", from_email=settings.DEFAULT_FROM_EMAIL,
                   recipient_list=[kwargs['object'].paper.uploader.email,], fail_silently=False,
                   html=email_content)
     

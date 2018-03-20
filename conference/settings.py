@@ -121,7 +121,7 @@ EMAIL_HOST_USER = 'isolationwyn@gmail.com'
 EMAIL_HOST_PASSWORD = 'piavsifhbdomsmbv'
 EMAIL_SUBJECT_PREFIX = 'CSQRWC'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = 'CSQRWC Team<{}>'.format(EMAIL_HOST_USER)
 
 
 WSGI_APPLICATION = 'conference.wsgi.application'

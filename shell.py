@@ -37,26 +37,12 @@ def main():
     
     #scholar = Group.objects.create(name='scholar')
     #reviewer = Group.objects.create(name='reviewer')
-    #editor = Group.objects.get(name='editor')
+    editor = Group.objects.create(name='editor')
 
-    #Scholar.objects.create_superuser(username='wyn', email='isolationwyn@gmail.com', password='python123')
-    #Scholar.objects.get(username='wyn')
-    #editor.user_set.add(Scholar.objects.get(email='leizhao@jsnu.edu.cn'))
-    #paper_object = Paper.objects.get(id=6)
-    #PaperCreateView
-    #paper_save_signal.send(sender=PaperCreateView, request=, paper_object=paper_object)
-    #[print(paper.uploader.username) for paper in Paper.objects.filter(title="213").all()]
+    Scholar.objects.create_superuser(username='wyn', email='isolationwyn@gmail.com', password='python123')
+    editor.user_set.add(Scholar.objects.create_superuser(username='Lei Zhao', email='leizhao@jsnu.edu.cn', password='leizhao@jsnu.edu.cn'))
     
-    from django.contrib.auth.models import Permission
-    from guardian.models import UserObjectPermission
-    #
-    # permission = Permission.objects.get(codename='view_paper')
-    # [print(Paper.objects.get(id=obj.object_pk).title) for obj in UserObjectPermission.objects \
-    #             .filter(user=Scholar.objects.get(email='leizhao@jsnu.edu.cn'), permission=permission).all()]
-    #
-    # print(Paper.objects.get(title='234', uploader=Scholar.objects.get(email='leizhao@jsnu.edu.cn')).id)
-    
-    Scholar.objects.get(id=3123123113)
+
     
 if __name__ == '__main__':
     main()

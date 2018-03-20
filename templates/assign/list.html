@@ -27,14 +27,8 @@
 									{% for assignment in assignment_list %}
 										<tr>
 											<td>
-												<a href="
-												{% if assignment.status == '0'  %}
-														{% url "create_assignment"  assignment.id %}
-												{% else %}
-														{% url "display_assignment" assignment.id %}
-												{% endif %}">
-													{{ assignment.paper.title }}
-												</a></td>
+												{{ assignment.paper.title }}
+
 											<td>
 												{% if assignment.status == '0' %}
 													<a href="{% url "create_assignment" assignment.id %}">

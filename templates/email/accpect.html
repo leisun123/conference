@@ -1,5 +1,3 @@
-<h3>Decision on Manuscript ID **</h3>
-
 <h4>Dear Prof.{{ username }}:</h4>
 
 <p>It is a pleasure to accept your manuscript entitled <strong>{{ title }}</strong> for publication in the 2018 Cross Strait Quad-Regional Radio Science and Wireless Technology Conference.</p>
@@ -15,10 +13,10 @@
 <p>2018 CSQRWC</p>
 <p>leizhao@jsnu.edu.cn</p>
 
-Reviewers' Comments to Author:
+<p>Reviewers' Comments to Author:</p>
 
 {% for review in reviews %}
-Reviewer: {{ forloop.counter }}
+	<p>Reviewer: {{ forloop.counter }}</p>
 
-{{ review.proposal_to_author }}
+	<p>{{ review.proposal_to_author }}</p>
 {% endfor %}
