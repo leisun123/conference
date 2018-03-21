@@ -47,8 +47,8 @@
     </schema>
     <schema id="11" parent="2" name="public">
       <ObjectId>19372</ObjectId>
-      <IntrospectionTimestamp>2018-03-21.01:31:01.058</IntrospectionTimestamp>
-      <IntrospectionStateNumber>3225</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-03-21.11:54:46.066</IntrospectionTimestamp>
+      <IntrospectionStateNumber>3347</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -490,16 +490,16 @@
     </column>
     <column id="83" parent="34" name="file">
       <Position>4</Position>
-      <DataType>varchar(100)|0</DataType>
+      <DataType>varchar(400)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>3214</StateNumber>
+      <StateNumber>3347</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="84" parent="34" name="copyright">
       <Position>5</Position>
-      <DataType>varchar(100)|0</DataType>
+      <DataType>varchar(400)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>3214</StateNumber>
+      <StateNumber>3347</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="85" parent="34" name="version">

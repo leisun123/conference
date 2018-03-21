@@ -376,7 +376,8 @@ class AssignmentAccountCreateView(AccessDeniedMixin, generic.CreateView):
             reviewer_list.append(Scholar(**account))
             
         Scholar.objects.bulk_create(reviewer_list)
-        return HttpResponseRedirect(reverse('admin:index'))
+        Group.objects.get('reviewer').user_set.add(reviewer_list)
+        return HttpResponseRedirect(reverse('reviewerlist'))
     
     
     def form_invalid(self, form):
