@@ -1,6 +1,6 @@
 #coding:utf8
 from django.contrib.auth.models import Group
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponsePermanentRedirect
 from django.contrib.auth import login as auth_login, logout as auth_logout, authenticate
 from django.http.response import HttpResponseRedirect
@@ -20,10 +20,9 @@ def login(request):
         if login_form.is_valid():
             user = login_form.get_user()
             if user is not None:
+                auth_login(request, user)
                 if user.is_assigned_password:
                     return HttpResponseRedirect(reverse('password_change'))
-                
-                auth_login(request, user)
                 return HttpResponseRedirect(reverse('index'))
         else:
             auth_logout(request)
