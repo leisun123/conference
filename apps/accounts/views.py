@@ -19,12 +19,14 @@ def login(request):
         login_form = LoginForm(request.POST)
         if login_form.is_valid():
             user = login_form.get_user()
+            print(user)
             if user is not None:
                 auth_login(request, user)
                 if user.is_assigned_password:
-                    return HttpResponseRedirect(reverse('password_change'))
                     user.is_assigned_password = False
                     user.save()
+                    return HttpResponseRedirect(reverse('password_change'))
+                    
                     
                 return HttpResponseRedirect(reverse('index'))
         else:
@@ -73,34 +75,6 @@ def register(request):
                   {'form': register_form,
                    'title': 'Register'})
 
-
-@csrf_protect
-@login_required
-def password(request):
-    user = request.user
-
-    if request.method == "POST":
-        form = PasswordChangeForm(request.POST)
-        if form.is_valid():
-            data = form.clean()
-            if user.check_password(data["old_password"]):
-                user.set_password(data["password"])
-                user.save()
-                messages.success(request, "新密码设置成功！请重新登录")
-                auth_logout(request)
-                return HttpResponseRedirect(reverse("login"))
-            else:
-                messages.error(request,'当前密码输入错误')
-                return render(request, "/registration/registration.html",
-                              {'form': form,
-                               'errors': form.errors,
-                               'title':'Change Password'})
-    else:
-        form = PasswordChangeForm()
-
-    return render(request, "registration/password.html",
-                  {'form': form,
-                   'title': 'Change Password'})
 
 def updateImage(request):
     if request.method == 'POST':
