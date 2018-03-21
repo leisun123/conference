@@ -369,15 +369,16 @@ class AssignmentAccountCreateView(AccessDeniedMixin, generic.CreateView):
     def form_valid(self, request, forms):
         self.object = None
         reviewer_account = forms.cleaned_data
-        reviewer_list = []
+        reviewer_group = Group.objects.get(name='reviewer')
+
         for account in reviewer_account:
             account['password'] = make_password(account['email'])
             account['is_assigned_password'] = True
-            reviewer_list.append(Scholar(**account))
-            
-        Scholar.objects.bulk_create(reviewer_list)
-        Group.objects.get('reviewer').user_set.add(reviewer_list)
-        return HttpResponseRedirect(reverse('reviewerlist'))
+            reviewer = Scholar.objects.create(**account)
+            reviewer_group.user_set.add(reviewer)
+        
+        
+        return HttpResponseRedirect(reverse('reviewer_list'))
     
     
     def form_invalid(self, form):

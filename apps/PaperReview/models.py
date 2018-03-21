@@ -11,8 +11,8 @@ class Paper(models.Model):
 
     title = models.CharField(max_length=128)
     abstract = models.TextField(max_length=1024)
-    file = models.FileField(verbose_name="Paper Resource", upload_to=file_rename('thesis/'), max_length=400, validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
-    copyright = models.FileField(verbose_name="Copyright", upload_to=file_rename('copyright/'), max_length=400, validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    file = models.FileField(verbose_name="Paper Resource", upload_to='thesis/', max_length=400, validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    copyright = models.FileField(verbose_name="Copyright", upload_to='copyright/', max_length=400, validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
     version = models.IntegerField(default=1)
     serial_number = models.UUIDField(primary_key=False, unique=False, default=uuid.uuid4)
     
@@ -20,7 +20,7 @@ class Paper(models.Model):
     publish_time = models.DateField(auto_now=True)
     
     uploader = models.ForeignKey(Scholar, null=True, on_delete=models.SET_NULL)
-    session = models.ForeignKey(SpecialSession, on_delete=models.CASCADE, blank=False)
+    session = models.ForeignKey(SpecialSession, on_delete=models.CASCADE)
     
     tracker = FieldTracker()
     

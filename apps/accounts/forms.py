@@ -180,7 +180,7 @@ class ReviewerAccountForm(forms.ModelForm):
     
     class Meta:
         model = Scholar
-        fields = ('username', 'email', 'organization', 'session', )
+        fields = ('username', 'email', 'organization', )
     
 ReviewerAccountFormset = formsets.formset_factory(ReviewerAccountForm, extra=1)
 

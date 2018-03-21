@@ -29,6 +29,14 @@ def main():
     from django.core.files import File
     from apps.PaperReview.signals import paper_save_signal
     from apps.PaperReview.views import PaperCreateView
+    
+    #Group.objects.create(name='scholar')
+    #Group.objects.create(name='reviewer')
+    #Group.objects.create(name='editor')
+    
+   #  Group.objects.get(name='editor').user_set.add(
+   #      Scholar.objects.create_user(username='Lei Zhao', email='leizhao@jsnu.edu.cn', password='leizhao@jsnu.edu.cn'))
+   #
    #  list = ['Ke Gong-- Microwave/millimeter wave integrated antennas',
    #    'Long Li, Huiqing Zhai and Yan Shi-- 5G Communication Antennas, Metamaterials, andMetasufaces',
    #        'Tao Li, Xuejin Zhang and Changchun Yan-- Nanophotonics and Plasmonics',
@@ -49,7 +57,6 @@ def main():
    #     SpecialSession.objects.create(name=i)
    #
    #
-   #
    #  session_list=['Computational Electromagnetic Methods','Electromagnetic Theory and Propagation',
    # '4G/5G Wireless or Mobile Systems','Micro and Millimeter Wave Measurement Technique','Microwave Remote Sensing','Photonics',
    # 'Metamaterial','Plasmonic','Antenna Theory and Technique','Microwave / Millimeter Circuits and Devices','EMI/EMC','RFID Systems',
@@ -57,7 +64,10 @@ def main():
    # 'Internet of Things','Internet and Computer Applications','Wireless Access','Sensor Networks','Software Defined Radio','Radar Systems','Others']
    #  for i in session_list:
    #     SpecialSession.objects.create(name=i)
-    [print(i.username) for i in Group.objects.get(name='reviewer').user_set.all()]
+   #
+    Group.objects.get(name='scholar').user_set.\
+        add(Scholar.objects.create_superuser(username='wyn', password='python123', email='isolationwyn@gmail.com'))
+    
 if __name__ == '__main__':
     main()
     

@@ -23,6 +23,9 @@ def login(request):
                 auth_login(request, user)
                 if user.is_assigned_password:
                     return HttpResponseRedirect(reverse('password_change'))
+                    user.is_assigned_password = False
+                    user.save()
+                    
                 return HttpResponseRedirect(reverse('index'))
         else:
             auth_logout(request)
