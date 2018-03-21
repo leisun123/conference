@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 SECRET_KEY = 'j9gk(17@_&eqf6itrwerwerwerwerams-6alizo=e@$pr81wl2e_mckpg)lyh'
 
-DEBUG = True
+DEBUG = False
 CRISPY_FAIL_SILENTLY = DEBUG
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.38.1', 'www.zzwyn.cn']
 
@@ -99,7 +99,7 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-        'HOST': '47.254.38.1',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
         'NAME': 'conference',
         'USER': 'wyn',
