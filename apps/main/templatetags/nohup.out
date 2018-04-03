@@ -1,0 +1,48 @@
+[2018-03-20 17:28:55 +0800] [30685] [INFO] Starting gunicorn 19.6.0
+[2018-03-20 17:28:55 +0800] [30685] [INFO] Listening at: http://127.0.0.1:8000 (30685)
+[2018-03-20 17:28:55 +0800] [30685] [INFO] Using worker: sync
+[2018-03-20 17:28:55 +0800] [30688] [INFO] Booting worker with pid: 30688
+[2018-03-20 17:28:55 +0800] [30688] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/arbiter.py", line 557, in spawn_worker
+    worker.init_process()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/workers/base.py", line 136, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+ImportError: No module named 'conference'
+[2018-03-20 17:28:55 +0800] [30688] [INFO] Worker exiting (pid: 30688)
+[2018-03-20 17:28:55 +0800] [30685] [INFO] Shutting down: Master
+[2018-03-20 17:28:55 +0800] [30685] [INFO] Reason: Worker failed to boot.
+[2018-03-20 17:29:11 +0800] [30695] [INFO] Starting gunicorn 19.6.0
+[2018-03-20 17:29:11 +0800] [30695] [INFO] Listening at: http://127.0.0.1:8000 (30695)
+[2018-03-20 17:29:11 +0800] [30695] [INFO] Using worker: sync
+[2018-03-20 17:29:11 +0800] [30698] [INFO] Booting worker with pid: 30698
+[2018-03-20 17:29:11 +0800] [30698] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/arbiter.py", line 557, in spawn_worker
+    worker.init_process()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/workers/base.py", line 136, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/wyn/wynpythonlib/lib/python3.5/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+ImportError: No module named 'conference'
+[2018-03-20 17:29:11 +0800] [30698] [INFO] Worker exiting (pid: 30698)
+[2018-03-20 17:29:11 +0800] [30695] [INFO] Shutting down: Master
+[2018-03-20 17:29:11 +0800] [30695] [INFO] Reason: Worker failed to boot.

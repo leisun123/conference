@@ -1,0 +1,62 @@
+[2018-03-21 12:15:47 +0800] [14103] [INFO] Starting gunicorn 19.6.0
+[2018-03-21 12:15:47 +0800] [14103] [INFO] Listening at: http://127.0.0.1:8000 (14103)
+[2018-03-21 12:15:47 +0800] [14103] [INFO] Using worker: sync
+[2018-03-21 12:15:47 +0800] [14106] [INFO] Booting worker with pid: 14106
+[2018-03-21 12:40:14 +0800] [14103] [INFO] Handling signal: int
+[2018-03-21 12:40:14 +0800] [14106] [INFO] Worker exiting (pid: 14106)
+[2018-03-21 12:40:14 +0800] [14103] [INFO] Shutting down: Master
+[2018-03-21 12:40:29 +0800] [14532] [INFO] Starting gunicorn 19.6.0
+[2018-03-21 12:40:29 +0800] [14532] [INFO] Listening at: http://127.0.0.1:8000 (14532)
+[2018-03-21 12:40:29 +0800] [14532] [INFO] Using worker: sync
+[2018-03-21 12:40:29 +0800] [14535] [INFO] Booting worker with pid: 14535
+[2018-03-21 13:12:07 +0800] [14951] [INFO] Booting worker with pid: 14951
+[2018-03-21 13:12:07 +0800] [14532] [INFO] Handling signal: hup
+[2018-03-21 13:12:07 +0800] [14532] [INFO] Hang up: Master
+[2018-03-21 13:12:07 +0800] [14952] [INFO] Booting worker with pid: 14952
+[2018-03-21 13:12:08 +0800] [14951] [INFO] Worker exiting (pid: 14951)
+[2018-03-21 15:09:32 +0800] [14532] [INFO] Handling signal: term
+[2018-03-21 15:09:32 +0800] [14952] [INFO] Worker exiting (pid: 14952)
+[2018-03-21 15:09:32 +0800] [14532] [INFO] Shutting down: Master
+[2018-03-21 15:09:42 +0800] [16732] [INFO] Starting gunicorn 19.6.0
+[2018-03-21 15:09:42 +0800] [16732] [INFO] Listening at: http://127.0.0.1:8000 (16732)
+[2018-03-21 15:09:42 +0800] [16732] [INFO] Using worker: sync
+[2018-03-21 15:09:42 +0800] [16735] [INFO] Booting worker with pid: 16735
+[2018-03-21 15:22:27 +0800] [16732] [INFO] Handling signal: int
+[2018-03-21 15:22:27 +0800] [16735] [INFO] Worker exiting (pid: 16735)
+[2018-03-21 15:22:27 +0800] [16732] [INFO] Shutting down: Master
+[2018-03-21 15:22:39 +0800] [16972] [INFO] Starting gunicorn 19.6.0
+[2018-03-21 15:22:39 +0800] [16972] [INFO] Listening at: http://127.0.0.1:8000 (16972)
+[2018-03-21 15:22:39 +0800] [16972] [INFO] Using worker: sync
+[2018-03-21 15:22:39 +0800] [16975] [INFO] Booting worker with pid: 16975
+[2018-03-21 15:22:57 +0800] [16972] [INFO] Handling signal: hup
+[2018-03-21 15:22:57 +0800] [16972] [INFO] Hang up: Master
+[2018-03-21 15:22:57 +0800] [16985] [INFO] Booting worker with pid: 16985
+[2018-03-26 08:11:54 +0800] [16972] [INFO] Handling signal: term
+[2018-03-26 08:11:54 +0800] [16985] [INFO] Worker exiting (pid: 16985)
+Lei Zhao
+Lei Zhao
+Lei Zhao
+Haipeng Zhao
+Ning Wang
+Lei Zhao
+[2018-03-26 08:11:54 +0800] [16972] [INFO] Shutting down: Master
+[2018-03-26 08:11:59 +0800] [6490] [INFO] Starting gunicorn 19.6.0
+[2018-03-26 08:11:59 +0800] [6490] [INFO] Listening at: http://127.0.0.1:8000 (6490)
+[2018-03-26 08:11:59 +0800] [6490] [INFO] Using worker: sync
+[2018-03-26 08:11:59 +0800] [6493] [INFO] Booting worker with pid: 6493
+[2018-03-26 08:14:47 +0800] [6531] [INFO] Booting worker with pid: 6531
+[2018-03-26 08:14:47 +0800] [6490] [INFO] Handling signal: hup
+[2018-03-26 08:14:47 +0800] [6490] [INFO] Hang up: Master
+[2018-03-26 08:14:47 +0800] [6533] [INFO] Booting worker with pid: 6533
+[2018-03-26 08:14:48 +0800] [6531] [INFO] Worker exiting (pid: 6531)
+[2018-03-26 09:04:06 +0800] [6490] [INFO] Handling signal: term
+[2018-03-26 09:04:06 +0800] [6533] [INFO] Worker exiting (pid: 6533)
+Lei Zhao
+[2018-03-26 09:04:06 +0800] [6490] [INFO] Shutting down: Master
+[2018-03-26 09:04:09 +0800] [7329] [INFO] Starting gunicorn 19.6.0
+[2018-03-26 09:04:09 +0800] [7329] [INFO] Listening at: http://127.0.0.1:8000 (7329)
+[2018-03-26 09:04:09 +0800] [7329] [INFO] Using worker: sync
+[2018-03-26 09:04:09 +0800] [7332] [INFO] Booting worker with pid: 7332
+[2018-03-26 09:04:26 +0800] [7329] [INFO] Handling signal: hup
+[2018-03-26 09:04:26 +0800] [7329] [INFO] Hang up: Master
+[2018-03-26 09:04:26 +0800] [7340] [INFO] Booting worker with pid: 7340
