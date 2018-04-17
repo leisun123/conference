@@ -20,6 +20,8 @@ os.environ['DJANGO_SETTINGS_MODULE'] = SETTINGS
 
 def main():
     django.setup()
+    from apps.PaperReview.models import Assignment, Review
+    from apps.accounts.models import Scholar
     from apps.accounts.models import SpecialSession
     from apps.PaperReview.models import Review,Author,SpecialSession,Assignment,Keywords,Paper
     from apps.accounts.models import Scholar
@@ -65,9 +67,20 @@ def main():
    #  for i in session_list:
    #     SpecialSession.objects.create(name=i)
    #
-    Group.objects.get(name='scholar').user_set.\
-        add(Scholar.objects.create_superuser(username='wyn', password='python123', email='isolationwyn@gmail.com'))
     
+    
+    
+    paper = Paper.objects.get(id=68)
+    assignment = Assignment.objects.get(paper=paper)
+    scholar = Scholar.objects.get(id=129)
+    review_object = Review.objects.create(reviewer=scholar, assignment=assignment)
+    review_object.reviewer.groups.add(Group.objects.get(name="reviewer"))
+    
+    assign_perm('view_paper', scholar, paper)
+    assign_perm('view_review', scholar, review_object)
+    assign_perm('create_review', scholar, review_object)
+   
+   
 if __name__ == '__main__':
     main()
     

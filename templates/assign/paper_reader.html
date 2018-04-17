@@ -1,0 +1,19 @@
+{% extends "share_layout/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load main_tags %}
+{% block index %}
+	<div class="container-fluid">
+		<div class="row">
+
+
+			{% load_judgment_sidebar "assignment" %}
+			<div class="col-sm-6">
+				<iframe src="{% load_file object.paper.file.name %}" height="1000px" width="100%"></iframe>
+			</div>
+			<div class="col-sm-4">
+				<iframe src="{% load_file object.paper.copyright.name %}" height="1000px" width="100%"></iframe>
+			</div>
+		</div>
+	</div>
+{% endblock %}

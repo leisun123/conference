@@ -25,7 +25,6 @@ class LoginForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     remember_me = forms.BooleanField(required=False, widget=forms.CheckboxInput())
     
-    
     class Meta:
         model = Scholar
         fields = ('email', )

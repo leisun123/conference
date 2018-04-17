@@ -31,13 +31,14 @@
 
 											<td>
 												{% if assignment.status == '0' %}
-													<a href="{% url "create_assignment" assignment.id %}">
+													<a style="color: darkred" href="{% url "create_assignment" assignment.id %}">
 														{{ assignment.get_status_display }}, Asign it now</a>
 												{% elif assignment.status == '5'  %}
 													<a href="{% url "create_assignment" assignment.id %}">
 														{{ assignment.get_status_display }}, reach a verdict now</a>
 												{% else %}
-													{{ assignment.get_status_display }}
+													<a href="{% url "read_paper" assignment.id %}">
+														{{ assignment.get_status_display }}</a>
 												{% endif %}
 											</td>
 											<td>{{ assignment.proposal_to_author }}</td>

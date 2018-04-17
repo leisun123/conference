@@ -339,7 +339,6 @@ class ReviewDisplayView(AccessDeniedMixin, generic.DetailView):
 
 
 
-
 class AssignmentAccountCreateView(AccessDeniedMixin, generic.CreateView):
     template_name = 'assign/create_reviewer_accounts.html'
     model = Scholar

@@ -99,7 +99,7 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-        'HOST': '127.0.0.1',
+        'HOST': '47.254.38.1',
         'PORT': '5432',
         'NAME': 'conference',
         'USER': 'wyn',

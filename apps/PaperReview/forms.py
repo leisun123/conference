@@ -95,10 +95,13 @@ class AssignmentForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.template = 'bootstrap3/uni_form.html'
         self.helper.form_method = 'post'
-        
+
+
 class AssignReviewForm(forms.ModelForm):
     
-    reviewer = forms.ModelChoiceField(queryset=Scholar.objects.exclude(id=1), empty_label=None)
+    EXCLUDE_LIST = [1, 11]
+    
+    reviewer = forms.ModelChoiceField(queryset=Scholar.objects.exclude(id__in=EXCLUDE_LIST).order_by('username'), empty_label=None)
     
     class Meta:
         model = Review
@@ -109,7 +112,6 @@ AssignReviewFormset = formsets.formset_factory(AssignReviewForm, extra=1)
 
 class ReviewForm(forms.ModelForm):
 
-     
      class Meta:
          model = Review
          fields = ('recommandation', 'confidentia_proposal_to_editor', 'proposal_to_author',)
