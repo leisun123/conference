@@ -17,6 +17,7 @@
 								<table class="table">
 									<thead>
 									<tr>
+										<th>ID</th>
 										<th>Paper title</th>
 										<th>Status</th>
 										<th>Comment to author</th>
@@ -26,6 +27,7 @@
 									</thead>
 									{% for assignment in assignment_list %}
 										<tr>
+										 	<td>{{ assignment.paper.id }}</td>
 											<td>
 												{{ assignment.paper.title }}
 

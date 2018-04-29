@@ -18,9 +18,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 SECRET_KEY = 'j9gk(17@_&eqf6itrwerwerwerwerams-6alizo=e@$pr81wl2e_mckpg)lyh'
 
-DEBUG = False
+DEBUG = True
 CRISPY_FAIL_SILENTLY = DEBUG
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.38.1', 'www.zzwyn.cn']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.35.165']
 
 ROOT_URLCONF = 'conference.urls'
 
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.crispy_forms',
-    'DjangoUeditor',
+#    'DjangoUeditor',
     'apps.accounts',
     'apps.main',
     'gunicorn',
@@ -99,7 +99,7 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-        'HOST': '47.254.38.1',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
         'NAME': 'conference',
         'USER': 'wyn',
@@ -130,17 +130,11 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('47.254.38.1', 6379)],
+            "hosts": [('47.254.35.165', 6379)],
         },
     },
 }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '47.254.38.1:11211',
-    }
-}
 
 
 STATIC_URL = '/static/'

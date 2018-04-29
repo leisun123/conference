@@ -1,5 +1,5 @@
 from django.db import models
-from DjangoUeditor.models import UEditorField
+#from DjangoUeditor.models import UEditorField
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 
@@ -46,8 +46,7 @@ class SideBar(models.Model):
 class GenericTagContent(models.Model):
 
     title = models.CharField('title', max_length=200, unique=True)
-    body = UEditorField(verbose_name='content', toolbars='full', width='600', height='300', imagePath='ad/',
-                        filePath='ad/', default='')
+    body = models.CharField('content', max_length=200, unique=True)
     
     sidebar = models.ForeignKey('SideBar', verbose_name='tag name', on_delete=models.CASCADE, blank=True, null=True)
     
