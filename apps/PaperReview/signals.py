@@ -33,6 +33,11 @@ def paper_save_callback(sender, **kwargs):
     os.rename(kwargs['paper_object'].file.path, os.path.join(settings.MEDIA_ROOT, new_name))
     kwargs['paper_object'].file.name = new_name
     kwargs['paper_object'].save()
+
+    copyright_name = 'copyright/copyright_{}.pdf'.format(kwargs['paper_object'].serial_number)
+    os.rename(kwargs['paper_object'].copyright.path, os.path.join(settings.MEDIA_ROOT, copyright_name))
+    kwargs['paper_object'].copyright.name = copyright_name
+    kwargs['paper_object'].save()
     
     editors = Group.objects.get(name="editor").user_set.all()
     editor = random.choice(editors)

@@ -1,22 +1,19 @@
 <h4>Dear Prof.{{ username }}:</h4>
+<p>It is a pleasure to accept your manuscript entitled <strong>{{ title }}</strong> for publication in the 2018 Cross Strait Quad-Regional Radio Science </p>
+<p>  and Wireless Technology Conference.<br/>Below are the revisions, if any, that must be made when returning your manuscript in its final form. </p>
+<p>In the final submission, authors are asked to use the IEEE PDF eXpress tool to generate compliant PDF files. You will need the Conference ID which is:'44005X'. Note that this tool is used just to </p>
+<p>generate the PDF file and not to submit the paper to the conference.</p>
+<p>Please check the Copyrights for your final submission.</p>
 
-<p>It is a pleasure to accept your manuscript entitled <strong>{{ title }}</strong> for publication in the 2018 Cross Strait Quad-Regional Radio Science and Wireless Technology Conference.</p>
+<p>More information about paper format and guidelines for paper submission can be found at the conference website: <strong><a>www.csqrwc.jsnu.edu.cn.</a></strong></p>
 
-<p>Below are the revisions, if any, that must be made when returning your manuscript in its final form. Please do not make any other changes, and if you do, send a separate note highlighting what the changes are.</p>
-
-<p>Thank you for your fine contribution. I also take this opportunity to thank the reviewers for their timely and thoughtful comments.</p>
-
-<p>I look forward to receiving your resubmission.</p>
-
-<p>Prof. Lei Zhao</p>
-<p>TPC Chair</p>
-<p>2018 CSQRWC</p>
-<p>leizhao@jsnu.edu.cn</p>
+<p>I look forward to receiving your resubmission before May 30, 2018.</p>
+<p>Prof. Lei Zhao TPC Chair</p>
+<p>2018 CSQRWC leizhao@jsnu.edu.cn</p>
 
 <p>Reviewers' Comments to Author:</p>
-
 {% for review in reviews %}
-	<p>Reviewer: {{ forloop.counter }}</p>
+    <p>Reviewer: {{ forloop.counter }}</p>
 
-	<p>{{ review.proposal_to_author }}</p>
+    <p>{{ review.proposal_to_author }}</p>
 {% endfor %}

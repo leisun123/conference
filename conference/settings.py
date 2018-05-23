@@ -20,7 +20,7 @@ SECRET_KEY = 'j9gk(17@_&eqf6itrwerwerwerwerams-6alizo=e@$pr81wl2e_mckpg)lyh'
 
 DEBUG = True
 CRISPY_FAIL_SILENTLY = DEBUG
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.35.165']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '47.254.35.165', '47.254.38.1']
 
 ROOT_URLCONF = 'conference.urls'
 

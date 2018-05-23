@@ -46,7 +46,7 @@ class AuthorForm(forms.ModelForm):
         model = Author
         fields = ( 'index', 'name', 'organization', 'email',)
 
-AuthorFormset = formsets.formset_factory(AuthorForm, extra=1)
+AuthorFormset = formsets.formset_factory(AuthorForm, extra=0)
 
 
 class KeywordsForm(forms.ModelForm):
@@ -118,8 +118,8 @@ class ReviewForm(forms.ModelForm):
 
      def __init__(self, *args, **kwargs):
          super(ReviewForm, self).__init__(*args, **kwargs)
-         self.fields['confidentia_proposal_to_editor'].required = False
-         self.fields['proposal_to_author'].required = False
+         self.fields['confidentia_proposal_to_editor'].required = True
+         self.fields['proposal_to_author'].required = True
          self.helper = FormHelper()
          self.helper.template = 'bootstrap3/uni_form.html'
          self.helper.form_method = 'post'

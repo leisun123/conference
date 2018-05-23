@@ -59,7 +59,7 @@ class PaperListView(AccessDeniedMixin, generic.ListView):
         return super(PaperListView, self).get_context_data(**kwargs)
 
 
-class PaperCreateView(AccessDeniedMixin, generic.CreateView):
+class PaperCreateView(generic.CreateView):
     model = Paper
     template_name = 'upload/create.html'
     form_class = PaperForm
@@ -123,7 +123,7 @@ class PaperUpdateView(AccessDeniedMixin, generic.UpdateView):
     template_name = 'upload/create.html'
     form_class = PaperForm
     
-    @method_decorator(permission_required_or_403('PaperReview.update_paper', (Paper, 'id', 'pk')))
+   # @method_decorator(permission_required_or_403('PaperReview.update_paper', (Paper, 'id', 'pk')))
     def dispatch(self, request, *args, **kwargs):
         return super(PaperUpdateView, self).dispatch(request)
     
@@ -158,7 +158,7 @@ class PaperUpdateView(AccessDeniedMixin, generic.UpdateView):
         lastest_version = self.get_object().version
         paper['uploader'] = Scholar.objects.get(username=request.user)
         paper['version'] = lastest_version + 1
-        paper['serial_number'] = self.get_object().serial_numberaccounts_scholar
+        paper['serial_number'] = self.get_object().serial_number
         
         new_paper_obj = Paper.objects.create(**paper)
         
@@ -212,8 +212,8 @@ class AssignmentListView(AccessDeniedMixin, generic.ListView):
         permission = Permission.objects.get(codename='view_assignment')
 
         return \
-            [Assignment.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
-                .filter(user=self.request.user, permission=permission).all()]
+            list(filter(None, [Assignment.objects.filter(id=obj.object_pk).first() for obj in UserObjectPermission.objects \
+                .filter(user=self.request.user, permission=permission).all()]))
         
   
     
@@ -303,8 +303,8 @@ class ReviewListView(AccessDeniedMixin, generic.ListView):
         permission = Permission.objects.get(codename='view_review')
 
         return \
-            [Review.objects.get(id=obj.object_pk) for obj in UserObjectPermission.objects \
-                .filter(user=self.request.user, permission=permission).all()]
+            list(filter(None, [Review.objects.filter(id=obj.object_pk).first() for obj in UserObjectPermission.objects \
+                .filter(user=self.request.user, permission=permission).all()]))
 
 
 class ReviewCreateView(AccessDeniedMixin, generic.UpdateView):
@@ -369,13 +369,14 @@ class AssignmentAccountCreateView(AccessDeniedMixin, generic.CreateView):
         self.object = None
         reviewer_account = forms.cleaned_data
         reviewer_group = Group.objects.get(name='reviewer')
+        scholar_group = Group.objects.get(name='scholar')
 
         for account in reviewer_account:
             account['password'] = make_password(account['email'])
             account['is_assigned_password'] = True
             reviewer = Scholar.objects.create(**account)
             reviewer_group.user_set.add(reviewer)
-        
+            scholar_group.user_set.add(reviewer)
         
         return HttpResponseRedirect(reverse('reviewer_list'))
     
