@@ -99,12 +99,8 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'conference',
-        'USER': 'wyn',
-        'PASSWORD': 'weiaizq1314',
-        'ENGINE': 'django.db.backends.postgresql'
     }
 }
 
